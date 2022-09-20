@@ -1,3 +1,5 @@
+package clases;
+
 public class Sucursal {
     int Número ;
     String Dirección;
