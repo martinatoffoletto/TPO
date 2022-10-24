@@ -1,8 +1,10 @@
-package clases;
+package model;
+
+import model.enums.TipoRol;
 
 import java.time.LocalDate;
 
-public class Usuarios_Roles {
+public class UsuarioSistema {
     String usuario;
     String email ;
     String password;
@@ -10,5 +12,6 @@ public class Usuarios_Roles {
     String domicilio;
     int DNI;
     LocalDate nacimiento;
+    TipoRol rol;
 
 }

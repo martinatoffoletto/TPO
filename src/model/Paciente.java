@@ -1,7 +1,7 @@
-package clases;
+package model;
 
-public class Pacientes {
-    int DNI;
+public class Paciente {
+    String DNI;
     String nombre;
     String domicilio;
     String mail;
