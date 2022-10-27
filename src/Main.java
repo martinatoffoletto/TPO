@@ -1,8 +1,8 @@
-import vistas.Login;
+import vistas.FrmLogin;
 
 public class Main {
     public static void main(String[] args) {
-        Login win = new Login();
+        FrmLogin win = new FrmLogin();
         win.setVisible(true);
     }
 }

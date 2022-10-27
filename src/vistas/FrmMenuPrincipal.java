@@ -12,7 +12,6 @@ public class FrmMenuPrincipal extends JFrame {
         super("Menu Principal");
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setContentPane(pnlPrincipal);
     }
 
 
