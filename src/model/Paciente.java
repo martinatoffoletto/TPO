@@ -1,12 +1,12 @@
 package model;
 
 public class Paciente {
-    String DNI;
-    String nombre;
-    String domicilio;
-    String mail;
-    String sexo;
-    int edad;
+    private String DNI;
+    private String nombre;
+    private String domicilio;
+    private String mail;
+    private String sexo;
+    private int edad;
 
     public Paciente(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
