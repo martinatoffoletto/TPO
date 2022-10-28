@@ -1,6 +1,8 @@
 package vistas;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmLogin extends JFrame {
     private JTextArea textArea1;
@@ -10,7 +12,7 @@ public class FrmLogin extends JFrame {
 
     public FrmLogin() {
         super("Login");
-        setSize(800, 600);
+        setSize(500, 300);
         setLocationRelativeTo(null);
         setContentPane(pnlLogin);
     }

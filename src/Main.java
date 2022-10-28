@@ -1,8 +1,8 @@
-import vistas.FrmLogin;
+import vistas.FrmMenuPrincipal;
 
 public class Main {
     public static void main(String[] args) {
-        FrmLogin win = new FrmLogin();
+        FrmMenuPrincipal win = new FrmMenuPrincipal();
         win.setVisible(true);
     }
 }
