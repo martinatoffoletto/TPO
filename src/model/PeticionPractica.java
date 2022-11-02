@@ -3,7 +3,7 @@ package model;
 import model.enums.TipoEstado;
 
 public class PeticionPractica {
-    TipoEstado estadoPractica;
+    private TipoEstado estadoPractica;
 
     public PeticionPractica(TipoEstado estadoPractica) {
         this.estadoPractica = estadoPractica;

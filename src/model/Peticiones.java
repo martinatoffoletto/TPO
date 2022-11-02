@@ -5,13 +5,13 @@ import model.enums.TipoEstado;
 import java.time.LocalDate;
 
 public class Peticiones {
-    Paciente paciente;
-    String ObraSocial;
-    LocalDate fechaCarga;
-    String practicasAsociadas;
-    LocalDate fechaEntrega;
-    TipoEstado estado;
-    int nroPeticion;
+    private Paciente paciente;
+    private String ObraSocial;
+    private LocalDate fechaCarga;
+    private String practicasAsociadas;
+    private LocalDate fechaEntrega;
+    private TipoEstado estado;
+    private int nroPeticion;
 
     public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, String practicasAsociadas, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;

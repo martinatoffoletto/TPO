@@ -5,10 +5,10 @@ import model.enums.TipoRango;
 import java.util.List;
 
 public class Regla {
-    TipoRango tipoRango;
-    boolean valorBooleano;
-    List<String> listaPalabras;
-    double valor;
+    private TipoRango tipoRango;
+    private boolean valorBooleano;
+    private List<String> listaPalabras;
+    private double valor;
 
     public Regla(TipoRango tipoRango, boolean valorBooleano, List<String> listaPalabras, double valor) {
         this.tipoRango = tipoRango;

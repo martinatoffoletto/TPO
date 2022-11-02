@@ -1,9 +1,9 @@
 package model;
 
 public class Sucursal {
-    int numero ;
-    String direccion;
-    String responsableTecnico;
+    private int numero ;
+    private String direccion;
+    private String responsableTecnico;
 
     public Sucursal(int numero, String direccion, String responsableTecnico) {
         this.numero = numero;

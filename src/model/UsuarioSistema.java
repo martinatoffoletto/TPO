@@ -5,14 +5,14 @@ import model.enums.TipoRol;
 import java.time.LocalDate;
 
 public class UsuarioSistema {
-    String usuario;
-    String email ;
-    String password;
-    String nombre;
-    String domicilio;
-    int DNI;
-    LocalDate nacimiento;
-    TipoRol rol;
+    private String usuario;
+    private String email ;
+    private String password;
+    private String nombre;
+    private String domicilio;
+    private int DNI;
+    private LocalDate nacimiento;
+    private TipoRol rol;
 
     public UsuarioSistema(String usuario, String email, String password, String nombre, String domicilio, int DNI, LocalDate nacimiento, TipoRol rol) {
         this.usuario = usuario;
