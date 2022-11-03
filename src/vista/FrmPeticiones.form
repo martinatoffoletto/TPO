@@ -16,7 +16,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="fc37f" class="javax.swing.JButton" binding="nuevaPeticiónButton" default-binding="true">
+      <component id="fc37f" class="javax.swing.JButton" binding="nuevaPeticionButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
           <text value="Nueva Petición"/>
         </properties>
       </component>
-      <component id="70ae6" class="javax.swing.JButton" binding="modificarPeticiónButton" default-binding="true">
+      <component id="70ae6" class="javax.swing.JButton" binding="modificarPeticionButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -32,7 +32,7 @@
           <text value="Modificar Petición"/>
         </properties>
       </component>
-      <component id="fbafc" class="javax.swing.JButton" binding="eliminarPeticiónButton" default-binding="true">
+      <component id="fbafc" class="javax.swing.JButton" binding="eliminarPeticionButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

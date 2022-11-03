@@ -2,7 +2,7 @@ package vista;
 
 import javax.swing.*;
 
-public class FrmNuevaPeticion {
+public class FrmNuevaPeticion extends JDialog {
     private JComboBox comboBox1;
     private JTextField textField1;
     private JTextField textField2;
@@ -11,4 +11,12 @@ public class FrmNuevaPeticion {
     private JComboBox comboBox2;
     private JTextField textField5;
     private JButton guardarButton;
+    private JPanel pnlPrincipal;
+
+    public FrmNuevaPeticion() {
+        setSize(400, 400);
+        setModal(true);
+        setLocationRelativeTo(null);
+        setContentPane(pnlPrincipal);
+    }
 }
