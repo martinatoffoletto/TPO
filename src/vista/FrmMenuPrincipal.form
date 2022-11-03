@@ -82,12 +82,12 @@
               </component>
             </children>
           </grid>
-          <component id="62775" class="javax.swing.JDesktopPane" binding="desktopPaneEmbebido">
+          <grid id="e2509" class="javax.swing.JDesktopPane" binding="desktopPaneEmbebido" layout-manager="CardLayout" hgap="0" vgap="0">
             <constraints border-constraint="Center"/>
-            <properties>
-              <preferredSize width="24" height="24"/>
-            </properties>
-          </component>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
     </children>

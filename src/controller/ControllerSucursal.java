@@ -8,6 +8,7 @@ import java.util.List;
 public class ControllerSucursal {
 
     private List<Sucursal> listaSucursal;
+    private List<Paciente> lisaPacientes;
     private static ControllerSucursal instancia;
 
     public static ControllerSucursal getInstancia() {
