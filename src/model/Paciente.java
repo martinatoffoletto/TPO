@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Paciente {
     private String DNI;
     private String nombre;
@@ -8,6 +10,8 @@ public class Paciente {
     private String sexo;
     private int edad;
 
+
+    //CONSTRUCTOR
     public Paciente(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
         this.nombre = nombre;
@@ -17,6 +21,7 @@ public class Paciente {
         this.edad = edad;
     }
 
+    //GETTER AND SETTERS
     public String getDNI() {
         return DNI;
     }
@@ -64,4 +69,5 @@ public class Paciente {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
 }

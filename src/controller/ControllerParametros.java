@@ -5,26 +5,33 @@ import DTO.UsuarioSistemaDTO;
 import model.Practicas;
 import model.UsuarioSistema;
 import model.enums.TipoRol;
-
+import controller.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerParametros {
-
     private static ControllerParametros instancia;
+    private static List<UsuarioSistema> listaUsuarios;
+    private static List<Practicas> listaPracticas;
 
+
+    //SINGLETON
     public static ControllerParametros getInstancia() {
         if (instancia == null)
             instancia = new ControllerParametros();
         return instancia;
     }
 
+
+    //CONSTRUCTOR
     private ControllerParametros() {
+        listaUsuarios= new ArrayList<UsuarioSistema>();
+        listaPracticas= new ArrayList<Practicas>();
 
     }
-    private static List<UsuarioSistema> listaUsuarios;
-    private static List<Practicas> listaPracticas;
 
+    //METODOS:
     public void altaUsuario(UsuarioSistemaDTO usuario) {
         UsuarioSistema usuarioSistema = new UsuarioSistema(usuario.usuario,usuario.email,usuario.password,
                 usuario.nombre,usuario.domicilio,usuario.DNI,usuario.nacimiento,usuario.rol);
@@ -62,22 +69,50 @@ public class ControllerParametros {
         listaPracticas.add(practica);
     }
 
-    public void bajaPractica() {
+    public void bajaPractica(PracticasDTO practicasDTO) {
+        for (Practicas practicas: listaPracticas) {
+            if (practicas.getCodigo() == practicasDTO.codigo)
+                listaPracticas.remove(practicas);
+        }
 
     }
 
-    public void modificacionPractica() {
+    public void modificacionPractica(PracticasDTO practicasDTO) {
+        for (Practicas practica: listaPracticas ) {
+            if (practica.getCodigo() == practicasDTO.codigo)
+            {
+                practica.setValoresReservados(practicasDTO.valoresReservados);
+                practica.setNombrePractica(practicasDTO.nombrePractica);
+                practica.setValoresCriticos(practicasDTO.valoresCriticos);
+                practica.setCodigo(practicasDTO.codigo);
+                practica.setHorasResultado(practicasDTO.horasResultado);
+                practica.setGrupo(practicasDTO.grupo);
+            break;
+
+            }
+        }
 
     }
 
-    public void altaSucursal() {
+    //METODOS:
 
+    //EXISTE USUARIO (INICIO SECCION)
+    public boolean InicioSeccion(UsuarioSistemaDTO userd){ //si es true muestra menu, sino NO (ver en vista)
+        for (UsuarioSistema user:listaUsuarios){
+            if (user.getUsuario()==userd.usuario && user.getPassword()==userd.password){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void bajaSucursal() {
 
-    }
-    public void modificacionSucursal() {
 
-    }
+
+
+
+
+
+
+
 }

@@ -14,6 +14,8 @@ public class UsuarioSistema {
     private LocalDate nacimiento;
     private TipoRol rol;
 
+
+    //CONSTRUCTOR
     public UsuarioSistema(String usuario, String email, String password, String nombre, String domicilio, int DNI, LocalDate nacimiento, TipoRol rol) {
         this.usuario = usuario;
         this.email = email;
@@ -25,6 +27,7 @@ public class UsuarioSistema {
         this.rol = rol;
     }
 
+    //GETTER AND SETTERS
     public String getUsuario() {
         return usuario;
     }
@@ -88,4 +91,9 @@ public class UsuarioSistema {
     public void setRol(TipoRol rol) {
         this.rol = rol;
     }
+
+    //METODOS
+
+
+
 }

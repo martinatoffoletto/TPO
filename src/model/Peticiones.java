@@ -3,17 +3,22 @@ package model;
 import model.enums.TipoEstado;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Peticiones {
     private Paciente paciente;
     private String ObraSocial;
     private LocalDate fechaCarga;
-    private String practicasAsociadas;
+    private List<Practicas> practicasAsociadas;
     private LocalDate fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
 
-    public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, String practicasAsociadas, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion) {
+    private Sucursal sucursal;
+
+
+    //CONSTRUCTOR
+    public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, List<Practicas> practicasAsociadas, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
         this.paciente = paciente;
         ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;
@@ -21,8 +26,19 @@ public class Peticiones {
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.nroPeticion = nroPeticion;
+        this.sucursal=sucursal;
     }
 
+
+    //SETTER Y GETTERS
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
     public Paciente getPaciente() {
         return paciente;
     }
@@ -47,11 +63,11 @@ public class Peticiones {
         this.fechaCarga = fechaCarga;
     }
 
-    public String getPracticasAsociadas() {
+    public List<Practicas> getPracticasAsociadas() {
         return practicasAsociadas;
     }
 
-    public void setPracticasAsociadas(String practicasAsociadas) {
+    public void setPracticasAsociadas(List<Practicas> practicasAsociadas) {
         this.practicasAsociadas = practicasAsociadas;
     }
 
@@ -78,4 +94,7 @@ public class Peticiones {
     public void setNroPeticion(int nroPeticion) {
         this.nroPeticion = nroPeticion;
     }
+
+
+    //METODOS:
 }

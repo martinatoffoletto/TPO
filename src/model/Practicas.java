@@ -10,6 +10,8 @@ public class Practicas {
     private String valoresReservados;
     private int horasResultado;
 
+
+    //CONSTRUCTOR
     public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, String valoresReservados, int horasResultado) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
@@ -19,6 +21,7 @@ public class Practicas {
         this.horasResultado = horasResultado;
     }
 
+    //GETTER AND SETTER
     public int getCodigo() {
         return codigo;
     }
@@ -66,4 +69,7 @@ public class Practicas {
     public void setHorasResultado(int horasResultado) {
         this.horasResultado = horasResultado;
     }
+
+
+
 }
