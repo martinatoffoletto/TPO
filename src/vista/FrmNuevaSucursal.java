@@ -11,7 +11,6 @@ public class FrmNuevaSucursal extends JDialog {
     private JPanel pnlPrincipal;
 
     public FrmNuevaSucursal() {
-        super();
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);

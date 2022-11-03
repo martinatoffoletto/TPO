@@ -16,7 +16,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="11a8c" class="javax.swing.JButton" binding="nuevaPrácticaButton" default-binding="true">
+      <component id="11a8c" class="javax.swing.JButton" binding="nuevaPracticaButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
           <text value="Nueva Práctica"/>
         </properties>
       </component>
-      <component id="cfcbf" class="javax.swing.JButton" binding="modificarPrácticaButton" default-binding="true">
+      <component id="cfcbf" class="javax.swing.JButton" binding="modificarPracticaButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -32,7 +32,7 @@
           <text value="Modificar Práctica"/>
         </properties>
       </component>
-      <component id="c503f" class="javax.swing.JButton" binding="eliminarPrácticaButton" default-binding="true">
+      <component id="c503f" class="javax.swing.JButton" binding="eliminarPracticaButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
