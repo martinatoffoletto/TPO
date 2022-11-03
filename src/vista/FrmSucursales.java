@@ -10,7 +10,7 @@ public class FrmSucursales extends JInternalFrame {
     private JButton modificarSucursalButton;
     private JButton eliminarSucursalButton;
 
-    public FrmSucursales() {
+    public FrmSucursales(){
         super("Sucursales");
         setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);

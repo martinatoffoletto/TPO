@@ -1,10 +1,18 @@
 package model;
 
+import java.util.List;
+
 public class Sucursal {
     private int numero ;
     private String direccion;
     private String responsableTecnico;
+    private List<Paciente> listaPaciente;
 
+    public int agregarPaciente(Paciente p)
+    {
+        listaPaciente.add(p);
+        return listaPaciente.size();
+    }
     public Sucursal(int numero, String direccion, String responsableTecnico) {
         this.numero = numero;
         this.direccion = direccion;
