@@ -13,9 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerParametros {
+    public ArrayList<PracticasDTO> getListaPracticasDTO() {
+        return listaPracticasDTO;
+    }
+
     private static ControllerParametros instancia;
-    private static List<UsuarioSistema> listaUsuarios;
-    private static List<Practicas> listaPracticas;
+    private ArrayList<UsuarioSistema> listaUsuarios;
+    private  ArrayList<Practicas> listaPracticas;
+    public ArrayList<PracticasDTO> listaPracticasDTO;
 
 
     //SINGLETON
@@ -30,7 +35,7 @@ public class ControllerParametros {
     public ControllerParametros() {
         listaUsuarios= new ArrayList<UsuarioSistema>();
         listaPracticas= new ArrayList<Practicas>();
-
+        listaPracticasDTO = new ArrayList<PracticasDTO>();
     }
 
     //METODOS:
@@ -88,6 +93,7 @@ public class ControllerParametros {
         Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo,
                 practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado);
         listaPracticas.add(practica);
+        listaPracticasDTO.add(practicaDTO);
     }
 
     //BAJA PRACTICA

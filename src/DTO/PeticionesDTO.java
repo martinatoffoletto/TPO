@@ -10,15 +10,15 @@ import java.util.List;
 
 public class PeticionesDTO {
     public Paciente paciente;
+    public Sucursal sucursal;
     public String ObraSocial;
-    public LocalDate fechaCarga;
+    public String fechaCarga;
     public List<Practicas> practicasAsociadas;
-    public LocalDate fechaEntrega;
+    public String fechaEntrega;
     public TipoEstado estado;
     public int nroPeticion;
-    public Sucursal sucursal;
 
-    public PeticionesDTO(Paciente paciente, String obraSocial, LocalDate fechaCarga, List<Practicas> practicasAsociadas, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion,  Sucursal sucursal) {
+    public PeticionesDTO(Paciente paciente, Sucursal sucursal, String obraSocial, String fechaCarga, List<Practicas> practicasAsociadas, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;
         this.ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;

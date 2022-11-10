@@ -7,13 +7,13 @@ public class Practicas {
     private String nombrePractica;
     private String grupo;
     private TipoValor valoresCriticos;
-    private String valoresReservados;
+    private TipoValor valoresReservados;
     private int horasResultado;
     private boolean estado;
 
 
     //CONSTRUCTOR
-    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, String valoresReservados, int horasResultado) {
+    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
         this.grupo = grupo;
@@ -60,11 +60,11 @@ public class Practicas {
         this.valoresCriticos = valoresCriticos;
     }
 
-    public String getValoresReservados() {
+    public TipoValor getValoresReservados() {
         return valoresReservados;
     }
 
-    public void setValoresReservados(String valoresReservados) {
+    public void setValoresReservados(TipoValor valoresReservados) {
         this.valoresReservados = valoresReservados;
     }
 

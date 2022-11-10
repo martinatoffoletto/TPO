@@ -82,6 +82,7 @@ public class ControllerSucursal {
                 sucuDerivacion.agregarPeticion(pet);
             }
             listaSucursal.remove(sucuBaja);
+            listaSucursalDTO.remove(sucursalBaja);
         }
     }
 

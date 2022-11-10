@@ -17,7 +17,6 @@ public class FrmPacientes extends JInternalFrame {
     private JPanel pnlPrincipal;
     private JButton listarPeticionesPorPacienteButton;
     private JComboBox comboBox1;
-    private JButton datosPacienteButton;
 
     public FrmPacientes() {
         super("Pacientes");

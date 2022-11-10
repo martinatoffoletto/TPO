@@ -18,7 +18,6 @@ public class FrmSucursales extends JInternalFrame {
     private JButton listarPeticionesButton;
     private JButton listarPracticasButton;
     private JComboBox comboBox1;
-    private JButton datosSucursalButton;
 
 
     public FrmSucursales(){
