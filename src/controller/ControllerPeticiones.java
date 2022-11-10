@@ -105,15 +105,14 @@ public class ControllerPeticiones {
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion)
             {
-                TipoEstado estado= peticion.getEstado();
+                Paciente paciente= peticion.getPaciente();
+                String ObraSocial= peticion.getObraSocial();
                 LocalDate fechaCarga=peticion.getFechaCarga();
-                peticion.getFechaEntrega();
-                peticion.getNroPeticion();
-                peticion.getPracticasAsociadas();
-                peticion.getSucursal();
-                peticion.getObraSocial();
-                peticion.getPaciente();
-
+                List<Practicas> practicasAsociadas=peticion.getPracticasAsociadas();
+                TipoEstado estado= peticion.getEstado();
+                int NroPeticion=peticion.getNroPeticion();
+                LocalDate fechaEntrega=peticion.getFechaEntrega();
+                Sucursal sucursal= peticion.getSucursal();
             }
         }
     }
@@ -121,11 +120,6 @@ public class ControllerPeticiones {
 
 
     //METODOS:
-
-
-
-
-
 
 
 

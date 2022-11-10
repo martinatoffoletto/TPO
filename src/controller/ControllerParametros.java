@@ -8,6 +8,8 @@ import model.Sucursal;
 import model.UsuarioSistema;
 import model.enums.TipoRol;
 import controller.*;
+import model.enums.TipoValor;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,12 +75,12 @@ public class ControllerParametros {
     public void datosUsuario(UsuarioSistemaDTO usuBaja) {
         for (UsuarioSistema usuario: listaUsuarios) {
             if (usuario.getUsuario() == usuBaja.usuario)
-                usuario.getNombre();
-                usuario.getDNI();
-                usuario.getDomicilio();
-                usuario.getEmail();
-                usuario.getNacimiento();
-                usuario.getRol();
+                String email= usuario.getEmail();
+                String nombre= usuario.getNombre();
+                String domicilio= usuario.getDomicilio();
+                int dni =usuario.getDNI();
+                LocalDate nacimiento= usuario.getNacimiento();
+                TipoRol rol=usuario.getRol();
         }
     }
 
@@ -137,14 +139,13 @@ public class ControllerParametros {
 
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
-                practica.getCodigo();
-                practica.getGrupo();
-                practica.getHorasResultado();
-                practica.getNombrePractica();
-                practica.getValoresCriticos();
-                practica.getValoresReservados();
-                practica.getEstado();
-
+                int codigo=practica.getCodigo();
+                String nombrePractia=practica.getNombrePractica();
+                String grupo=practica.getGrupo();
+                TipoValor valoresCriticos= practica.getValoresCriticos();
+                String valoresReservados= practica.getValoresReservados();
+                int horasResult=practica.getHorasResultado();
+                boolean estado=practica.getEstado();
             }
         }
     }

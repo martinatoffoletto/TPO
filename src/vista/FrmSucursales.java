@@ -1,8 +1,12 @@
 package vista;
 
+import DTO.SucursalDTO;
+import controller.ControllerSucursal;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class FrmSucursales extends JInternalFrame {
 
@@ -12,29 +16,51 @@ public class FrmSucursales extends JInternalFrame {
     private JButton eliminarSucursalButton;
     private JButton listarPacientesButton;
     private JButton listarPeticionesButton;
-    private JButton listarPrácticasButton;
+    private JButton listarPracticasButton;
     private JComboBox comboBox1;
     private JButton datosSucursalButton;
+
 
     public FrmSucursales(){
         super("Sucursales");
         setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         setContentPane(pnlPrincipal);
+        asignarDatosCombo();
         nuevaSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FrmNuevaSucursal dialog = new FrmNuevaSucursal();
                 dialog.setVisible(true);
+
             }
         });
         modificarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmModificarSucursal dialog = new FrmModificarSucursal();
+                FrmModificarSucursal dialog = new FrmModificarSucursal((SucursalDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
             }
         });
 
+        eliminarSucursalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SucursalDTO suc = (SucursalDTO) comboBox1.getSelectedItem();
+                SucursalDTO suc2 = (SucursalDTO) comboBox1.getItemAt(0);
+                ControllerSucursal.getInstancia().bajaSucursal(suc, suc2);
+                comboBox1.updateUI();
+            }
+        });
+    }
+    private void asignarDatosCombo() {
+        ArrayList<SucursalDTO> listaSucursales = new ArrayList<SucursalDTO>();
+        for (SucursalDTO sucursalDTO: ControllerSucursal.getInstancia().getListaSucursalDTO())
+            listaSucursales.add(sucursalDTO);
+
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addAll(listaSucursales);
+        comboBox1.setModel(modelo);
     }
 }

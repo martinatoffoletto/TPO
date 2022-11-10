@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Peticiones {
-    private Paciente paciente;
-    private String ObraSocial;
-    private LocalDate fechaCarga;
-    private List<Practicas> practicasAsociadas;
-    private LocalDate fechaEntrega;
-    private TipoEstado estado;
-    private int nroPeticion;
-    private Sucursal sucursal;
+    public Paciente paciente;
+    public String ObraSocial;
+    public LocalDate fechaCarga;
+    public List<Practicas> practicasAsociadas;
+    public LocalDate fechaEntrega;
+    public TipoEstado estado;
+    public int nroPeticion;
+    public Sucursal sucursal;
 
 
     //CONSTRUCTOR
