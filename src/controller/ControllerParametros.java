@@ -58,14 +58,21 @@ public class ControllerParametros {
         for (UsuarioSistema usuario: listaUsuarios ) {
             if (usuario.getUsuario() == usuMod.usuario)
             {
-                usuario.setUsuario(usuMod.usuario);
-                usuario.setEmail(usuMod.email);
-                usuario.setPassword(usuMod.password);
-                usuario.setNombre(usuMod.nombre);
-                usuario.setDomicilio(usuMod.domicilio);
-                usuario.setDNI(usuMod.DNI);
-                usuario.setNacimiento(usuMod.nacimiento);
-                usuario.setRol(usuMod.rol);
+                usuario.setUsuario(usuMod.usuario);}
+            if (usuario.getEmail() == null){
+                usuario.setEmail(usuMod.email);}
+            if (usuario.getPassword() == null){
+                usuario.setPassword(usuMod.password);}
+            if (usuario.getNombre() == null){
+                usuario.setNombre(usuMod.nombre);}
+            if (usuario.getDomicilio() == null){
+                usuario.setDomicilio(usuMod.domicilio);}
+            if (usuario.getDNI() == null){
+                usuario.setDNI(usuMod.DNI);}
+            if (usuario.getNacimiento() == null){
+                usuario.setNacimiento(usuMod.nacimiento);}
+            if (usuario.getRol() == null){
+                usuario.setRol(usuMod.rol);}
                 break;
 
             }
@@ -119,20 +126,24 @@ public class ControllerParametros {
     //MODIF PRACTICA
     public void modificacionPractica(PracticasDTO practicasDTO) {
         for (Practicas practica: listaPracticas ) {
-            if (practica.getCodigo() == practicasDTO.codigo)
-            {
-                practica.setValoresReservados(practicasDTO.valoresReservados);
-                practica.setNombrePractica(practicasDTO.nombrePractica);
-                practica.setValoresCriticos(practicasDTO.valoresCriticos);
-                practica.setCodigo(practicasDTO.codigo);
-                practica.setHorasResultado(practicasDTO.horasResultado);
-                practica.setGrupo(practicasDTO.grupo);
+            if (practica.getCodigo() == practicasDTO.codigo) {
+                practica.setCodigo(practicasDTO.codigo);}
+            if (practica.getValoresReservados() == null){
+                practica.setValoresReservados(practicasDTO.valoresReservados);}
+            if (practica.getNombrePractica() == null){
+                practica.setNombrePractica(practicasDTO.nombrePractica);}
+            if (practica.getValoresCriticos() == null){
+                practica.setValoresCriticos(practicasDTO.valoresCriticos);}
+            if (practica.getHorasResultado() == null){
+                practica.setHorasResultado(practicasDTO.horasResultado);}
+            if (practica.getGrupo() == null){
+                practica.setGrupo(practicasDTO.grupo);}
             break;
 
             }
         }
 
-    }
+
 
     //DATOS PRACTICA
     public void datosPractica(PracticasDTO practicasDTO) {

@@ -87,15 +87,20 @@ public class ControllerPeticiones {
 
     public void modificacionPeticion(PeticionesDTO peticionMod) {
         for (Peticiones peticion: listaPeticiones) {
-            if (peticion.getNroPeticion() == peticionMod.nroPeticion)
-            {
-                peticion.setPaciente(peticionMod.paciente);
-                peticion.setObraSocial(peticionMod.ObraSocial);
-                peticion.setFechaEntrega(peticionMod.fechaEntrega);
-                peticion.setFechaCarga(peticionMod.fechaCarga);
-                peticion.setEstado(peticionMod.estado);
-                peticion.setNroPeticion(peticionMod.nroPeticion);
-                peticion.setSucursal(peticionMod.sucursal);
+            if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
+                peticion.setNroPeticion(peticionMod.nroPeticion);}
+            if (peticion.getPaciente() == null){
+                peticion.setPaciente(peticionMod.paciente);}
+            if (peticion.getObraSocial() == null){
+                peticion.setObraSocial(peticionMod.ObraSocial);}
+            if (peticion.fechaEntrega == null){
+                peticion.setFechaEntrega(peticionMod.fechaEntrega);}
+            if (peticion.fechaEntrega == null){
+                peticion.setFechaCarga(peticionMod.fechaCarga);}
+            if (peticion.getEstado() == null){
+                peticion.setEstado(peticionMod.estado);}
+            if (peticion.getSucursal() == null){
+                peticion.setSucursal(peticionMod.sucursal);}
             }
         }
     }

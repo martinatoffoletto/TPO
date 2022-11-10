@@ -179,12 +179,17 @@ public class ControllerSucursal {
     public void modificacionPaciente(PacienteDTO pacienteDTO) {
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
-                paciente.setDNI(pacienteDTO.DNI);
-                paciente.setEdad(pacienteDTO.edad);
-                paciente.setDomicilio(pacienteDTO.domicilio);
-                paciente.setMail(pacienteDTO.mail);
-                paciente.setSexo(pacienteDTO.sexo);
-                paciente.setNombre(pacienteDTO.nombre);
+                paciente.setDNI(pacienteDTO.DNI);}
+            if (paciente.getEdad() == null){
+                paciente.setEdad(pacienteDTO.edad);}
+            if (paciente.getDomicilio() == null){
+                paciente.setDomicilio(pacienteDTO.domicilio);}
+            if (paciente.getMail() == null){
+                paciente.setMail(pacienteDTO.mail);}
+            if (paciente.getSexo() == null){
+                paciente.setSexo(pacienteDTO.sexo);}
+            if (paciente.getNombre() == null){
+                paciente.setNombre(pacienteDTO.nombre);}
 
             }
         }
