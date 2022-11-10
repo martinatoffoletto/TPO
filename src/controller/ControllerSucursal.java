@@ -180,15 +180,15 @@ public class ControllerSucursal {
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
                 paciente.setDNI(pacienteDTO.DNI);}
-            if (paciente.getEdad() == null){
+            if (pacienteDTO.edad != null){
                 paciente.setEdad(pacienteDTO.edad);}
-            if (paciente.getDomicilio() == null){
+            if (pacienteDTO.domicilio != null){
                 paciente.setDomicilio(pacienteDTO.domicilio);}
-            if (paciente.getMail() == null){
+            if (pacienteDTO.mail != null){
                 paciente.setMail(pacienteDTO.mail);}
-            if (paciente.getSexo() == null){
+            if (pacienteDTO.sexo != null){
                 paciente.setSexo(pacienteDTO.sexo);}
-            if (paciente.getNombre() == null){
+            if (pacienteDTO.nombre != null){
                 paciente.setNombre(pacienteDTO.nombre);}
 
             }

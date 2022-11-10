@@ -56,25 +56,30 @@ public class ControllerParametros {
     //MODIFICACION USUARIOS
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistema usuario: listaUsuarios ) {
-            if (usuario.getUsuario() == usuMod.usuario)
-            {
+            if (usuario.getUsuario() == usuMod.usuario) {
                 usuario.setUsuario(usuMod.usuario);}
-            if (usuario.getEmail() == null){
-                usuario.setEmail(usuMod.email);}
-            if (usuario.getPassword() == null){
-                usuario.setPassword(usuMod.password);}
-            if (usuario.getNombre() == null){
-                usuario.setNombre(usuMod.nombre);}
-            if (usuario.getDomicilio() == null){
-                usuario.setDomicilio(usuMod.domicilio);}
-            if (usuario.getDNI() == null){
-                usuario.setDNI(usuMod.DNI);}
-            if (usuario.getNacimiento() == null){
-                usuario.setNacimiento(usuMod.nacimiento);}
-            if (usuario.getRol() == null){
-                usuario.setRol(usuMod.rol);}
-                break;
-
+            if (usuMod.email != null) {
+                usuario.setEmail(usuMod.email);
+            }
+            if (usuMod.password != null) {
+                usuario.setPassword(usuMod.password);
+            }
+            if (usuMod.nombre != null) {
+                usuario.setNombre(usuMod.nombre);
+            }
+            if (usuMod.domicilio != null) {
+                usuario.setDomicilio(usuMod.domicilio);
+            }
+            if (usuMod.DNI != null) {
+                usuario.setDNI(usuMod.DNI);
+            }
+            if (usuMod.nacimiento != null) {
+                usuario.setNacimiento(usuMod.nacimiento);
+            }
+            if (usuMod.rol != null) {
+                usuario.setRol(usuMod.rol);
+            }
+            break;
             }
         }
     }
@@ -128,15 +133,15 @@ public class ControllerParametros {
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
                 practica.setCodigo(practicasDTO.codigo);}
-            if (practica.getValoresReservados() == null){
+            if (practicasDTO.valoresReservados!= null){
                 practica.setValoresReservados(practicasDTO.valoresReservados);}
-            if (practica.getNombrePractica() == null){
+            if (practicasDTO.nombrePractica != null){
                 practica.setNombrePractica(practicasDTO.nombrePractica);}
-            if (practica.getValoresCriticos() == null){
+            if (practicasDTO.valoresCriticos != null){
                 practica.setValoresCriticos(practicasDTO.valoresCriticos);}
-            if (practica.getHorasResultado() == null){
+            if (practicasDTO.horasResultado != null){
                 practica.setHorasResultado(practicasDTO.horasResultado);}
-            if (practica.getGrupo() == null){
+            if (practicasDTO.grupo != null){
                 practica.setGrupo(practicasDTO.grupo);}
             break;
 

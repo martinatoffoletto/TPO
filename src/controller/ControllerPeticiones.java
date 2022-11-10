@@ -89,17 +89,17 @@ public class ControllerPeticiones {
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
                 peticion.setNroPeticion(peticionMod.nroPeticion);}
-            if (peticion.getPaciente() == null){
+            if (peticionMod.paciente != null){
                 peticion.setPaciente(peticionMod.paciente);}
-            if (peticion.getObraSocial() == null){
+            if (peticionMod.ObraSocial != null){
                 peticion.setObraSocial(peticionMod.ObraSocial);}
-            if (peticion.fechaEntrega == null){
+            if (peticionMod.fechaEntrega != null){
                 peticion.setFechaEntrega(peticionMod.fechaEntrega);}
-            if (peticion.fechaEntrega == null){
+            if (peticionMod.fechaCarga != null){
                 peticion.setFechaCarga(peticionMod.fechaCarga);}
-            if (peticion.getEstado() == null){
+            if (peticionMod.estado != null){
                 peticion.setEstado(peticionMod.estado);}
-            if (peticion.getSucursal() == null){
+            if (peticionMod.sucursal != null){
                 peticion.setSucursal(peticionMod.sucursal);}
             }
         }
