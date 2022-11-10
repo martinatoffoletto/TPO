@@ -24,7 +24,8 @@ public class Main {
         ControllerPeticiones.getInstancia();
         FrmMenuPrincipal win = new FrmMenuPrincipal();
         win.setVisible(true);
-        SucursalDTO suc = new SucursalDTO(1, "123", "Texto");
+        SucursalDTO suc = new SucursalDTO(1, "123", "Ejemplo");
+        ControllerSucursal.getInstancia().altaSucursal(suc);
 
     }
 }

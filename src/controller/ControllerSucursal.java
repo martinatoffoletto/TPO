@@ -12,14 +12,16 @@ import model.enums.TipoEstado;
 
 public class ControllerSucursal {
 
-    private List<Sucursal> listaSucursal;
-    private List<Paciente> listaPacientes;
+    private ArrayList<Sucursal> listaSucursal;
+    private ArrayList<Paciente> listaPacientes;
+    public ArrayList<SucursalDTO> listaSucursalDTO;
     private static ControllerSucursal instancia;
 
     //CONSTRUCTOR
     public ControllerSucursal() {
         listaPacientes = new ArrayList<Paciente>();
         listaSucursal = new ArrayList<Sucursal>();
+        listaSucursalDTO = new ArrayList<SucursalDTO>();
     }
 
     //SINGLETON
@@ -30,16 +32,18 @@ public class ControllerSucursal {
     }
 
     //GETTER Y SETTER
-    public List<Paciente> getListaPacientes() {
+    List<Paciente> getListaPacientes() {
         return listaPacientes;
     }
 
 
-    public List<Sucursal> getListaSucursal() {
+    List<Sucursal> getListaSucursal() {
         return listaSucursal;
     }
 
-
+    public ArrayList<SucursalDTO> getListaSucursalDTO() {
+        return listaSucursalDTO;
+    }
 
 
     //METODOS :
@@ -48,6 +52,7 @@ public class ControllerSucursal {
     public void altaSucursal(SucursalDTO sucursalDTO) {
         Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,sucursalDTO.responsableTecnico);
         listaSucursal.add(sc);
+        listaSucursalDTO.add(sucursalDTO);
     }
 
     //BAJA SUCURSAL
@@ -103,7 +108,6 @@ public class ControllerSucursal {
         }
 
     }
-
 
     //LISTAR PETICIONES X SUCURSAL
     public void listarPeticionesSucursales(SucursalDTO sucursalDTO) {
