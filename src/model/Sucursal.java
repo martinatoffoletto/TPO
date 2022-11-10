@@ -1,6 +1,6 @@
 package model;
 
-import DTO.PracticasDTO;
+import DTO.PacienteDTO;
 
 import java.util.List;
 
@@ -36,6 +36,7 @@ public class Sucursal {
     public void setListaPeticiones(List<Peticiones> listaPeticiones) {
         this.listaPeticiones = listaPeticiones;
     }
+
     public int getNumero() {
         return numero;
     }

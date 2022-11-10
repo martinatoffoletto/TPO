@@ -12,6 +12,7 @@ public class FrmNuevaPeticion extends JDialog {
     private JTextField textField5;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
+    private JComboBox comboBox3;
 
     public FrmNuevaPeticion() {
         setSize(400, 400);

@@ -1,7 +1,5 @@
 package vista;
 
-import DTO.SucursalDTO;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +14,7 @@ public class FrmSucursales extends JInternalFrame {
     private JButton listarPeticionesButton;
     private JButton listarPrácticasButton;
     private JComboBox comboBox1;
+    private JButton datosSucursalButton;
 
     public FrmSucursales(){
         super("Sucursales");

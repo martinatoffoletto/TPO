@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrmPracticas extends JInternalFrame {
-    private JList list1;
     private JButton nuevaPracticaButton;
     private JButton modificarPracticaButton;
     private JButton eliminarPracticaButton;
     private JPanel pnlPrincipal;
+    private JButton datosPrácticaButton;
+    private JComboBox comboBox1;
 
     public FrmPracticas() {
         super("Practicas");

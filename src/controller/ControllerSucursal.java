@@ -8,7 +8,7 @@ import model.Practicas;
 import model.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
-import controller.*;
+
 import model.enums.TipoEstado;
 
 public class ControllerSucursal {
@@ -57,36 +57,32 @@ public class ControllerSucursal {
         listaSucursal.add(sc);
     }
 
-    public void bajaSucursal(Sucursal sucursals) { //1) REGLA NEGOCIO .ELIMINA SI NINGUN PACIENTE TIENE PETICIONES FINALIZADAS
+    public void bajaSucursal(SucursalDTO sucursalBaja, SucursalDTO sucursalDerivacion) { //1) REGLA NEGOCIO .ELIMINA SI NINGUN PACIENTE TIENE PETICIONES FINALIZADAS
         boolean NoTieneFinalizada =true;
+        Sucursal sucuBaja = null, sucuDerivacion = null;
+
         for (Sucursal sucursal: listaSucursal) {
-            if (sucursal.getNumero() == sucursals.getNumero()) {
-                for (Paciente p: sucursals.getListaPacientes()){
-                     NoTieneFinalizada= bajaPacienteRN(p);
-                     if (!NoTieneFinalizada){
-                         break;
-                     }
-                }
-            }
+            if (sucursal.getNumero() == sucursalBaja.numero)
+                sucuBaja = sucursal;
+        }
+
+        for (Sucursal sucursal: listaSucursal) {
+            if (sucursal.getNumero() == sucursalDerivacion.numero)
+                sucuDerivacion = sucursal;
+        }
+
+        for (Paciente p: sucuBaja.getListaPacientes()){
+             NoTieneFinalizada= bajaPacienteRN(p);
+             if (!NoTieneFinalizada){
+                 break;
+             }
         }
         if (NoTieneFinalizada){ //2) REGLA NEGOCIO, DERIVA PETICIONES
-            for (Peticiones pet: ControllerPeticiones.getListaPeticiones()){
-                if (pet.getSucursal()==sucursals){
-                    derivarPeticion(pet);
-                }
+            for (Peticiones pet: sucuBaja.getListaPeticiones()){
+                sucuDerivacion.agregarPeticion(pet);
             }
-            listaSucursal.remove(sucursals);
-
-
-
+            listaSucursal.remove(sucuBaja);
         }
-    }
-    public void derivarPeticion(Peticiones peticiones, Sucursal suc) { //Incompleto
-        List<Sucursal> sucursalesDisponibles= ControllerPeticiones.getInstancia().ListarPeticionSucursal(peticiones);
-        Sucursal sc=sucursalesDisponibles.get(0);
-        sc.agregarPeticion(peticiones);
-
-
     }
 
 
@@ -112,11 +108,11 @@ public class ControllerSucursal {
 
     }
 
-    public boolean bajaPacienteRN(Paciente pacientes) { // 1) CON REGLA DE NEGOCIO 1 (no puede tener peticiones finalizadas)
+    public boolean bajaPacienteRN(Paciente paciente1) { // 1) CON REGLA DE NEGOCIO 1 (no puede tener peticiones finalizadas)
         for (Paciente paciente: listaPacientes){
-            if (paciente.getDNI()==pacientes.getDNI()){
+            if (paciente.getDNI()==paciente1.getDNI()){
                 for (Peticiones peticiones: ControllerPeticiones.getListaPeticiones()){
-                    if (peticiones.getPaciente()==pacientes){
+                    if (peticiones.getPaciente()==paciente){
                         if (peticiones.getEstado()== TipoEstado.Con_Resultados){
                             return false;
                         }
@@ -127,11 +123,16 @@ public class ControllerSucursal {
         return true;
     }
 
-    public void bajaPaciente(Paciente paciente){  //Elimina paciente
-        boolean NotieneFinalizas= bajaPacienteRN(paciente);
+    public void bajaPaciente(PacienteDTO pacienteDTO){  //Elimina paciente
+        Paciente pacBaja = null;
+        for (Paciente paciente: listaPacientes) {
+            if (paciente.getDNI() == pacienteDTO.DNI)
+                pacBaja = paciente;
+        }
+        boolean NotieneFinalizas= bajaPacienteRN(pacBaja);
         if (NotieneFinalizas){
             for (Paciente pac: listaPacientes){
-                if (pac.getDNI()==paciente.getDNI()){
+                if (pac.getDNI()==pacienteDTO.DNI){
                     listaPacientes.remove(pac);
                 }
             }
@@ -189,10 +190,14 @@ public class ControllerSucursal {
     }
 
     //Agregar Paciente en SUCURSAL
-    public void AgregarPaciente(Sucursal sucursal,Paciente p){
+    public void AgregarPaciente(SucursalDTO sucursalDTO, PacienteDTO pacienteDTO){
+        Paciente paciente1 = null;
+        for (Paciente paciente: listaPacientes)
+            if (paciente.getDNI() == pacienteDTO.DNI)
+                paciente1 = paciente;
         for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursal.getNumero()){
-                sc.agregarPaciente(p);
+            if (sc.getNumero()==sucursalDTO.numero){
+                sc.agregarPaciente(paciente1);
             }
         }
     }

@@ -1,11 +1,7 @@
 package controller;
+import DTO.*;
 
-import DTO.PacienteDTO;
-import DTO.PeticionesDTO;
-import DTO.ResultadoDTO;
-import DTO.SucursalDTO;
 import model.*;
-import controller.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +120,7 @@ public class ControllerPeticiones {
 
 
     // SELECIONAR SUCURSAL DE LISTA
-      public void AsociarPeticionSucursal(Sucursal sc, Paciente p) {
+      public void AsociarPeticionSucursal(SucursalDTO sc, PacienteDTO p) {
           ControllerSucursal.getInstancia().AgregarPaciente(sc, p);
       }
 

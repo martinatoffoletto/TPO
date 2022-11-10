@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
@@ -9,6 +10,7 @@ public class Paciente {
     private String mail;
     private String sexo;
     private int edad;
+    private ArrayList<Peticiones> listaPeticionesPaciente;
 
 
     //CONSTRUCTOR

@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrmUsuario extends JInternalFrame {
-    private JList list1;
     private JPanel pnlPrincipal;
     private JButton nuevoUsuarioButton;
     private JButton modificarUsuarioButton;
     private JButton eliminarUsuarioButton;
+    private JButton datosUsuarioButton;
+    private JComboBox comboBox1;
 
     public FrmUsuario() {
         super("Usuarios");

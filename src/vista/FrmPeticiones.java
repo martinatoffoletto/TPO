@@ -10,6 +10,7 @@ public class FrmPeticiones extends JInternalFrame{
     private JButton modificarPeticionButton;
     private JButton eliminarPeticionButton;
     private JPanel pnlPrincipal;
+    private JButton datosPeticionButton;
 
     public FrmPeticiones() {
         super("Peticiones");
