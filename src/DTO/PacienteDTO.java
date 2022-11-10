@@ -26,4 +26,10 @@ public class PacienteDTO {
         listaPeticionesPaciente= new ArrayList<Peticiones>();
 
     }
+
+    @Override
+    public String toString() {
+        return
+                "DNI=" + DNI + " nombre=" + nombre;
+    }
 }

@@ -18,6 +18,13 @@ public class PeticionesDTO {
     public TipoEstado estado;
     public int nroPeticion;
 
+    @Override
+    public String toString() {
+        return "Paciente" + paciente +
+                "Sucursal=" + sucursal + "Nro" + nroPeticion
+                ;
+    }
+
     public PeticionesDTO(Paciente paciente, Sucursal sucursal, String obraSocial, String fechaCarga, List<Practicas> practicasAsociadas, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;
         this.ObraSocial = obraSocial;

@@ -94,18 +94,29 @@ public class ControllerPeticiones {
 
     public void modificacionPeticion(PeticionesDTO peticionMod) {
         for (Peticiones peticion: listaPeticiones) {
-            if (peticion.getNroPeticion() == peticionMod.nroPeticion)
-            {
-                peticion.setPaciente(peticionMod.paciente);
-                peticion.setObraSocial(peticionMod.ObraSocial);
-                peticion.setFechaEntrega(peticionMod.fechaEntrega);
-                peticion.setFechaCarga(peticionMod.fechaCarga);
-                peticion.setEstado(peticionMod.estado);
-                peticion.setNroPeticion(peticionMod.nroPeticion);
-                peticion.setSucursal(peticionMod.sucursal);
+            if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
+                }
+                if (peticionMod.paciente != null) {
+                    peticion.setPaciente(peticionMod.paciente);
+                }
+                if (peticionMod.ObraSocial != null) {
+                    peticion.setObraSocial(peticionMod.ObraSocial);
+                }
+                if (peticionMod.fechaEntrega != null) {
+                    peticion.setFechaEntrega(peticionMod.fechaEntrega);
+                }
+                if (peticionMod.fechaCarga != null) {
+                    peticion.setFechaCarga(peticionMod.fechaCarga);
+                }
+                if (peticionMod.estado != null) {
+                    peticion.setEstado(peticionMod.estado);
+                }
+                if (peticionMod.sucursal != null) {
+                    peticion.setSucursal(peticionMod.sucursal);
+                }
             }
         }
-    }
+
 
     //DATOS PETICION
     public void datosPeticion(PeticionesDTO peticionMod) { //return o IMPRIMIR?

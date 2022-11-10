@@ -178,24 +178,29 @@ public class ControllerSucursal {
 
     //MODIFICACION PACIENTES
     public void modificacionPaciente(PacienteDTO pacienteDTO) {
-        for (Paciente paciente: listaPacientes){
-            if (paciente.getDNI()==pacienteDTO.DNI){
-                paciente.setDNI(pacienteDTO.DNI);}
-
-                paciente.setEdad(pacienteDTO.edad);
-            if (pacienteDTO.domicilio != null){
-                paciente.setDomicilio(pacienteDTO.domicilio);}
-            if (pacienteDTO.mail != null){
-                paciente.setMail(pacienteDTO.mail);}
-            if (pacienteDTO.sexo != null){
-                paciente.setSexo(pacienteDTO.sexo);}
-            if (pacienteDTO.nombre != null){
-                paciente.setNombre(pacienteDTO.nombre);}
+        for (Paciente paciente: listaPacientes) {
+            if (paciente.getDNI() == pacienteDTO.DNI) {
+                if (pacienteDTO.DNI != null) {
+                    paciente.setDNI(pacienteDTO.DNI);
+                }
+                if (pacienteDTO.domicilio != null) {
+                    paciente.setDomicilio(pacienteDTO.domicilio);
+                }
+                if (pacienteDTO.mail != null) {
+                    paciente.setMail(pacienteDTO.mail);
+                }
+                if (pacienteDTO.sexo != null) {
+                    paciente.setSexo(pacienteDTO.sexo);
+                }
+                if (pacienteDTO.nombre != null) {
+                    paciente.setNombre(pacienteDTO.nombre);
+                }
 
             }
         }
-
     }
+
+
 
     //Listar Peticiones PACIENTE
     public void peticionesPaciente(PacienteDTO pacienteDTO) {

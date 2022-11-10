@@ -62,32 +62,32 @@ public class ControllerParametros {
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistema usuario: listaUsuarios ) {
             if (usuario.getUsuario() == usuMod.usuario) {
-                usuario.setUsuario(usuMod.usuario);}
-            if (usuMod.email != null) {
-                usuario.setEmail(usuMod.email);
-            }
-            if (usuMod.password != null) {
-                usuario.setPassword(usuMod.password);
-            }
-            if (usuMod.nombre != null) {
-                usuario.setNombre(usuMod.nombre);
-            }
-            if (usuMod.domicilio != null) {
-                usuario.setDomicilio(usuMod.domicilio);
-            }
-            if (usuMod.DNI != null) {
-                usuario.setDNI(usuMod.DNI);
-            }
-            if (usuMod.nacimiento != null) {
-                usuario.setNacimiento(usuMod.nacimiento);
-            }
-            if (usuMod.rol != null) {
-                usuario.setRol(usuMod.rol);
+                if (usuMod.usuario != null) {
+                    usuario.setUsuario(usuMod.usuario);
+                }
+                if (usuMod.email != null) {
+                    usuario.setEmail(usuMod.email);
+                }
+                if (usuMod.password != null) {
+                    usuario.setPassword(usuMod.password);
+                }
+                if (usuMod.nombre != null) {
+                    usuario.setNombre(usuMod.nombre);
+                }
+                if (usuMod.domicilio != null) {
+                    usuario.setDomicilio(usuMod.domicilio);
+                }
+                if (usuMod.nacimiento != null) {
+                    usuario.setNacimiento(usuMod.nacimiento);
+                }
+                if (usuMod.rol != null) {
+                    usuario.setRol(usuMod.rol);
+                }
             }
             break;
-            }
         }
     }
+
     //DATOS USUARIO
     /*public void datosUsuario(UsuarioSistemaDTO usuDatos) {
         for (UsuarioSistema usuario: listaUsuarios) {
@@ -138,20 +138,25 @@ public class ControllerParametros {
     public void modificacionPractica(PracticasDTO practicasDTO) {
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
-                practica.setCodigo(practicasDTO.codigo);}
-            if (practicasDTO.valoresReservados!= null){
-                practica.setValoresReservados(practicasDTO.valoresReservados);}
-            if (practicasDTO.nombrePractica != null){
-                practica.setNombrePractica(practicasDTO.nombrePractica);}
-            if (practicasDTO.valoresCriticos != null){
-                practica.setValoresCriticos(practicasDTO.valoresCriticos);}
-                practica.setHorasResultado(practicasDTO.horasResultado);
-            if (practicasDTO.grupo != null){
-                practica.setGrupo(practicasDTO.grupo);}
-            break;
 
+                if (practicasDTO.valoresReservados != null) {
+                    practica.setValoresReservados(practicasDTO.valoresReservados);
+                }
+                if (practicasDTO.nombrePractica != null) {
+                    practica.setNombrePractica(practicasDTO.nombrePractica);
+                }
+                if (practicasDTO.valoresCriticos != null) {
+                    practica.setValoresCriticos(practicasDTO.valoresCriticos);
+                }
+                if (practicasDTO.grupo != null) {
+                    practica.setGrupo(practicasDTO.grupo);
+                }
+                break;
             }
         }
+    }
+
+
 
 
 
