@@ -1,6 +1,12 @@
 package vista;
 
+import DTO.PacienteDTO;
+import controller.ControllerSucursal;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 
 public class FrmNuevoPaciente extends JDialog {
     private JTextField textField1;
@@ -8,16 +14,26 @@ public class FrmNuevoPaciente extends JDialog {
     private JTextField textField3;
     private JTextField textField4;
     private JRadioButton masculinoRadioButton;
-    private JTextField textField5;
-    private JRadioButton femeninoRadioButton;
+    private JTextField textField8;
     private JTextField textField6;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
+    private JTextField textField5;
 
     public FrmNuevoPaciente() {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
+
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PacienteDTO pacienteDTO = new PacienteDTO(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()));
+                ControllerSucursal.getInstancia().altaPaciente(pacienteDTO);
+                setVisible(false);
+
+            }
+        });
     }
 }

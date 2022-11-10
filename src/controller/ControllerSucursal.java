@@ -3,7 +3,6 @@ package controller;
 import DTO.*;
 import model.Paciente;
 import model.Peticiones;
-import model.Practicas;
 import model.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ public class ControllerSucursal {
     private ArrayList<Sucursal> listaSucursal;
     private ArrayList<Paciente> listaPacientes;
     public ArrayList<SucursalDTO> listaSucursalDTO;
+    public ArrayList<PacienteDTO> listaPacienteDTO;
     private static ControllerSucursal instancia;
 
     //CONSTRUCTOR
@@ -22,6 +22,7 @@ public class ControllerSucursal {
         listaPacientes = new ArrayList<Paciente>();
         listaSucursal = new ArrayList<Sucursal>();
         listaSucursalDTO = new ArrayList<SucursalDTO>();
+        listaPacienteDTO = new ArrayList<PacienteDTO>();
     }
 
     //SINGLETON
@@ -32,7 +33,7 @@ public class ControllerSucursal {
     }
 
     //GETTER Y SETTER
-    List<Paciente> getListaPacientes() {
+    ArrayList<Paciente> getListaPacientes() {
         return listaPacientes;
     }
 
@@ -44,7 +45,7 @@ public class ControllerSucursal {
     public ArrayList<SucursalDTO> getListaSucursalDTO() {
         return listaSucursalDTO;
     }
-
+    public ArrayList<PacienteDTO> getListaPacienteDTO() { return listaPacienteDTO; }
 
     //METODOS :
 
@@ -106,7 +107,6 @@ public class ControllerSucursal {
                 sc.getListaPacientes();
             }
         }
-
     }
 
     //LISTAR PETICIONES X SUCURSAL
@@ -138,6 +138,7 @@ public class ControllerSucursal {
     public void altaPaciente(PacienteDTO pacienteDTO) {
         Paciente pc= new Paciente(pacienteDTO.DNI, pacienteDTO.nombre, pacienteDTO.domicilio, pacienteDTO.mail, pacienteDTO.sexo,pacienteDTO.edad);
         listaPacientes.add(pc);
+        listaPacienteDTO.add(pacienteDTO);
 
     }
 

@@ -14,7 +14,7 @@ public class PacienteDTO {
     public ArrayList<Peticiones> listaPeticionesPaciente;
 
 
-//
+
     //CONSTRUCTOR
     public PacienteDTO(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
