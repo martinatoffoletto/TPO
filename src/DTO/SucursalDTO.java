@@ -17,10 +17,4 @@ public class SucursalDTO {
         this.direccion = direccion;
         this.responsableTecnico = responsableTecnico;
     }
-
-    @Override
-    public String toString() {
-        return
-                "Número = " + numero + " Dirección = " + direccion;
-    }
 }

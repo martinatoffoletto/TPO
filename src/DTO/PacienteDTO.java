@@ -14,10 +14,6 @@ public class PacienteDTO {
     public ArrayList<Peticiones> listaPeticionesPaciente;
 
 
-    @Override
-    public String toString() {
-        return "DNI = " + DNI + " Nombre = " + nombre;
-    }
 
     //CONSTRUCTOR
     public PacienteDTO(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {

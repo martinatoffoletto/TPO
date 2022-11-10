@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
-    private String DNI;
-    private String nombre;
-    private String domicilio;
-    private String mail;
-    private String sexo;
-    private int edad;
-    private ArrayList<Peticiones> listaPeticionesPaciente;
+    public String DNI;
+    public String nombre;
+    public String domicilio;
+    public String mail;
+    public String sexo;
+    public int edad;
+    public ArrayList<Peticiones> listaPeticionesPaciente;
 
 
 

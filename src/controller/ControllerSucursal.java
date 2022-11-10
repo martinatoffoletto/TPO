@@ -114,7 +114,7 @@ public class ControllerSucursal {
     public void listarPeticionesSucursales(SucursalDTO sucursalDTO) {
         for (Sucursal sc:listaSucursal){
             if (sc.getNumero()==sucursalDTO.numero){
-                sc.getListaPeticiones();
+                List<Peticiones> listaPeticiones = sc.getListaPeticiones();
             }
         }
 
@@ -180,12 +180,17 @@ public class ControllerSucursal {
     public void modificacionPaciente(PacienteDTO pacienteDTO) {
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
-                paciente.setDNI(pacienteDTO.DNI);
-                paciente.setEdad(pacienteDTO.edad);
-                paciente.setDomicilio(pacienteDTO.domicilio);
-                paciente.setMail(pacienteDTO.mail);
-                paciente.setSexo(pacienteDTO.sexo);
-                paciente.setNombre(pacienteDTO.nombre);
+                paciente.setDNI(pacienteDTO.DNI);}
+            if (pacienteDTO.edad != null){
+                paciente.setEdad(pacienteDTO.edad);}
+            if (pacienteDTO.domicilio != null){
+                paciente.setDomicilio(pacienteDTO.domicilio);}
+            if (pacienteDTO.mail != null){
+                paciente.setMail(pacienteDTO.mail);}
+            if (pacienteDTO.sexo != null){
+                paciente.setSexo(pacienteDTO.sexo);}
+            if (pacienteDTO.nombre != null){
+                paciente.setNombre(pacienteDTO.nombre);}
 
             }
         }

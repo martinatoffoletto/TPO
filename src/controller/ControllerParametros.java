@@ -8,6 +8,8 @@ import model.Sucursal;
 import model.UsuarioSistema;
 import model.enums.TipoRol;
 import controller.*;
+import model.enums.TipoValor;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,18 +61,30 @@ public class ControllerParametros {
     //MODIFICACION USUARIOS
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistema usuario: listaUsuarios ) {
-            if (usuario.getUsuario() == usuMod.usuario)
-            {
-                usuario.setUsuario(usuMod.usuario);
+            if (usuario.getUsuario() == usuMod.usuario) {
+                usuario.setUsuario(usuMod.usuario);}
+            if (usuMod.email != null) {
                 usuario.setEmail(usuMod.email);
+            }
+            if (usuMod.password != null) {
                 usuario.setPassword(usuMod.password);
+            }
+            if (usuMod.nombre != null) {
                 usuario.setNombre(usuMod.nombre);
+            }
+            if (usuMod.domicilio != null) {
                 usuario.setDomicilio(usuMod.domicilio);
+            }
+            if (usuMod.DNI != null) {
                 usuario.setDNI(usuMod.DNI);
+            }
+            if (usuMod.nacimiento != null) {
                 usuario.setNacimiento(usuMod.nacimiento);
+            }
+            if (usuMod.rol != null) {
                 usuario.setRol(usuMod.rol);
-                break;
-
+            }
+            break;
             }
         }
     }
@@ -78,12 +92,12 @@ public class ControllerParametros {
     public void datosUsuario(UsuarioSistemaDTO usuBaja) {
         for (UsuarioSistema usuario: listaUsuarios) {
             if (usuario.getUsuario() == usuBaja.usuario)
-                usuario.getNombre();
-                usuario.getDNI();
-                usuario.getDomicilio();
-                usuario.getEmail();
-                usuario.getNacimiento();
-                usuario.getRol();
+                String email= usuario.getEmail();
+                String nombre= usuario.getNombre();
+                String domicilio= usuario.getDomicilio();
+                int dni =usuario.getDNI();
+                LocalDate nacimiento= usuario.getNacimiento();
+                TipoRol rol=usuario.getRol();
         }
     }
 
@@ -123,34 +137,37 @@ public class ControllerParametros {
     //MODIF PRACTICA
     public void modificacionPractica(PracticasDTO practicasDTO) {
         for (Practicas practica: listaPracticas ) {
-            if (practica.getCodigo() == practicasDTO.codigo)
-            {
-                practica.setValoresReservados(practicasDTO.valoresReservados);
-                practica.setNombrePractica(practicasDTO.nombrePractica);
-                practica.setValoresCriticos(practicasDTO.valoresCriticos);
-                practica.setCodigo(practicasDTO.codigo);
-                practica.setHorasResultado(practicasDTO.horasResultado);
-                practica.setGrupo(practicasDTO.grupo);
+            if (practica.getCodigo() == practicasDTO.codigo) {
+                practica.setCodigo(practicasDTO.codigo);}
+            if (practicasDTO.valoresReservados!= null){
+                practica.setValoresReservados(practicasDTO.valoresReservados);}
+            if (practicasDTO.nombrePractica != null){
+                practica.setNombrePractica(practicasDTO.nombrePractica);}
+            if (practicasDTO.valoresCriticos != null){
+                practica.setValoresCriticos(practicasDTO.valoresCriticos);}
+            if (practicasDTO.horasResultado != null){
+                practica.setHorasResultado(practicasDTO.horasResultado);}
+            if (practicasDTO.grupo != null){
+                practica.setGrupo(practicasDTO.grupo);}
             break;
 
             }
         }
 
-    }
+
 
     //DATOS PRACTICA
     public void datosPractica(PracticasDTO practicasDTO) {
 
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
-                practica.getCodigo();
-                practica.getGrupo();
-                practica.getHorasResultado();
-                practica.getNombrePractica();
-                practica.getValoresCriticos();
-                practica.getValoresReservados();
-                practica.getEstado();
-
+                int codigo=practica.getCodigo();
+                String nombrePractia=practica.getNombrePractica();
+                String grupo=practica.getGrupo();
+                TipoValor valoresCriticos= practica.getValoresCriticos();
+                String valoresReservados= practica.getValoresReservados();
+                int horasResult=practica.getHorasResultado();
+                boolean estado=practica.getEstado();
             }
         }
     }

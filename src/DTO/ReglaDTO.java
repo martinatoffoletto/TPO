@@ -16,4 +16,5 @@ public class ReglaDTO {
         this.listaPalabras = listaPalabras;
         this.valor = valor;
     }
+
 }
