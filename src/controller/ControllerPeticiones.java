@@ -15,6 +15,7 @@ public class ControllerPeticiones {
 
     private static List<Peticiones> listaPeticiones;
     private static List<Resultado> listaResultados;
+    public ArrayList<PeticionesDTO> listaPeticionesDTO;
 
 
     //SINGLETON
@@ -28,11 +29,15 @@ public class ControllerPeticiones {
     public ControllerPeticiones() {
         listaPeticiones = new ArrayList<Peticiones>();
         listaResultados = new ArrayList<Resultado>();
+        listaPeticionesDTO = new ArrayList<PeticionesDTO>();
     }
 
      //GETTER Y SETTERS
      public static List<Peticiones> getListaPeticiones() {
          return listaPeticiones;
+     }
+     public ArrayList<PeticionesDTO> getListaPeticionesDTO() {
+        return listaPeticionesDTO;
      }
 
     public static void setListaPeticiones(List<Peticiones> listaPeticiones) {
@@ -76,12 +81,14 @@ public class ControllerPeticiones {
     public void altaPeticion(PeticionesDTO peticionesDTO) {
         Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
         listaPeticiones.add(peticion);
+        listaPeticionesDTO.add(peticionesDTO);
     }
 
     public void bajaPeticion(PeticionesDTO peticionBaja) {
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionBaja.nroPeticion)
-                listaResultados.remove(peticion);
+                listaPeticiones.remove(peticion);
+            listaPeticionesDTO.remove(peticionBaja);
         }
     }
 
@@ -106,7 +113,7 @@ public class ControllerPeticiones {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion)
             {
                 TipoEstado estado= peticion.getEstado();
-                LocalDate fechaCarga=peticion.getFechaCarga();
+                String fechaCarga=peticion.getFechaCarga();
                 peticion.getFechaEntrega();
                 peticion.getNroPeticion();
                 peticion.getPracticasAsociadas();

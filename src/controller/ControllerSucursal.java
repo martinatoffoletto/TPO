@@ -181,8 +181,8 @@ public class ControllerSucursal {
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
                 paciente.setDNI(pacienteDTO.DNI);}
-            if (pacienteDTO.edad != null){
-                paciente.setEdad(pacienteDTO.edad);}
+
+                paciente.setEdad(pacienteDTO.edad);
             if (pacienteDTO.domicilio != null){
                 paciente.setDomicilio(pacienteDTO.domicilio);}
             if (pacienteDTO.mail != null){

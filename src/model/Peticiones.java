@@ -9,16 +9,16 @@ import java.util.List;
 public class Peticiones {
     private Paciente paciente;
     private String ObraSocial;
-    private LocalDate fechaCarga;
+    private String fechaCarga;
     private List<Practicas> practicasAsociadas;
-    private LocalDate fechaEntrega;
+    private String fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
     private Sucursal sucursal;
 
 
     //CONSTRUCTOR
-    public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
+    public Peticiones(Paciente paciente, String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
         this.paciente = paciente;
         ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;
@@ -55,11 +55,11 @@ public class Peticiones {
         ObraSocial = obraSocial;
     }
 
-    public LocalDate getFechaCarga() {
+    public String getFechaCarga() {
         return fechaCarga;
     }
 
-    public void setFechaCarga(LocalDate fechaCarga) {
+    public void setFechaCarga(String fechaCarga) {
         this.fechaCarga = fechaCarga;
     }
 
@@ -68,11 +68,11 @@ public class Peticiones {
     }
 
 
-    public LocalDate getFechaEntrega() {
+    public String getFechaEntrega() {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(LocalDate fechaEntrega) {
+    public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 

@@ -89,9 +89,9 @@ public class ControllerParametros {
         }
     }
     //DATOS USUARIO
-    public void datosUsuario(UsuarioSistemaDTO usuBaja) {
+    /*public void datosUsuario(UsuarioSistemaDTO usuDatos) {
         for (UsuarioSistema usuario: listaUsuarios) {
-            if (usuario.getUsuario() == usuBaja.usuario)
+            if (usuario.getUsuario() == usuDatos.usuario)
                 String email= usuario.getEmail();
                 String nombre= usuario.getNombre();
                 String domicilio= usuario.getDomicilio();
@@ -100,7 +100,7 @@ public class ControllerParametros {
                 TipoRol rol=usuario.getRol();
         }
     }
-
+*/
 
     //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
@@ -145,8 +145,7 @@ public class ControllerParametros {
                 practica.setNombrePractica(practicasDTO.nombrePractica);}
             if (practicasDTO.valoresCriticos != null){
                 practica.setValoresCriticos(practicasDTO.valoresCriticos);}
-            if (practicasDTO.horasResultado != null){
-                practica.setHorasResultado(practicasDTO.horasResultado);}
+                practica.setHorasResultado(practicasDTO.horasResultado);
             if (practicasDTO.grupo != null){
                 practica.setGrupo(practicasDTO.grupo);}
             break;
@@ -165,7 +164,7 @@ public class ControllerParametros {
                 String nombrePractia=practica.getNombrePractica();
                 String grupo=practica.getGrupo();
                 TipoValor valoresCriticos= practica.getValoresCriticos();
-                String valoresReservados= practica.getValoresReservados();
+                TipoValor valoresReservados= practica.getValoresReservados();
                 int horasResult=practica.getHorasResultado();
                 boolean estado=practica.getEstado();
             }
