@@ -1,5 +1,7 @@
 package vista;
 
+import DTO.SucursalDTO;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +9,13 @@ import java.awt.event.ActionListener;
 public class FrmSucursales extends JInternalFrame {
 
     private JPanel pnlPrincipal;
-    private JList list1;
     private JButton nuevaSucursalButton;
     private JButton modificarSucursalButton;
     private JButton eliminarSucursalButton;
+    private JButton listarPacientesButton;
+    private JButton listarPeticionesButton;
+    private JButton listarPrácticasButton;
+    private JComboBox comboBox1;
 
     public FrmSucursales(){
         super("Sucursales");
@@ -31,12 +36,6 @@ public class FrmSucursales extends JInternalFrame {
                 dialog.setVisible(true);
             }
         });
-        eliminarSucursalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FrmEliminarSucursal dialog = new FrmEliminarSucursal();
-                dialog.setVisible(true);
-            }
-        });
+
     }
 }

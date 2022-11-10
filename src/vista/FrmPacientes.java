@@ -10,6 +10,7 @@ public class FrmPacientes extends JInternalFrame {
     private JButton modificarPacienteButton;
     private JButton eliminarPacienteButton;
     private JPanel pnlPrincipal;
+    private JButton listarPeticionesButton;
 
     public FrmPacientes() {
         super("Pacientes");

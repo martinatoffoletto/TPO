@@ -25,7 +25,7 @@ public class ControllerParametros {
 
 
     //CONSTRUCTOR
-    private ControllerParametros() {
+    public ControllerParametros() {
         listaUsuarios= new ArrayList<UsuarioSistema>();
         listaPracticas= new ArrayList<Practicas>();
 

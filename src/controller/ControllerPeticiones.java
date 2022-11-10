@@ -26,7 +26,7 @@ public class ControllerPeticiones {
     }
 
     //CONSTRUCTOR
-    private ControllerPeticiones() {
+    public ControllerPeticiones() {
         listaPeticiones = new ArrayList<Peticiones>();
         listaResultados = new ArrayList<Resultado>();
     }

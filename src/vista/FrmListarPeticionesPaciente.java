@@ -2,15 +2,16 @@ package vista;
 
 import javax.swing.*;
 
-public class FrmEliminarSucursal extends JDialog {
-    private JComboBox comboBox1;
-    private JButton aceptarButton;
+public class FrmListarPeticionesPaciente extends JDialog {
     private JPanel pnlPrincipal;
+    private JList list1;
+    private JCheckBox listarEnValoresCriticosCheckBox;
 
-    public FrmEliminarSucursal() {
+    public FrmListarPeticionesPaciente() {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
     }
+
 }

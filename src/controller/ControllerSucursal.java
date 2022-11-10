@@ -17,7 +17,6 @@ public class ControllerSucursal {
     private List<Paciente> listaPacientes;
     private static ControllerSucursal instancia;
 
-
     //CONSTRUCTOR
     public ControllerSucursal() {
         listaPacientes = new ArrayList<Paciente>();
@@ -82,7 +81,7 @@ public class ControllerSucursal {
 
         }
     }
-    public void derivarPeticion(Peticiones peticiones) { //Incompleto
+    public void derivarPeticion(Peticiones peticiones, Sucursal suc) { //Incompleto
         List<Sucursal> sucursalesDisponibles= ControllerPeticiones.getInstancia().ListarPeticionSucursal(peticiones);
         Sucursal sc=sucursalesDisponibles.get(0);
         sc.agregarPeticion(peticiones);
