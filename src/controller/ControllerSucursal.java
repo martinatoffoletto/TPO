@@ -1,7 +1,6 @@
 package controller;
 
-import DTO.PacienteDTO;
-import DTO.SucursalDTO;
+import DTO.*;
 import model.Paciente;
 import model.Peticiones;
 import model.Practicas;
@@ -84,7 +83,10 @@ public class ControllerSucursal {
     public void modificacionSucursal(SucursalDTO sucursalDTO) {
         for (Sucursal sucursal: listaSucursal){
             if(sucursal.getNumero()==sucursalDTO.numero){ //HAY QUE AGREGAR IF NULL EN CADA SET
-                sucursal.setDireccion(sucursalDTO.direccion);
+                if(sucursalDTO.direccion!=null){
+                    sucursal.setDireccion(sucursalDTO.direccion);
+                }
+
                 sucursal.setNumero(sucursalDTO.numero);
                 sucursal.setResponsableTecnico(sucursalDTO.responsableTecnico);
             }

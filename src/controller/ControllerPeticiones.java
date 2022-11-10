@@ -1,8 +1,11 @@
 package controller;
+
 import DTO.*;
 
 import model.*;
+import model.enums.TipoEstado;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +73,7 @@ public class ControllerPeticiones {
 
 
     //ABM PETICIONES
-    public void altaPeticion(PeticionesDTO peticionesDTO) { //RETURN
+    public void altaPeticion(PeticionesDTO peticionesDTO) {
         Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
         listaPeticiones.add(peticion);
     }
@@ -98,12 +101,12 @@ public class ControllerPeticiones {
     }
 
     //DATOS PETICION
-    public void datosPeticion(PeticionesDTO peticionMod) {
+    public void datosPeticion(PeticionesDTO peticionMod) { //return o IMPRIMIR?
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion)
             {
-                peticion.getEstado();
-                peticion.getFechaCarga();
+                TipoEstado estado= peticion.getEstado();
+                LocalDate fechaCarga=peticion.getFechaCarga();
                 peticion.getFechaEntrega();
                 peticion.getNroPeticion();
                 peticion.getPracticasAsociadas();

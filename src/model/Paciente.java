@@ -26,7 +26,7 @@ public class Paciente {
 
     }
 
-    //GETTER
+    //GETTER Y SETTER
     public String getDNI() {
         return DNI;
     }

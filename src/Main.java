@@ -10,6 +10,14 @@ import javax.naming.ldap.Control;
 import static java.lang.Integer.parseInt;
 
 public class Main {
+
+
+    //FUNCION ERRORES TYPEO.
+
+
+
+
+
     public static void main(String[] args) {
         ControllerSucursal.getInstancia();
         ControllerParametros.getInstancia();
