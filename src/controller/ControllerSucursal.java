@@ -54,7 +54,7 @@ public class ControllerSucursal {
 
     //ABM SUCURSAL
     public void altaSucursal(SucursalDTO sucursalDTO) {
-        Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,sucursalDTO.responsableTecnico,sucursalDTO.listaPeticiones,sucursalDTO.listaPractica,sucursalDTO.listaPacientes);
+        Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,sucursalDTO.responsableTecnico);
         listaSucursal.add(sc);
     }
 
@@ -97,9 +97,6 @@ public class ControllerSucursal {
                 sucursal.setDireccion(sucursalDTO.direccion);
                 sucursal.setNumero(sucursalDTO.numero);
                 sucursal.setResponsableTecnico(sucursalDTO.responsableTecnico);
-                sucursal.setListaPacientes(sucursalDTO.listaPacientes);
-                sucursal.setListaPeticiones(sucursalDTO.listaPeticiones);
-                sucursal.setListaPractica(sucursalDTO.listaPractica);
             }
         }
 

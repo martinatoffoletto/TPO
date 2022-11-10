@@ -14,13 +14,10 @@ public class Sucursal {
     private List<Paciente> listaPacientes;
 
     //CONSTRUCTOR
-    public Sucursal(int numero, String direccion, String responsableTecnico ,List<Peticiones> listaPeticiones,List<Practicas> listaPractica,List<Paciente> listaPacientes) {
+    public Sucursal(int numero, String direccion, String responsableTecnico) {
         this.numero = numero;
         this.direccion = direccion;
         this.responsableTecnico = responsableTecnico;
-        this.listaPeticiones=listaPeticiones;
-        this.listaPractica=listaPractica;
-        this.listaPacientes=listaPacientes;
     }
 
     //GETTER Y SETTER
