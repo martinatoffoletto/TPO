@@ -2,15 +2,14 @@ package model;
 
 import DTO.PacienteDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sucursal {
     private int numero ;
     private String direccion;
     private String responsableTecnico;
-    private  List<Practicas> listaPractica;
     private  List<Peticiones> listaPeticiones;
-
     private List<Paciente> listaPacientes;
 
     //CONSTRUCTOR
@@ -18,24 +17,19 @@ public class Sucursal {
         this.numero = numero;
         this.direccion = direccion;
         this.responsableTecnico = responsableTecnico;
+        listaPeticiones= new ArrayList<Peticiones>();
+        listaPacientes= new ArrayList<Paciente>();
     }
-
     //GETTER Y SETTER
 
     public List<Paciente> getListaPacientes() {
         return listaPacientes;
     }
 
-    public void setListaPacientes(List<Paciente> listaPacientes) {
-        this.listaPacientes = listaPacientes;
-    }
     public List<Peticiones> getListaPeticiones() {
         return listaPeticiones;
     }
 
-    public void setListaPeticiones(List<Peticiones> listaPeticiones) {
-        this.listaPeticiones = listaPeticiones;
-    }
 
     public int getNumero() {
         return numero;
@@ -61,13 +55,6 @@ public class Sucursal {
         this.responsableTecnico = responsableTecnico;
     }
 
-    public List<Practicas> getListaPractica() {
-        return listaPractica;
-    }
-
-    public void setListaPractica(List<Practicas> listaPractica) {
-        this.listaPractica = listaPractica;
-    }
 
 
     //METODOS:
@@ -82,10 +69,7 @@ public class Sucursal {
         listaPacientes.add(p);
         return listaPacientes.size();
     }
-    public int agregarPractica(Practicas p){
-        listaPractica.add(p);
-        return listaPractica.size();
-    }
+
 
 
 

@@ -2,7 +2,9 @@ package controller;
 
 import DTO.PracticasDTO;
 import DTO.UsuarioSistemaDTO;
+import model.Peticiones;
 import model.Practicas;
+import model.Sucursal;
 import model.UsuarioSistema;
 import model.enums.TipoRol;
 import controller.*;
@@ -32,12 +34,15 @@ public class ControllerParametros {
     }
 
     //METODOS:
+
+    //ALTA USUARIOS
     public void altaUsuario(UsuarioSistemaDTO usuario) {
         UsuarioSistema usuarioSistema = new UsuarioSistema(usuario.usuario,usuario.email,usuario.password,
                 usuario.nombre,usuario.domicilio,usuario.DNI,usuario.nacimiento,usuario.rol);
         listaUsuarios.add(usuarioSistema);
     }
 
+    //BAJA USUARIOS
     public void bajaUsuario(UsuarioSistemaDTO usuBaja) {
         for (UsuarioSistema usuario: listaUsuarios) {
             if (usuario.getUsuario() == usuBaja.usuario)
@@ -45,6 +50,8 @@ public class ControllerParametros {
         }
     }
 
+
+    //MODIFICACION USUARIOS
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistema usuario: listaUsuarios ) {
             if (usuario.getUsuario() == usuMod.usuario)
@@ -62,21 +69,52 @@ public class ControllerParametros {
             }
         }
     }
+    //DATOS USUARIO
+    public void datosUsuario(UsuarioSistemaDTO usuBaja) {
+        for (UsuarioSistema usuario: listaUsuarios) {
+            if (usuario.getUsuario() == usuBaja.usuario)
+                usuario.getNombre();
+                usuario.getDNI();
+                usuario.getDomicilio();
+                usuario.getEmail();
+                usuario.getNacimiento();
+                usuario.getRol();
+        }
+    }
 
+
+    //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
         Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo,
                 practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado);
         listaPracticas.add(practica);
     }
 
-    public void bajaPractica(PracticasDTO practicasDTO) {
+    //BAJA PRACTICA
+    public void bajaPractica(PracticasDTO practicasDTO) { //REGLA DE NEGOCIO
+        Practicas practBja= null;
+        boolean usado= false;
         for (Practicas practicas: listaPracticas) {
             if (practicas.getCodigo() == practicasDTO.codigo)
-                listaPracticas.remove(practicas);
+                practBja=practicas;
         }
+        for (Peticiones p : ControllerPeticiones.getListaPeticiones()){
+            for (Practicas pract: p.getPracticasAsociadas()){
+                if (pract==practBja){
+                    usado=true;
+                }
+            }
+        }
+        if(usado){ //INHABILITAR
+            practBja.EstadoFalso();
+        }else {
+            listaPracticas.remove(practBja);
 
+        }
     }
 
+
+    //MODIF PRACTICA
     public void modificacionPractica(PracticasDTO practicasDTO) {
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo)
@@ -93,6 +131,25 @@ public class ControllerParametros {
         }
 
     }
+
+    //DATOS PRACTICA
+    public void datosPractica(PracticasDTO practicasDTO) {
+
+        for (Practicas practica: listaPracticas ) {
+            if (practica.getCodigo() == practicasDTO.codigo) {
+                practica.getCodigo();
+                practica.getGrupo();
+                practica.getHorasResultado();
+                practica.getNombrePractica();
+                practica.getValoresCriticos();
+                practica.getValoresReservados();
+                practica.getEstado();
+
+            }
+        }
+    }
+
+
 
     //METODOS:
 

@@ -35,28 +35,23 @@ public class ControllerSucursal {
         return listaPacientes;
     }
 
-    public void setListaPacientes(List<Paciente> listaPacientes) {
-        this.listaPacientes = listaPacientes;
-    }
 
     public List<Sucursal> getListaSucursal() {
         return listaSucursal;
     }
 
-    public void setListaSucursal(List<Sucursal> listaSucursal) {
-        this.listaSucursal = listaSucursal;
-    }
 
 
-    //METODOS:
 
+    //METODOS :
 
-    //ABM SUCURSAL
+    //ALTA SUCURSAL
     public void altaSucursal(SucursalDTO sucursalDTO) {
         Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,sucursalDTO.responsableTecnico);
         listaSucursal.add(sc);
     }
 
+    //BAJA SUCURSAL
     public void bajaSucursal(SucursalDTO sucursalBaja, SucursalDTO sucursalDerivacion) { //1) REGLA NEGOCIO .ELIMINA SI NINGUN PACIENTE TIENE PETICIONES FINALIZADAS
         boolean NoTieneFinalizada =true;
         Sucursal sucuBaja = null, sucuDerivacion = null;
@@ -85,10 +80,10 @@ public class ControllerSucursal {
         }
     }
 
-
+    //MODIFICACION SUCURSAL
     public void modificacionSucursal(SucursalDTO sucursalDTO) {
         for (Sucursal sucursal: listaSucursal){
-            if(sucursal.getNumero()==sucursalDTO.numero){
+            if(sucursal.getNumero()==sucursalDTO.numero){ //HAY QUE AGREGAR IF NULL EN CADA SET
                 sucursal.setDireccion(sucursalDTO.direccion);
                 sucursal.setNumero(sucursalDTO.numero);
                 sucursal.setResponsableTecnico(sucursalDTO.responsableTecnico);
@@ -97,17 +92,50 @@ public class ControllerSucursal {
 
     }
 
+    //LISTAR PACIENTE X SUCURSAL
+    public void listarPacientesSucursales(SucursalDTO sucursalDTO) {
+        for (Sucursal sc:listaSucursal){
+            if (sc.getNumero()==sucursalDTO.numero){
+                sc.getListaPacientes();
+            }
+        }
+
+    }
+
+
+    //LISTAR PETICIONES X SUCURSAL
+    public void listarPeticionesSucursales(SucursalDTO sucursalDTO) {
+        for (Sucursal sc:listaSucursal){
+            if (sc.getNumero()==sucursalDTO.numero){
+                sc.getListaPeticiones();
+            }
+        }
+
+    }
+
+
+    //DATOS SUCURSAL
+    public void DatosSucursal(SucursalDTO sucursalDTO) { //DEVUELVE O IMPRIME?
+        for (Sucursal sc:listaSucursal){
+            if (sc.getNumero()==sucursalDTO.numero){
+                int numero= sc.getNumero();
+                String direccion= sc.getDireccion();
+                String responsableTecnico =sc.getResponsableTecnico();
+            }
+        }
+
+    }
 
 
 
-
-    //ABM PACIENTES
+    //ALTA PACIENTES
     public void altaPaciente(PacienteDTO pacienteDTO) {
         Paciente pc= new Paciente(pacienteDTO.DNI, pacienteDTO.nombre, pacienteDTO.domicilio, pacienteDTO.mail, pacienteDTO.sexo,pacienteDTO.edad);
         listaPacientes.add(pc);
 
     }
 
+    //BAJA PACIENTES
     public boolean bajaPacienteRN(Paciente paciente1) { // 1) CON REGLA DE NEGOCIO 1 (no puede tener peticiones finalizadas)
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==paciente1.getDNI()){
@@ -122,6 +150,7 @@ public class ControllerSucursal {
         }
         return true;
     }
+
 
     public void bajaPaciente(PacienteDTO pacienteDTO){  //Elimina paciente
         Paciente pacBaja = null;
@@ -139,6 +168,7 @@ public class ControllerSucursal {
         }
     }
 
+    //MODIFICACION PACIENTES
     public void modificacionPaciente(PacienteDTO pacienteDTO) {
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
@@ -154,32 +184,42 @@ public class ControllerSucursal {
 
     }
 
-
-
-
-
-
-   //LISTAR PACIENTE X SUCURSAL
-    public void listarPacientesSucursales(SucursalDTO sucursalDTO) {
-        for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursalDTO.numero){
-                sc.getListaPacientes();
+    //Listar Peticiones PACIENTE
+    public void peticionesPaciente(PacienteDTO pacienteDTO) {
+        for (Paciente paciente: listaPacientes){
+            if (paciente.getDNI()==pacienteDTO.DNI){
+                paciente.getListaPeticionesPaciente();
             }
         }
 
+
     }
 
-    //LISTAR PRACTICAS X SUCURSAL
-    public void listarPracticasSucursales(SucursalDTO sucursalDTO) {
-        for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursalDTO.numero){
-                sc.getListaPractica();
+    //DATOS PACIENTE
+
+    public void DatosPaciente(PacienteDTO pacienteDTO){
+        for (Paciente paciente: listaPacientes){
+            if (paciente.getDNI()==pacienteDTO.DNI){
+                String dni=paciente.getDNI();
+                String nombre= paciente.getNombre();
+                String sexo  =paciente.getSexo();
+                String mail= paciente.getMail();
+                String domicilio=paciente.getDomicilio();
+
             }
         }
-
     }
 
-    //AGREGAR PRACTICA EN SUCURSAL
+
+
+
+
+
+
+
+
+      /*
+        //AGREGAR PRACTICA EN SUCURSAL
 
     public void AgregarPractica(Sucursal sucursal, Practicas prac){
         for (Sucursal sc:listaSucursal){
@@ -201,6 +241,8 @@ public class ControllerSucursal {
             }
         }
     }
+
+       */
 
 
 

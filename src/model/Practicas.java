@@ -9,6 +9,7 @@ public class Practicas {
     private TipoValor valoresCriticos;
     private String valoresReservados;
     private int horasResultado;
+    private boolean estado;
 
 
     //CONSTRUCTOR
@@ -19,12 +20,17 @@ public class Practicas {
         this.valoresCriticos = valoresCriticos;
         this.valoresReservados = valoresReservados;
         this.horasResultado = horasResultado;
+        estado=true;
     }
 
     //GETTER AND SETTER
     public int getCodigo() {
         return codigo;
     }
+    public boolean getEstado(){
+        return estado;
+    }
+
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -70,6 +76,9 @@ public class Practicas {
         this.horasResultado = horasResultado;
     }
 
+    public void EstadoFalso() {
+        this.estado = false;
+    }
 
 
 }

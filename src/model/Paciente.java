@@ -13,6 +13,7 @@ public class Paciente {
     private ArrayList<Peticiones> listaPeticionesPaciente;
 
 
+
     //CONSTRUCTOR
     public Paciente(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
@@ -21,9 +22,11 @@ public class Paciente {
         this.mail = mail;
         this.sexo = sexo;
         this.edad = edad;
+        listaPeticionesPaciente= new ArrayList<Peticiones>();
+
     }
 
-    //GETTER AND SETTERS
+    //GETTER
     public String getDNI() {
         return DNI;
     }
@@ -72,4 +75,13 @@ public class Paciente {
         this.edad = edad;
     }
 
+    public List<Peticiones> getListaPeticionesPaciente() {
+        return listaPeticionesPaciente;
+    }
+
+
+
+    public void AgregarPeticion(Peticiones p){
+        listaPeticionesPaciente.add(p);
+    }
 }

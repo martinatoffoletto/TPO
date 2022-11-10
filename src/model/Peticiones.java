@@ -3,6 +3,7 @@ package model;
 import model.enums.TipoEstado;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Peticiones {
@@ -13,20 +14,19 @@ public class Peticiones {
     private LocalDate fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
-
     private Sucursal sucursal;
 
 
     //CONSTRUCTOR
-    public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, List<Practicas> practicasAsociadas, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
+    public Peticiones(Paciente paciente, String obraSocial, LocalDate fechaCarga, LocalDate fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
         this.paciente = paciente;
         ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;
-        this.practicasAsociadas = practicasAsociadas;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.nroPeticion = nroPeticion;
         this.sucursal=sucursal;
+        practicasAsociadas= new ArrayList<Practicas>();
     }
 
 
@@ -67,9 +67,6 @@ public class Peticiones {
         return practicasAsociadas;
     }
 
-    public void setPracticasAsociadas(List<Practicas> practicasAsociadas) {
-        this.practicasAsociadas = practicasAsociadas;
-    }
 
     public LocalDate getFechaEntrega() {
         return fechaEntrega;
@@ -97,4 +94,8 @@ public class Peticiones {
 
 
     //METODOS:
+    public void AgregarPractica(Practicas p){
+        practicasAsociadas.add(p);
+
+    }
 }

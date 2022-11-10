@@ -63,6 +63,7 @@ public class ControllerPeticiones {
             if (resultado.getID() == resuMod.ID)
             {
                 resultado.setID(resuMod.ID);
+
             }
         }
     }
@@ -70,8 +71,7 @@ public class ControllerPeticiones {
 
     //ABM PETICIONES
     public void altaPeticion(PeticionesDTO peticionesDTO) { //RETURN
-        Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga,
-                peticionesDTO.practicasAsociadas, peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
+        Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
         listaPeticiones.add(peticion);
     }
 
@@ -92,9 +92,29 @@ public class ControllerPeticiones {
                 peticion.setFechaCarga(peticionMod.fechaCarga);
                 peticion.setEstado(peticionMod.estado);
                 peticion.setNroPeticion(peticionMod.nroPeticion);
+                peticion.setSucursal(peticionMod.sucursal);
             }
         }
     }
+
+    //DATOS PETICION
+    public void datosPeticion(PeticionesDTO peticionMod) {
+        for (Peticiones peticion: listaPeticiones) {
+            if (peticion.getNroPeticion() == peticionMod.nroPeticion)
+            {
+                peticion.getEstado();
+                peticion.getFechaCarga();
+                peticion.getFechaEntrega();
+                peticion.getNroPeticion();
+                peticion.getPracticasAsociadas();
+                peticion.getSucursal();
+                peticion.getObraSocial();
+                peticion.getPaciente();
+
+            }
+        }
+    }
+
 
 
     //METODOS:
@@ -103,26 +123,6 @@ public class ControllerPeticiones {
 
 
 
-    //LISTA DE SUCURSALES CON ESAS PRACTICAS (peticion particular)
-    public List<Sucursal> ListarPeticionSucursal(Peticiones pet){
-        List<Sucursal> sucursalesConPracticas= new ArrayList<>();
-        for (Sucursal sc: ControllerSucursal.getInstancia().getListaSucursal()){
-            boolean tienePracticas=false;
-            tienePracticas=sc.getListaPractica().containsAll(pet.getPracticasAsociadas());
-            if (tienePracticas){
-                sucursalesConPracticas.add(sc);
-            }
-
-        }
-        return sucursalesConPracticas;
-
-    }
-
-
-    // SELECIONAR SUCURSAL DE LISTA
-      public void AsociarPeticionSucursal(SucursalDTO sc, PacienteDTO p) {
-          ControllerSucursal.getInstancia().AgregarPaciente(sc, p);
-      }
 
 
 
