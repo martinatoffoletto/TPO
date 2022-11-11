@@ -1,11 +1,9 @@
 package controller;
 
 import DTO.PracticasDTO;
+import DTO.ReglaDTO;
 import DTO.UsuarioSistemaDTO;
-import model.Peticiones;
-import model.Practicas;
-import model.Sucursal;
-import model.UsuarioSistema;
+import model.*;
 import model.enums.TipoRol;
 import controller.*;
 import model.enums.TipoValor;
@@ -22,7 +20,12 @@ public class ControllerParametros {
     private static ControllerParametros instancia;
     private ArrayList<UsuarioSistema> listaUsuarios;
     private  ArrayList<Practicas> listaPracticas;
+    private ArrayList<Regla> listaReglas;
     public ArrayList<PracticasDTO> listaPracticasDTO;
+    public ArrayList<UsuarioSistemaDTO> listaUsuariosDTO;
+    public ArrayList<ReglaDTO> listaReglaDTO;
+    public ArrayList<UsuarioSistemaDTO> getListaUsuariosDTO() {return listaUsuariosDTO; }
+    public ArrayList<ReglaDTO> getListaReglaDTO() {return listaReglaDTO;}
 
 
     //SINGLETON
@@ -37,16 +40,21 @@ public class ControllerParametros {
     public ControllerParametros() {
         listaUsuarios= new ArrayList<UsuarioSistema>();
         listaPracticas= new ArrayList<Practicas>();
+        listaReglas  = new ArrayList<Regla>();
         listaPracticasDTO = new ArrayList<PracticasDTO>();
+        listaUsuariosDTO = new ArrayList<UsuarioSistemaDTO>();
+        listaReglaDTO = new ArrayList<ReglaDTO>();
     }
 
     //METODOS:
 
     //ALTA USUARIOS
     public void altaUsuario(UsuarioSistemaDTO usuario) {
-        UsuarioSistema usuarioSistema = new UsuarioSistema(usuario.usuario,usuario.email,usuario.password,
-                usuario.nombre,usuario.domicilio,usuario.DNI,usuario.nacimiento,usuario.rol);
+        UsuarioSistema usuarioSistema = new UsuarioSistema(usuario.usuario, usuario.email, usuario.password,
+                usuario.nombre, usuario.domicilio, usuario.DNI, usuario.nacimiento, usuario.rol);
         listaUsuarios.add(usuarioSistema);
+        listaUsuariosDTO.add(usuario);
+
     }
 
     //BAJA USUARIOS
@@ -54,6 +62,7 @@ public class ControllerParametros {
         for (UsuarioSistema usuario: listaUsuarios) {
             if (usuario.getUsuario() == usuBaja.usuario)
                 listaUsuarios.remove(usuario);
+            listaUsuariosDTO.remove(usuBaja);
         }
     }
 
@@ -176,8 +185,30 @@ public class ControllerParametros {
         }
     }
 
+    public void altaRegla(ReglaDTO reglaDTO) {
+        Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoRango, reglaDTO.valorBooleano, reglaDTO.listaPalabras, reglaDTO.valor);
+        listaReglas.add(regla);
+        listaReglaDTO.add(reglaDTO);
+    }
 
+    public void modificarRegla(ReglaDTO reglaDTO) {
+        for (Regla regla: listaReglas)
+            if (regla.getCodigo() == reglaDTO.codigo){
+                regla.setCodigo(reglaDTO.codigo);
+                regla.setTipoRango(reglaDTO.tipoRango);
+                regla.setValorBooleano(reglaDTO.valorBooleano);
+                regla.setListaPalabras(reglaDTO.listaPalabras);
+                regla.setValor(reglaDTO.valor);
+            }
+    }
 
+    public void bajaRegla(ReglaDTO reglaDTO) {
+        for (Regla regla: listaReglas)
+            if (regla.getCodigo() == reglaDTO.codigo) {
+                listaReglas.remove(regla);
+                listaReglaDTO.remove(reglaDTO);
+            }
+    }
     //METODOS:
 
     //EXISTE USUARIO (INICIO SECCION)

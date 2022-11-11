@@ -11,12 +11,12 @@ public class UsuarioSistema {
     private String nombre;
     private String domicilio;
     private int DNI;
-    private LocalDate nacimiento;
+    private String nacimiento;
     private TipoRol rol;
 
 
     //CONSTRUCTOR
-    public UsuarioSistema(String usuario, String email, String password, String nombre, String domicilio, int DNI, LocalDate nacimiento, TipoRol rol) {
+    public UsuarioSistema(String usuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
         this.usuario = usuario;
         this.email = email;
         this.password = password;
@@ -76,11 +76,11 @@ public class UsuarioSistema {
         this.DNI = DNI;
     }
 
-    public LocalDate getNacimiento() {
+    public String getNacimiento() {
         return nacimiento;
     }
 
-    public void setNacimiento(LocalDate nacimiento) {
+    public void setNacimiento(String nacimiento) {
         this.nacimiento = nacimiento;
     }
 

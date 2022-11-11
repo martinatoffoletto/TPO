@@ -1,11 +1,9 @@
-import DTO.PacienteDTO;
-import DTO.PeticionesDTO;
-import DTO.PracticasDTO;
-import DTO.SucursalDTO;
+import DTO.*;
 import controller.ControllerParametros;
 import controller.ControllerPeticiones;
 import controller.ControllerSucursal;
 import model.Paciente;
+import model.enums.TipoRol;
 import model.enums.TipoValor;
 import vista.FrmMenuPrincipal;
 import vista.FrmSucursales;
@@ -35,5 +33,7 @@ public class Main {
         ControllerSucursal.getInstancia().altaPaciente(pac);
         PracticasDTO prac = new PracticasDTO(123, "Practica", "2", TipoValor.BOOLEAN, TipoValor.BOOLEAN, 2);
         ControllerParametros.getInstancia().altaPractica(prac);
+        UsuarioSistemaDTO usu = new UsuarioSistemaDTO("1", "Mail", "Contraseña", "Nombre", "Domicilio", 123, "Nacimiento", TipoRol.ADMINISTRADOR);
+        ControllerParametros.getInstancia().altaUsuario(usu);
     }
 }

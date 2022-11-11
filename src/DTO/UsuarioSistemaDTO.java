@@ -10,15 +10,15 @@ public class UsuarioSistemaDTO {
     public String nombre;
     public String domicilio;
     public int DNI;
-    public LocalDate nacimiento;
+    public String nacimiento;
     public TipoRol rol;
 
     @Override
     public String toString() {
-        return "usuario='" + usuario;
+        return "Usuario: " + usuario + " Nombre: " + nombre;
     }
 
-    public UsuarioSistemaDTO(String usuario, String email, String password, String nombre, String domicilio, int DNI, LocalDate nacimiento, TipoRol rol) {
+    public UsuarioSistemaDTO(String usuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
         this.usuario = usuario;
         this.email = email;
         this.password = password;

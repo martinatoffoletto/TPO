@@ -16,7 +16,6 @@ public class FrmPeticiones extends JInternalFrame{
     private JButton modificarPeticionButton;
     private JButton eliminarPeticionButton;
     private JPanel pnlPrincipal;
-    private JButton datosPeticionButton;
     private JComboBox comboBox1;
 
     public FrmPeticiones() {

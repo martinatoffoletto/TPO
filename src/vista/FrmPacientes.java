@@ -45,6 +45,13 @@ public class FrmPacientes extends JInternalFrame {
                 ControllerSucursal.getInstancia().bajaPaciente(pacienteDTO);
             }
         });
+        listarPeticionesPorPacienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmListarPeticionesPaciente dialog = new FrmListarPeticionesPaciente((PacienteDTO) comboBox1.getSelectedItem());
+                dialog.setVisible(true);
+            }
+        });
     }
 
     private void asignarDatosCombo() {

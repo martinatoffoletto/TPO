@@ -57,6 +57,21 @@ public class FrmSucursales extends JInternalFrame {
                 dialog.setVisible(true);
             }
         });
+        listarPracticasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmListaPracticasSucursal dialog = new FrmListaPracticasSucursal((SucursalDTO) comboBox1.getSelectedItem());
+                dialog.setVisible(true);
+            }
+        });
+        listarPeticionesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmListaPeticionesSucursal dialog = new FrmListaPeticionesSucursal((SucursalDTO) comboBox1.getSelectedItem());
+                dialog.setVisible(true);
+
+            }
+        });
     }
     private void asignarDatosCombo() {
         ArrayList<SucursalDTO> listaSucursales = new ArrayList<SucursalDTO>();
