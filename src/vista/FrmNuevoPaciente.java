@@ -29,7 +29,7 @@ public class FrmNuevoPaciente extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PacienteDTO pacienteDTO = new PacienteDTO(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()));
+                PacienteDTO pacienteDTO = new PacienteDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()));
                 ControllerSucursal.getInstancia().altaPaciente(pacienteDTO);
                 setVisible(false);
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
-    public String DNI;
+    public int DNI;
     public String nombre;
     public String domicilio;
     public String mail;
@@ -15,7 +15,7 @@ public class Paciente {
 
 
     //CONSTRUCTOR
-    public Paciente(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
+    public Paciente(int DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -27,11 +27,11 @@ public class Paciente {
     }
 
     //GETTER Y SETTER
-    public String getDNI() {
+    public int getDNI() {
         return DNI;
     }
 
-    public void setDNI(String DNI) {
+    public void setDNI(int DNI) {
         this.DNI = DNI;
     }
 

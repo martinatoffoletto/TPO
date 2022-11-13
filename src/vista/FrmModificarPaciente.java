@@ -24,7 +24,7 @@ public class FrmModificarPaciente extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        textField1.setText(pacienteDTO.DNI);
+        textField1.setText(String.valueOf(pacienteDTO.DNI));
         textField2.setText(pacienteDTO.nombre);
         textField3.setText(pacienteDTO.domicilio);
         textField4.setText(pacienteDTO.mail);
@@ -33,7 +33,7 @@ public class FrmModificarPaciente extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PacienteDTO pacienteDTO = new PacienteDTO(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()));
+                PacienteDTO pacienteDTO = new PacienteDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()));
                 ControllerSucursal.getInstancia().modificacionPaciente(pacienteDTO);
                 setVisible(false);
             }

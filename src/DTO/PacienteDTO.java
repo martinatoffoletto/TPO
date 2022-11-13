@@ -5,7 +5,7 @@ import model.Peticiones;
 import java.util.ArrayList;
 
 public class PacienteDTO {
-    public String DNI;
+    public int DNI;
     public String nombre;
     public String domicilio;
     public String mail;
@@ -16,7 +16,7 @@ public class PacienteDTO {
 
 
     //CONSTRUCTOR
-    public PacienteDTO(String DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
+    public PacienteDTO(int DNI, String nombre, String domicilio, String mail, String sexo, int edad) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.domicilio = domicilio;

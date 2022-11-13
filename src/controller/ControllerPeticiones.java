@@ -16,6 +16,7 @@ public class ControllerPeticiones {
     private static List<Peticiones> listaPeticiones;
     private static List<Resultado> listaResultados;
     public ArrayList<PeticionesDTO> listaPeticionesDTO;
+    public ArrayList<ResultadoDTO> listaResultadosDTO;
 
 
     //SINGLETON
@@ -30,6 +31,7 @@ public class ControllerPeticiones {
         listaPeticiones = new ArrayList<Peticiones>();
         listaResultados = new ArrayList<Resultado>();
         listaPeticionesDTO = new ArrayList<PeticionesDTO>();
+        listaResultadosDTO = new ArrayList<ResultadoDTO>();
     }
 
      //GETTER Y SETTERS
@@ -57,12 +59,16 @@ public class ControllerPeticiones {
     public void altaResultados(ResultadoDTO resultadoDTO) {
         Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, resultadoDTO.descripcion);
         listaResultados.add(resultado);
+        listaResultadosDTO.add(resultadoDTO);
     }
 
     public void bajaResultados(ResultadoDTO resuBaja) {
         for (Resultado resultado: listaResultados) {
-            if (resultado.getID() == resuBaja.ID)
+            if (resultado.getID() == resuBaja.ID) {
                 listaResultados.remove(resultado);
+                listaResultadosDTO.remove(resuBaja);
+            }
+
         }
     }
 

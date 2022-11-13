@@ -38,7 +38,7 @@ public class ControllerSucursal {
     }
 
 
-    List<Sucursal> getListaSucursal() {
+    public ArrayList<Sucursal> getListaSucursal() {
         return listaSucursal;
     }
 
@@ -88,8 +88,14 @@ public class ControllerSucursal {
 
     //MODIFICACION SUCURSAL
     public void modificacionSucursal(SucursalDTO sucursalDTO) {
+        for (SucursalDTO sucursalDTO1: listaSucursalDTO)
+            if(sucursalDTO1.numero == sucursalDTO.numero) {
+                sucursalDTO1.numero = sucursalDTO.numero;
+                sucursalDTO1.direccion = sucursalDTO.direccion;
+                sucursalDTO1.responsableTecnico = sucursalDTO.responsableTecnico;
+            }
         for (Sucursal sucursal: listaSucursal){
-            if(sucursal.getNumero()==sucursalDTO.numero){ //HAY QUE AGREGAR IF NULL EN CADA SET
+            if(sucursal.getNumero()==sucursalDTO.numero){
                 if(sucursalDTO.direccion!=null){
                     sucursal.setDireccion(sucursalDTO.direccion);
                 }
@@ -178,23 +184,21 @@ public class ControllerSucursal {
 
     //MODIFICACION PACIENTES
     public void modificacionPaciente(PacienteDTO pacienteDTO) {
+        for(PacienteDTO pacienteDTO1: listaPacienteDTO)
+            if (pacienteDTO1.DNI == pacienteDTO.DNI) {
+                pacienteDTO1.DNI = pacienteDTO.DNI;
+                pacienteDTO1.domicilio = pacienteDTO.domicilio;
+                pacienteDTO1.mail = pacienteDTO.mail;
+                pacienteDTO1.sexo = pacienteDTO.sexo;
+                pacienteDTO1.nombre = pacienteDTO.nombre;
+            }
         for (Paciente paciente: listaPacientes) {
             if (paciente.getDNI() == pacienteDTO.DNI) {
-                if (pacienteDTO.DNI != null) {
-                    paciente.setDNI(pacienteDTO.DNI);
-                }
-                if (pacienteDTO.domicilio != null) {
-                    paciente.setDomicilio(pacienteDTO.domicilio);
-                }
-                if (pacienteDTO.mail != null) {
-                    paciente.setMail(pacienteDTO.mail);
-                }
-                if (pacienteDTO.sexo != null) {
-                    paciente.setSexo(pacienteDTO.sexo);
-                }
-                if (pacienteDTO.nombre != null) {
-                    paciente.setNombre(pacienteDTO.nombre);
-                }
+                paciente.setDNI(pacienteDTO.DNI);
+                paciente.setDomicilio(pacienteDTO.domicilio);
+                paciente.setMail(pacienteDTO.mail);
+                paciente.setSexo(pacienteDTO.sexo);
+                paciente.setNombre(pacienteDTO.nombre);
 
             }
         }
@@ -218,7 +222,7 @@ public class ControllerSucursal {
     public void DatosPaciente(PacienteDTO pacienteDTO){
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
-                String dni=paciente.getDNI();
+                int dni=paciente.getDNI();
                 String nombre= paciente.getNombre();
                 String sexo  =paciente.getSexo();
                 String mail= paciente.getMail();

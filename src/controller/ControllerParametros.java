@@ -69,6 +69,16 @@ public class ControllerParametros {
 
     //MODIFICACION USUARIOS
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
+        for (UsuarioSistemaDTO usuarioSistemaDTO: listaUsuariosDTO)
+            if (usuarioSistemaDTO.DNI == usuMod.DNI) {
+                usuarioSistemaDTO.usuario=usuMod.usuario;
+                usuarioSistemaDTO.email=usuMod.email;
+                usuarioSistemaDTO.password=usuMod.password;
+                usuarioSistemaDTO.nombre=usuMod.nombre;
+                usuarioSistemaDTO.domicilio=usuMod.domicilio;
+                usuarioSistemaDTO.nacimiento= usuMod.nacimiento;
+                usuarioSistemaDTO.rol=usuMod.rol;
+            }
         for (UsuarioSistema usuario: listaUsuarios ) {
             if (usuario.getUsuario() == usuMod.usuario) {
                 if (usuMod.usuario != null) {
