@@ -55,7 +55,7 @@ public class ControllerPeticiones {
 
     //ABM RESULTADOS
     public void altaResultados(ResultadoDTO resultadoDTO) {
-        Resultado resultado = new Resultado();
+        Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, resultadoDTO.descripcion);
         listaResultados.add(resultado);
     }
 

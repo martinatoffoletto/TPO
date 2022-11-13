@@ -10,16 +10,18 @@ public class Practicas {
     private TipoValor valoresReservados;
     private int horasResultado;
     private boolean estado;
+    private Regla regla;
 
 
     //CONSTRUCTOR
-    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado) {
+    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado, Regla regla) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
         this.grupo = grupo;
         this.valoresCriticos = valoresCriticos;
         this.valoresReservados = valoresReservados;
         this.horasResultado = horasResultado;
+        this.regla= regla;
         estado=true;
     }
 

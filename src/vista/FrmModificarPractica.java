@@ -1,7 +1,9 @@
 package vista;
 
 import DTO.PracticasDTO;
+import DTO.ReglaDTO;
 import controller.ControllerParametros;
+import model.Regla;
 import model.enums.TipoValor;
 
 import javax.swing.*;
@@ -20,6 +22,7 @@ public class FrmModificarPractica extends JDialog {
     private JTextField textField4;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
+    private JComboBox comboBox3;
 
     public FrmModificarPractica(PracticasDTO practicasDTO) {
         setSize(400, 400);
@@ -33,10 +36,11 @@ public class FrmModificarPractica extends JDialog {
         comboBox2.setSelectedItem(practicasDTO.valoresReservados);
         textField4.setText(String.valueOf(practicasDTO.horasResultado));
         asignarDatosCombo();
+        asignarDatosComboPracticas();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PracticasDTO practicasDTO = new PracticasDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()));
+                PracticasDTO practicasDTO = new PracticasDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (Regla) comboBox3.getSelectedItem());
                 ControllerParametros.getInstancia().modificacionPractica(practicasDTO);
                 setVisible(false);
             }
@@ -56,5 +60,16 @@ public class FrmModificarPractica extends JDialog {
         modelo.addAll(listaValores);
         comboBox1.setModel(modelo);
         comboBox2.setModel(modelo);
+    }
+
+    private void asignarDatosComboPracticas() {
+        ArrayList<ReglaDTO> listaReglas = new ArrayList<ReglaDTO>();
+        for (ReglaDTO regla: ControllerParametros.getInstancia().listaReglaDTO) {
+            listaReglas.add(regla);
+        }
+
+        DefaultComboBoxModel modeloReglas = new DefaultComboBoxModel();
+        modeloReglas.addAll(listaReglas);
+        comboBox3.setModel(modeloReglas);
     }
 }

@@ -68,6 +68,15 @@
               <text value="Reglas"/>
             </properties>
           </component>
+          <component id="4b439" class="javax.swing.JButton" binding="resultadosButton" default-binding="true">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Resultados"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="6f8b6" layout-manager="BorderLayout" hgap="0" vgap="0">

@@ -114,7 +114,7 @@ public class ControllerParametros {
     //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
         Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo,
-                practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado);
+                practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado, practicaDTO.regla);
         listaPracticas.add(practica);
         listaPracticasDTO.add(practicaDTO);
     }

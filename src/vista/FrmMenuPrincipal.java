@@ -13,6 +13,7 @@ public class FrmMenuPrincipal extends JFrame {
     private JButton usuariosButton;
     private JDesktopPane desktopPaneEmbebido;
     private JButton reglasButton;
+    private JButton resultadosButton;
 
     public FrmMenuPrincipal() {
         super("Menu Principal");
@@ -64,6 +65,14 @@ public class FrmMenuPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FrmReglas pantalla = new FrmReglas();
+                desktopPaneEmbebido.add(pantalla);
+                pantalla.setVisible(true);
+            }
+        });
+        resultadosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmResultado pantalla = new FrmResultado();
                 desktopPaneEmbebido.add(pantalla);
                 pantalla.setVisible(true);
             }

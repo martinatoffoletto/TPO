@@ -8,15 +8,6 @@ public class Regla {
     private int codigo;
     private TipoRango tipoRango;
     private boolean valorBooleano;
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     private List<String> listaPalabras;
     private double valor;
 
@@ -27,7 +18,12 @@ public class Regla {
         this.listaPalabras = listaPalabras;
         this.valor = valor;
     }
-
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    public int getCodigo() {
+        return codigo;
+    }
     public TipoRango getTipoRango() {
         return tipoRango;
     }
@@ -59,4 +55,5 @@ public class Regla {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
 }

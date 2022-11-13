@@ -7,6 +7,12 @@ import java.util.List;
 public class ReglaDTO {
     public int codigo;
     public TipoRango tipoRango;
+
+    @Override
+    public String toString() {
+        return "codigo=" + codigo;
+    }
+
     public boolean valorBooleano;
     public List<String> listaPalabras;
     public double valor;
