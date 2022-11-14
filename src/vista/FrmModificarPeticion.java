@@ -2,6 +2,7 @@ package vista;
 
 import DTO.PacienteDTO;
 import DTO.PeticionesDTO;
+import DTO.PracticasDTO;
 import DTO.SucursalDTO;
 import controller.ControllerPeticiones;
 import controller.ControllerSucursal;
@@ -42,7 +43,7 @@ public class FrmModificarPeticion extends JDialog {
         comboBox3.setSelectedItem(peticionesDTO.sucursal);
         textField1.setText(peticionesDTO.ObraSocial);
         textField2.setText(peticionesDTO.fechaCarga);
-        comboBox4.setSelectedItem(peticionesDTO.practicasAsociadas);
+        comboBox4.setSelectedItem(peticionesDTO.practicaAsociada);
         textField4.setText(peticionesDTO.fechaEntrega);
         comboBox2.setSelectedItem(peticionesDTO.estado);
         Numero.setText(String.valueOf(peticionesDTO.nroPeticion));
@@ -52,7 +53,7 @@ public class FrmModificarPeticion extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO((Paciente) comboBox1.getSelectedItem(), (Sucursal) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (List<Practicas>) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
+                PeticionesDTO peticionesDTO = new PeticionesDTO((PacienteDTO) comboBox1.getSelectedItem(), (SucursalDTO) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (PracticasDTO) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
                 ControllerPeticiones.getInstancia().modificacionPeticion(peticionesDTO);
                 setVisible(false);
             }

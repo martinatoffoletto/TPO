@@ -10,14 +10,14 @@ public class PracticasDTO {
     public TipoValor valoresCriticos;
     public TipoValor valoresReservados;
     public int horasResultado;
-    public Regla regla;
+    public ReglaDTO regla;
 
     @Override
     public String toString() {
-        return "Codigo = " + codigo + " Nombre Practica = " + nombrePractica;
+        return "Codigo = " + codigo + " Nombre Practica = " + nombrePractica + "Regla = " + regla;
     }
 
-    public PracticasDTO(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado, Regla regla) {
+    public PracticasDTO(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado, ReglaDTO regla) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
         this.grupo = grupo;

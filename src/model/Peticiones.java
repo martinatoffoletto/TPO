@@ -10,7 +10,7 @@ public class Peticiones {
     private Paciente paciente;
     private String ObraSocial;
     private String fechaCarga;
-    private List<Practicas> practicasAsociadas;
+    private Practicas practicaAsociada;
     private String fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
@@ -18,15 +18,13 @@ public class Peticiones {
 
 
     //CONSTRUCTOR
-    public Peticiones(Paciente paciente, String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion,Sucursal sucursal) {
-        this.paciente = paciente;
+    public Peticiones(String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.nroPeticion = nroPeticion;
         this.sucursal=sucursal;
-        practicasAsociadas= new ArrayList<Practicas>();
     }
 
 
@@ -63,10 +61,13 @@ public class Peticiones {
         this.fechaCarga = fechaCarga;
     }
 
-    public List<Practicas> getPracticasAsociadas() {
-        return practicasAsociadas;
+    public Practicas getPracticaAsociada() {
+        return practicaAsociada;
     }
 
+    public void setPracticaAsociada(Practicas practicaAsociada) {
+        this.practicaAsociada = practicaAsociada;
+    }
 
     public String getFechaEntrega() {
         return fechaEntrega;
@@ -93,9 +94,4 @@ public class Peticiones {
     }
 
 
-    //METODOS:
-    public void AgregarPractica(Practicas p){
-        practicasAsociadas.add(p);
-
-    }
 }

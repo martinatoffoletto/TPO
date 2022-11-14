@@ -19,7 +19,7 @@ public class ControllerParametros {
 
     private static ControllerParametros instancia;
     private ArrayList<UsuarioSistema> listaUsuarios;
-    private  ArrayList<Practicas> listaPracticas;
+    public   ArrayList<Practicas> listaPracticas;
     private ArrayList<Regla> listaReglas;
     public ArrayList<PracticasDTO> listaPracticasDTO;
     public ArrayList<UsuarioSistemaDTO> listaUsuariosDTO;
@@ -35,6 +35,9 @@ public class ControllerParametros {
         return instancia;
     }
 
+    public ArrayList<Practicas> getListaPracticas() {
+        return listaPracticas;
+    }
 
     //CONSTRUCTOR
     public ControllerParametros() {
@@ -109,8 +112,11 @@ public class ControllerParametros {
     //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
         Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo,
-                practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado, practicaDTO.regla);
-        listaPracticas.add(practica);
+                practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado);
+        for (Regla regla: listaReglas)
+            if (regla.getCodigo() == practicaDTO.regla.codigo)
+                practica.setRegla(regla);
+                listaPracticas.add(practica);
         listaPracticasDTO.add(practicaDTO);
     }
 
@@ -123,10 +129,8 @@ public class ControllerParametros {
                 practBja=practicas;
         }
         for (Peticiones p : ControllerPeticiones.getInstancia().getListaPeticiones()){
-            for (Practicas pract: p.getPracticasAsociadas()){
-                if (pract==practBja){
-                    usado=true;
-                }
+            if (p.getPracticaAsociada().getCodigo() == practicasDTO.codigo) {
+                usado = true;
             }
         }
         if(usado){ //INHABILITAR

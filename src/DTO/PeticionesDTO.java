@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class PeticionesDTO {
-    public Paciente paciente;
-    public Sucursal sucursal;
+    public PacienteDTO paciente;
+    public SucursalDTO sucursal;
     public String ObraSocial;
     public String fechaCarga;
-    public List<Practicas> practicasAsociadas;
+    public PracticasDTO practicaAsociada;
     public String fechaEntrega;
     public TipoEstado estado;
     public int nroPeticion;
@@ -25,11 +25,11 @@ public class PeticionesDTO {
                 ;
     }
 
-    public PeticionesDTO(Paciente paciente, Sucursal sucursal, String obraSocial, String fechaCarga, List<Practicas> practicasAsociadas, String fechaEntrega, TipoEstado estado, int nroPeticion) {
+    public PeticionesDTO(PacienteDTO paciente, SucursalDTO sucursal, String obraSocial, String fechaCarga, PracticasDTO practicaAsociada, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;
         this.ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;
-        this.practicasAsociadas = practicasAsociadas;
+        this.practicaAsociada = practicaAsociada;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.nroPeticion = nroPeticion;

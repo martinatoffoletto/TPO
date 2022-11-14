@@ -41,7 +41,7 @@ public class FrmModificarPractica extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PracticasDTO practicasDTO = new PracticasDTO(parseInt(Codigo.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (Regla) comboBox3.getSelectedItem());
+                PracticasDTO practicasDTO = new PracticasDTO(parseInt(Codigo.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (ReglaDTO) comboBox3.getSelectedItem());
                 ControllerParametros.getInstancia().modificacionPractica(practicasDTO);
                 setVisible(false);
             }

@@ -88,9 +88,19 @@ public class ControllerPeticiones {
 
     //ABM PETICIONES
     public void altaPeticion(PeticionesDTO peticionesDTO) {
-        Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
+
+        Peticiones peticion = new Peticiones(peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion);
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-            if (paciente == peticionesDTO.paciente)
+            if (paciente.getDNI() == peticionesDTO.paciente.DNI)
+                peticion.setPaciente(paciente);
+        for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
+            if (sucursal.getNumero() == peticionesDTO.sucursal.numero)
+                peticion.setSucursal(sucursal);
+        for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
+            if (practica.getCodigo() == peticionesDTO.practicaAsociada.codigo)
+                peticion.setPracticaAsociada(practica);
+        for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+            if (paciente.getDNI() == peticionesDTO.paciente.DNI)
                 paciente.AgregarPeticion(peticion);
         listaPeticiones.add(peticion);
         listaPeticionesDTO.add(peticionesDTO);
@@ -102,7 +112,7 @@ public class ControllerPeticiones {
                 listaPeticiones.remove(peticion);
                 listaPeticionesDTO.remove(peticionBaja);
                 for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-                    if (paciente == peticionBaja.paciente)
+                    if (paciente.getDNI() == peticionBaja.paciente.DNI)
                         paciente.listaPeticionesPaciente.remove(peticion);
             }
         }
@@ -118,15 +128,23 @@ public class ControllerPeticiones {
                 peticionesDTO.ObraSocial=peticionMod.ObraSocial;
                 peticionesDTO.fechaCarga=peticionMod.fechaCarga;
                 peticionesDTO.fechaEntrega=peticionMod.fechaEntrega;
+                peticionesDTO.practicaAsociada=peticionMod.practicaAsociada;
             }
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
-                peticion.setPaciente(peticionMod.paciente);
                 peticion.setObraSocial(peticionMod.ObraSocial);
                 peticion.setFechaEntrega(peticionMod.fechaEntrega);
                 peticion.setFechaCarga(peticionMod.fechaCarga);
                 peticion.setEstado(peticionMod.estado);
-                peticion.setSucursal(peticionMod.sucursal);
+                for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+                    if (paciente.getDNI() == peticionMod.paciente.DNI)
+                        peticion.setPaciente(paciente);
+                for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
+                    if (sucursal.getNumero() == peticionMod.sucursal.numero)
+                        peticion.setSucursal(sucursal);
+                for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
+                    if (practica.getCodigo() == peticionMod.practicaAsociada.codigo)
+                        peticion.setPracticaAsociada(practica);
                 }
             }
         }
@@ -141,7 +159,7 @@ public class ControllerPeticiones {
                 String fechaCarga=peticion.getFechaCarga();
                 peticion.getFechaEntrega();
                 peticion.getNroPeticion();
-                peticion.getPracticasAsociadas();
+                peticion.getPracticaAsociada();
                 peticion.getSucursal();
                 peticion.getObraSocial();
                 peticion.getPaciente();

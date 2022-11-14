@@ -14,14 +14,13 @@ public class Practicas {
 
 
     //CONSTRUCTOR
-    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado, Regla regla) {
+    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
         this.grupo = grupo;
         this.valoresCriticos = valoresCriticos;
         this.valoresReservados = valoresReservados;
         this.horasResultado = horasResultado;
-        this.regla= regla;
         estado=true;
     }
 
@@ -64,6 +63,14 @@ public class Practicas {
 
     public TipoValor getValoresReservados() {
         return valoresReservados;
+    }
+
+    public Regla getRegla() {
+        return regla;
+    }
+
+    public void setRegla(Regla regla) {
+        this.regla = regla;
     }
 
     public void setValoresReservados(TipoValor valoresReservados) {
