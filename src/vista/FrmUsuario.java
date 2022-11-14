@@ -29,6 +29,7 @@ public class FrmUsuario extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevoUsuario dialog = new FrmNuevoUsuario();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarUsuarioButton.addActionListener(new ActionListener() {
@@ -36,6 +37,7 @@ public class FrmUsuario extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarUsuario dialog = new FrmModificarUsuario((UsuarioSistemaDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         eliminarUsuarioButton.addActionListener(new ActionListener() {
@@ -43,6 +45,7 @@ public class FrmUsuario extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 UsuarioSistemaDTO usuarioSistemaDTO = (UsuarioSistemaDTO) comboBox1.getSelectedItem();
                 ControllerParametros.getInstancia().bajaUsuario(usuarioSistemaDTO);
+                asignarDatosCombo();
             }
         });
     }

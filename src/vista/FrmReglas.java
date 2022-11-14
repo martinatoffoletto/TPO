@@ -27,6 +27,7 @@ public class FrmReglas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevaRegla dialog = new FrmNuevaRegla();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarReglaButton.addActionListener(new ActionListener() {
@@ -34,6 +35,7 @@ public class FrmReglas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarRegla dialog = new FrmModificarRegla((ReglaDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         eliminarReglaButton.addActionListener(new ActionListener() {
@@ -41,6 +43,7 @@ public class FrmReglas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 ReglaDTO reglaDTO = (ReglaDTO) comboBox1.getSelectedItem();
                 ControllerParametros.getInstancia().bajaRegla(reglaDTO);
+                asignarDatosCombo();
             }
         });
     }

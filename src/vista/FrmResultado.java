@@ -28,6 +28,7 @@ public class FrmResultado extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevoResultado dialog = new FrmNuevoResultado();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarResultadoButton.addActionListener(new ActionListener() {
@@ -35,6 +36,7 @@ public class FrmResultado extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarResultado dialog = new FrmModificarResultado((ResultadoDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
     }

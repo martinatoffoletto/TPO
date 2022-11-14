@@ -31,6 +31,7 @@ public class FrmSucursales extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevaSucursal dialog = new FrmNuevaSucursal();
                 dialog.setVisible(true);
+                asignarDatosCombo();
 
             }
         });
@@ -39,6 +40,7 @@ public class FrmSucursales extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarSucursal dialog = new FrmModificarSucursal((SucursalDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
 
@@ -48,6 +50,7 @@ public class FrmSucursales extends JInternalFrame {
                 SucursalDTO suc = (SucursalDTO) comboBox1.getSelectedItem();
                 SucursalDTO suc2 = (SucursalDTO) comboBox1.getItemAt(0);
                 ControllerSucursal.getInstancia().bajaSucursal(suc, suc2);
+                asignarDatosCombo();
             }
         });
         listarPacientesButton.addActionListener(new ActionListener() {

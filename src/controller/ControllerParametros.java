@@ -81,29 +81,14 @@ public class ControllerParametros {
             }
         for (UsuarioSistema usuario: listaUsuarios ) {
             if (usuario.getUsuario() == usuMod.usuario) {
-                if (usuMod.usuario != null) {
-                    usuario.setUsuario(usuMod.usuario);
-                }
-                if (usuMod.email != null) {
-                    usuario.setEmail(usuMod.email);
-                }
-                if (usuMod.password != null) {
-                    usuario.setPassword(usuMod.password);
-                }
-                if (usuMod.nombre != null) {
-                    usuario.setNombre(usuMod.nombre);
-                }
-                if (usuMod.domicilio != null) {
-                    usuario.setDomicilio(usuMod.domicilio);
-                }
-                if (usuMod.nacimiento != null) {
-                    usuario.setNacimiento(usuMod.nacimiento);
-                }
-                if (usuMod.rol != null) {
-                    usuario.setRol(usuMod.rol);
-                }
+                usuario.setUsuario(usuMod.usuario);
+                usuario.setEmail(usuMod.email);
+                usuario.setPassword(usuMod.password);
+                usuario.setNombre(usuMod.nombre);
+                usuario.setDomicilio(usuMod.domicilio);
+                usuario.setNacimiento(usuMod.nacimiento);
+                usuario.setRol(usuMod.rol);
             }
-            break;
         }
     }
 
@@ -155,23 +140,21 @@ public class ControllerParametros {
 
     //MODIF PRACTICA
     public void modificacionPractica(PracticasDTO practicasDTO) {
+        for (PracticasDTO practicasDTO1: listaPracticasDTO)
+            if (practicasDTO1.codigo==practicasDTO.codigo) {
+                practicasDTO1.codigo=practicasDTO.codigo;
+                practicasDTO1.valoresCriticos=practicasDTO.valoresCriticos;
+                practicasDTO1.valoresReservados=practicasDTO.valoresReservados;
+                practicasDTO1.grupo=practicasDTO.grupo;
+            }
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
-
-                if (practicasDTO.valoresReservados != null) {
-                    practica.setValoresReservados(practicasDTO.valoresReservados);
-                }
-                if (practicasDTO.nombrePractica != null) {
-                    practica.setNombrePractica(practicasDTO.nombrePractica);
-                }
-                if (practicasDTO.valoresCriticos != null) {
-                    practica.setValoresCriticos(practicasDTO.valoresCriticos);
-                }
-                if (practicasDTO.grupo != null) {
-                    practica.setGrupo(practicasDTO.grupo);
-                }
-                break;
+                practica.setValoresReservados(practicasDTO.valoresReservados);
+                practica.setNombrePractica(practicasDTO.nombrePractica);
+                practica.setValoresCriticos(practicasDTO.valoresCriticos);
+                practica.setGrupo(practicasDTO.grupo);
             }
+
         }
     }
 
@@ -202,6 +185,14 @@ public class ControllerParametros {
     }
 
     public void modificarRegla(ReglaDTO reglaDTO) {
+        for (ReglaDTO reglaDTO1: listaReglaDTO)
+            if (reglaDTO1.codigo==reglaDTO.codigo) {
+                reglaDTO1.codigo=reglaDTO.codigo;
+                reglaDTO1.tipoRango=reglaDTO.tipoRango;
+                reglaDTO1.valorBooleano=reglaDTO.valorBooleano;
+                reglaDTO1.listaPalabras=reglaDTO.listaPalabras;
+                reglaDTO1.valor=reglaDTO.valor;
+            }
         for (Regla regla: listaReglas)
             if (regla.getCodigo() == reglaDTO.codigo){
                 regla.setCodigo(reglaDTO.codigo);

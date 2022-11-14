@@ -29,6 +29,7 @@ public class FrmPacientes extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevoPaciente dialog = new FrmNuevoPaciente();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarPacienteButton.addActionListener(new ActionListener() {
@@ -36,6 +37,7 @@ public class FrmPacientes extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarPaciente dialog = new FrmModificarPaciente((PacienteDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         eliminarPacienteButton.addActionListener(new ActionListener() {
@@ -43,6 +45,7 @@ public class FrmPacientes extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 PacienteDTO pacienteDTO = (PacienteDTO) comboBox1.getSelectedItem();
                 ControllerSucursal.getInstancia().bajaPaciente(pacienteDTO);
+                asignarDatosCombo();
             }
         });
         listarPeticionesPorPacienteButton.addActionListener(new ActionListener() {

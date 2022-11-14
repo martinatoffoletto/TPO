@@ -29,7 +29,6 @@ public class FrmNuevaSucursal extends JDialog {
                 SucursalDTO suc = new SucursalDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText());
                 ControllerSucursal.getInstancia().altaSucursal(suc);
                 setVisible(false);
-
             }
 
         })

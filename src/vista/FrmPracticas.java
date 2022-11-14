@@ -26,6 +26,7 @@ public class FrmPracticas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmNuevaPractica dialog = new FrmNuevaPractica();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarPracticaButton.addActionListener(new ActionListener() {
@@ -33,6 +34,7 @@ public class FrmPracticas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 FrmModificarPractica dialog = new FrmModificarPractica((PracticasDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         eliminarPracticaButton.addActionListener(new ActionListener() {
@@ -40,6 +42,7 @@ public class FrmPracticas extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 PracticasDTO practicasDTO = (PracticasDTO) comboBox1.getSelectedItem();
                 ControllerParametros.getInstancia().bajaPractica(practicasDTO);
+                asignarDatosCombo();
             }
         });
     }

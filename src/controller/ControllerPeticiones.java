@@ -73,10 +73,20 @@ public class ControllerPeticiones {
     }
 
     public void modificacionResultado(ResultadoDTO resuMod) {
+        for (ResultadoDTO resultadoDTO: listaResultadosDTO)
+            if (resultadoDTO.ID==resuMod.ID) {
+                resultadoDTO.ID=resuMod.ID;
+                resultadoDTO.valorNumerico= resuMod.valorNumerico;
+                resultadoDTO.valorBooleano= resuMod.valorBooleano;
+                resultadoDTO.descripcion= resuMod.descripcion;
+            }
         for (Resultado resultado: listaResultados) {
             if (resultado.getID() == resuMod.ID)
             {
                 resultado.setID(resuMod.ID);
+                resultado.setValorNumerico(resuMod.valorNumerico);
+                resultado.setValorBooleano(resuMod.valorBooleano);
+                resultado.setDescripcion(resuMod.descripcion);
 
             }
         }
@@ -99,26 +109,24 @@ public class ControllerPeticiones {
     }
 
     public void modificacionPeticion(PeticionesDTO peticionMod) {
+        for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
+            if (peticionesDTO.nroPeticion==peticionMod.nroPeticion) {
+                peticionesDTO.nroPeticion=peticionMod.nroPeticion;
+                peticionesDTO.paciente=peticionMod.paciente;
+                peticionesDTO.sucursal=peticionMod.sucursal;
+                peticionesDTO.estado=peticionMod.estado;
+                peticionesDTO.ObraSocial=peticionMod.ObraSocial;
+                peticionesDTO.fechaCarga=peticionMod.fechaCarga;
+                peticionesDTO.fechaEntrega=peticionMod.fechaEntrega;
+            }
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
-                }
-                if (peticionMod.paciente != null) {
-                    peticion.setPaciente(peticionMod.paciente);
-                }
-                if (peticionMod.ObraSocial != null) {
-                    peticion.setObraSocial(peticionMod.ObraSocial);
-                }
-                if (peticionMod.fechaEntrega != null) {
-                    peticion.setFechaEntrega(peticionMod.fechaEntrega);
-                }
-                if (peticionMod.fechaCarga != null) {
-                    peticion.setFechaCarga(peticionMod.fechaCarga);
-                }
-                if (peticionMod.estado != null) {
-                    peticion.setEstado(peticionMod.estado);
-                }
-                if (peticionMod.sucursal != null) {
-                    peticion.setSucursal(peticionMod.sucursal);
+                peticion.setPaciente(peticionMod.paciente);
+                peticion.setObraSocial(peticionMod.ObraSocial);
+                peticion.setFechaEntrega(peticionMod.fechaEntrega);
+                peticion.setFechaCarga(peticionMod.fechaCarga);
+                peticion.setEstado(peticionMod.estado);
+                peticion.setSucursal(peticionMod.sucursal);
                 }
             }
         }

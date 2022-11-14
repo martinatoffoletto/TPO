@@ -29,6 +29,7 @@ public class FrmPeticiones extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
                 FrmNuevaPeticion dialog = new FrmNuevaPeticion();
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         modificarPeticionButton.addActionListener(new ActionListener() {
@@ -36,6 +37,7 @@ public class FrmPeticiones extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
                 FrmModificarPeticion dialog = new FrmModificarPeticion((PeticionesDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
+                asignarDatosCombo();
             }
         });
         eliminarPeticionButton.addActionListener(new ActionListener() {
@@ -43,6 +45,7 @@ public class FrmPeticiones extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
                 PeticionesDTO peticionesDTO = (PeticionesDTO) comboBox1.getSelectedItem();
                 ControllerPeticiones.getInstancia().bajaPeticion(peticionesDTO);
+                asignarDatosCombo();
             }
         });
     }
