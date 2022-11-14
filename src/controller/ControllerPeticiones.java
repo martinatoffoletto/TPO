@@ -89,15 +89,22 @@ public class ControllerPeticiones {
     //ABM PETICIONES
     public void altaPeticion(PeticionesDTO peticionesDTO) {
         Peticiones peticion = new Peticiones(peticionesDTO.paciente, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion,peticionesDTO.sucursal);
+        for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+            if (paciente == peticionesDTO.paciente)
+                paciente.AgregarPeticion(peticion);
         listaPeticiones.add(peticion);
         listaPeticionesDTO.add(peticionesDTO);
     }
 
     public void bajaPeticion(PeticionesDTO peticionBaja) {
         for (Peticiones peticion: listaPeticiones) {
-            if (peticion.getNroPeticion() == peticionBaja.nroPeticion)
+            if (peticion.getNroPeticion() == peticionBaja.nroPeticion) {
                 listaPeticiones.remove(peticion);
-            listaPeticionesDTO.remove(peticionBaja);
+                listaPeticionesDTO.remove(peticionBaja);
+                for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+                    if (paciente == peticionBaja.paciente)
+                        paciente.listaPeticionesPaciente.remove(peticion);
+            }
         }
     }
 
