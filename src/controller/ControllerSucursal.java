@@ -71,11 +71,11 @@ public class ControllerSucursal {
                 sucuDerivacion = sucursal;
         }
 
-        for (Paciente p: sucuBaja.getListaPacientes()){
-             NoTieneFinalizada= bajaPacienteRN(p);
-             if (!NoTieneFinalizada){
-                 break;
-             }
+        for (Paciente p: sucuBaja.getListaPacientes())
+            for (Peticiones peticion: p.getListaPeticionesPaciente())
+                if (peticion.getEstado() == TipoEstado.Con_Resultados) {
+                    NoTieneFinalizada = false;
+                    break;
         }
         if (NoTieneFinalizada){ //2) REGLA NEGOCIO, DERIVA PETICIONES
             for (Peticiones pet: sucuBaja.getListaPeticiones()){
@@ -108,22 +108,31 @@ public class ControllerSucursal {
     }
 
     //LISTAR PACIENTE X SUCURSAL
-    public void listarPacientesSucursales(SucursalDTO sucursalDTO) {
+    public ArrayList<PacienteDTO> listarPacientesSucursales(SucursalDTO sucursalDTO) {
+        ArrayList <Paciente> listaPacientesSucursal = new ArrayList<Paciente>();
         for (Sucursal sc:listaSucursal){
             if (sc.getNumero()==sucursalDTO.numero){
-                sc.getListaPacientes();
+                listaPacientesSucursal = sc.getListaPacientes();
             }
         }
+        ArrayList<PacienteDTO> listaPacientesSucursalDTO = new ArrayList<PacienteDTO>();
+        for (Paciente pc: listaPacientes)
+            for (PacienteDTO pcDTO: listaPacienteDTO)
+                if (pc.getDNI() == pcDTO.DNI)
+                    listaPacientesSucursalDTO.add(pcDTO);
+
+        return listaPacientesSucursalDTO;
     }
 
     //LISTAR PETICIONES X SUCURSAL
-    public void listarPeticionesSucursales(SucursalDTO sucursalDTO) {
+    public ArrayList<Peticiones> listarPeticionesSucursales(SucursalDTO sucursalDTO) {
+        ArrayList<Peticiones> listaPeticionesSucursal = new ArrayList<Peticiones>();
         for (Sucursal sc:listaSucursal){
             if (sc.getNumero()==sucursalDTO.numero){
-                List<Peticiones> listaPeticiones = sc.getListaPeticiones();
+                listaPeticionesSucursal = sc.getListaPeticiones();
             }
         }
-
+        return listaPeticionesSucursal;
     }
 
 
@@ -150,21 +159,6 @@ public class ControllerSucursal {
     }
 
     //BAJA PACIENTES
-    public boolean bajaPacienteRN(Paciente paciente1) { // 1) CON REGLA DE NEGOCIO 1 (no puede tener peticiones finalizadas)
-        for (Paciente paciente: listaPacientes){
-            if (paciente.getDNI()==paciente1.getDNI()){
-                for (Peticiones peticiones: ControllerPeticiones.getListaPeticiones()){
-                    if (peticiones.getPaciente()==paciente){
-                        if (peticiones.getEstado()== TipoEstado.Con_Resultados){
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
 
     public void bajaPaciente(PacienteDTO pacienteDTO){  //Elimina paciente
         Paciente pacBaja = null;
@@ -172,13 +166,15 @@ public class ControllerSucursal {
             if (paciente.getDNI() == pacienteDTO.DNI)
                 pacBaja = paciente;
         }
-        boolean NotieneFinalizas= bajaPacienteRN(pacBaja);
-        if (NotieneFinalizas){
-            for (Paciente pac: listaPacientes){
-                if (pac.getDNI()==pacienteDTO.DNI){
-                    listaPacientes.remove(pac);
-                }
+        boolean NoTieneFinalizadas = true;
+        for (Peticiones peticion: pacBaja.getListaPeticionesPaciente())
+            if (peticion.getEstado() == TipoEstado.Con_Resultados) {
+                NoTieneFinalizadas = false;
+                break;
             }
+        if (NoTieneFinalizadas) {
+            listaPacientes.remove(pacBaja);
+            listaPacienteDTO.remove(pacienteDTO);
         }
     }
 

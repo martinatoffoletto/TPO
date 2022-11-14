@@ -13,8 +13,8 @@ public class ControllerPeticiones {
 
     private static ControllerPeticiones instancia;
 
-    private static List<Peticiones> listaPeticiones;
-    private static List<Resultado> listaResultados;
+    private  ArrayList<Peticiones> listaPeticiones;
+    private  ArrayList<Resultado> listaResultados;
     public ArrayList<PeticionesDTO> listaPeticionesDTO;
     public ArrayList<ResultadoDTO> listaResultadosDTO;
 
@@ -35,23 +35,16 @@ public class ControllerPeticiones {
     }
 
      //GETTER Y SETTERS
-     public static List<Peticiones> getListaPeticiones() {
+     public ArrayList<Peticiones> getListaPeticiones() {
          return listaPeticiones;
      }
      public ArrayList<PeticionesDTO> getListaPeticionesDTO() {
         return listaPeticionesDTO;
      }
 
-    public static void setListaPeticiones(List<Peticiones> listaPeticiones) {
-        ControllerPeticiones.listaPeticiones = listaPeticiones;
-    }
 
-    public static List<Resultado> getListaResultados() {
+    public ArrayList<Resultado> getListaResultados() {
         return listaResultados;
-    }
-
-    public static void setListaResultados(List<Resultado> listaResultados) {
-        ControllerPeticiones.listaResultados = listaResultados;
     }
 
 

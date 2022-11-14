@@ -9,8 +9,8 @@ public class Sucursal {
     private int numero ;
     private String direccion;
     private String responsableTecnico;
-    private  List<Peticiones> listaPeticiones;
-    private List<Paciente> listaPacientes;
+    private  ArrayList<Peticiones> listaPeticiones;
+    private ArrayList<Paciente> listaPacientes;
 
     //CONSTRUCTOR
     public Sucursal(int numero, String direccion, String responsableTecnico) {
@@ -29,11 +29,11 @@ public class Sucursal {
                 '}';
     }
 
-    public List<Paciente> getListaPacientes() {
+    public ArrayList<Paciente> getListaPacientes() {
         return listaPacientes;
     }
 
-    public List<Peticiones> getListaPeticiones() {
+    public ArrayList<Peticiones> getListaPeticiones() {
         return listaPeticiones;
     }
 

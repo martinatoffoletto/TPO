@@ -31,6 +31,7 @@ public class FrmModificarPeticion extends JDialog {
     private JPanel pnlPrincipal;
     private JComboBox comboBox3;
     private JComboBox comboBox4;
+    private JLabel Numero;
 
     public FrmModificarPeticion(PeticionesDTO peticionesDTO) {
         setSize(400, 400);
@@ -44,14 +45,14 @@ public class FrmModificarPeticion extends JDialog {
         comboBox4.setSelectedItem(peticionesDTO.practicasAsociadas);
         textField4.setText(peticionesDTO.fechaEntrega);
         comboBox2.setSelectedItem(peticionesDTO.estado);
-        textField5.setText(String.valueOf(peticionesDTO.nroPeticion));
+        Numero.setText(String.valueOf(peticionesDTO.nroPeticion));
         asignarDatosComboEstado();
         asignarDatosComboPaciente();
         asignarDatosComboSucursales();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO((Paciente) comboBox1.getSelectedItem(), (Sucursal) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (List<Practicas>) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(textField5.getText()));
+                PeticionesDTO peticionesDTO = new PeticionesDTO((Paciente) comboBox1.getSelectedItem(), (Sucursal) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (List<Practicas>) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
                 ControllerPeticiones.getInstancia().modificacionPeticion(peticionesDTO);
                 setVisible(false);
             }

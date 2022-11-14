@@ -122,7 +122,7 @@ public class ControllerParametros {
             if (practicas.getCodigo() == practicasDTO.codigo)
                 practBja=practicas;
         }
-        for (Peticiones p : ControllerPeticiones.getListaPeticiones()){
+        for (Peticiones p : ControllerPeticiones.getInstancia().getListaPeticiones()){
             for (Practicas pract: p.getPracticasAsociadas()){
                 if (pract==practBja){
                     usado=true;

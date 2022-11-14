@@ -75,7 +75,7 @@ public class Paciente {
         this.edad = edad;
     }
 
-    public List<Peticiones> getListaPeticionesPaciente() {
+    public ArrayList<Peticiones> getListaPeticionesPaciente() {
         return listaPeticionesPaciente;
     }
 

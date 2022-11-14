@@ -3,6 +3,7 @@ package vista;
 import DTO.PacienteDTO;
 import DTO.SucursalDTO;
 import controller.ControllerSucursal;
+import model.Paciente;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,6 +16,10 @@ public class FrmListaPacientesSucursal extends JDialog{
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
+        asignarDatosLista(sucursalDTO);
+    }
 
+    public void asignarDatosLista(SucursalDTO sucursalDTO) {
+        ArrayList<PacienteDTO> listaPacientes = ControllerSucursal.getInstancia().listarPacientesSucursales(sucursalDTO);
     }
 }

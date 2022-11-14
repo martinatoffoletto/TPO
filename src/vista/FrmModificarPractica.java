@@ -23,13 +23,14 @@ public class FrmModificarPractica extends JDialog {
     private JButton guardarButton;
     private JPanel pnlPrincipal;
     private JComboBox comboBox3;
+    private JLabel Codigo;
 
     public FrmModificarPractica(PracticasDTO practicasDTO) {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        textField1.setText(String.valueOf(practicasDTO.codigo));
+        Codigo.setText(String.valueOf(practicasDTO.codigo));
         textField2.setText(practicasDTO.nombrePractica);
         textField3.setText(practicasDTO.grupo);
         comboBox1.setSelectedItem(practicasDTO.valoresCriticos);
@@ -40,7 +41,7 @@ public class FrmModificarPractica extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PracticasDTO practicasDTO = new PracticasDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (Regla) comboBox3.getSelectedItem());
+                PracticasDTO practicasDTO = new PracticasDTO(parseInt(Codigo.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (Regla) comboBox3.getSelectedItem());
                 ControllerParametros.getInstancia().modificacionPractica(practicasDTO);
                 setVisible(false);
             }

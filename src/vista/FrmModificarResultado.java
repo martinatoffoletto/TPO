@@ -17,6 +17,7 @@ public class FrmModificarResultado extends JDialog {
     private JTextField textField4;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
+    private JLabel ID;
 
     public FrmModificarResultado(ResultadoDTO resultadoDTO) {
         setSize(400, 400);
@@ -24,14 +25,14 @@ public class FrmModificarResultado extends JDialog {
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
 
-        textField1.setText(String.valueOf(resultadoDTO.ID));
+        ID.setText(String.valueOf(resultadoDTO.ID));
         textField2.setText(String.valueOf(resultadoDTO.valorNumerico));
         textField3.setText(String.valueOf(resultadoDTO.valorBooleano));
         textField4.setText(resultadoDTO.descripcion);
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ResultadoDTO resultado1 = new ResultadoDTO(parseInt(textField1.getText()));
+                ResultadoDTO resultado1 = new ResultadoDTO(parseInt(ID.getText()));
                 if (textField2.getText() != "")
                     resultado1.valorNumerico = parseInt(textField2.getText());
                 if (textField3.getText() != "")

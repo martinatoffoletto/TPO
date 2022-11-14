@@ -47,10 +47,11 @@ public class FrmSucursales extends JInternalFrame {
         eliminarSucursalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SucursalDTO suc = (SucursalDTO) comboBox1.getSelectedItem();
-                SucursalDTO suc2 = (SucursalDTO) comboBox1.getItemAt(0);
-                ControllerSucursal.getInstancia().bajaSucursal(suc, suc2);
-                asignarDatosCombo();
+                if (comboBox1.getSelectedItem() != null) {
+                    FrmEliminarSucursal dialog = new FrmEliminarSucursal((SucursalDTO) comboBox1.getSelectedItem());
+                    dialog.setVisible(true);
+                    asignarDatosCombo();
+                }
             }
         });
         listarPacientesButton.addActionListener(new ActionListener() {
