@@ -11,6 +11,7 @@ public class Sucursal {
     private String responsableTecnico;
     private  ArrayList<Peticiones> listaPeticiones;
     private ArrayList<Paciente> listaPacientes;
+    private ArrayList<Practicas> listaPracticas;
 
     //CONSTRUCTOR
     public Sucursal(int numero, String direccion, String responsableTecnico) {
@@ -19,6 +20,7 @@ public class Sucursal {
         this.responsableTecnico = responsableTecnico;
         listaPeticiones= new ArrayList<Peticiones>();
         listaPacientes= new ArrayList<Paciente>();
+        listaPracticas = new ArrayList<Practicas>();
     }
     //GETTER Y SETTER
 
@@ -37,6 +39,13 @@ public class Sucursal {
         return listaPeticiones;
     }
 
+    public ArrayList<Practicas> getListaPracticas() {
+        return listaPracticas;
+    }
+
+    public void setListaPracticas(ArrayList<Practicas> listaPracticas) {
+        this.listaPracticas = listaPracticas;
+    }
 
     public int getNumero() {
         return numero;
@@ -77,5 +86,8 @@ public class Sucursal {
         return listaPacientes.size();
     }
 
-
+    public int agregarPractica(Practicas p) {
+        listaPracticas.add(p);
+        return listaPracticas.size();
+    }
 }

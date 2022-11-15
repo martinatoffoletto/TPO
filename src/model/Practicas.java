@@ -13,6 +13,13 @@ public class Practicas {
     private Regla regla;
 
 
+    @Override
+    public String toString() {
+        return "Practica" +
+                "codigo = " + codigo +
+                ", Nombre Practica = '" + nombrePractica;
+    }
+
     //CONSTRUCTOR
     public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado) {
         this.codigo = codigo;

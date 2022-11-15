@@ -21,5 +21,8 @@ public class FrmListaPacientesSucursal extends JDialog{
 
     public void asignarDatosLista(SucursalDTO sucursalDTO) {
         ArrayList<PacienteDTO> listaPacientes = ControllerSucursal.getInstancia().listarPacientesSucursales(sucursalDTO);
+        DefaultListModel model = new DefaultListModel();
+        model.addAll(listaPacientes);
+        list1.setModel(model);
     }
 }

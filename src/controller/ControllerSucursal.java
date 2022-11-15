@@ -3,6 +3,7 @@ package controller;
 import DTO.*;
 import model.Paciente;
 import model.Peticiones;
+import model.Practicas;
 import model.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +117,7 @@ public class ControllerSucursal {
             }
         }
         ArrayList<PacienteDTO> listaPacientesSucursalDTO = new ArrayList<PacienteDTO>();
-        for (Paciente pc: listaPacientes)
+        for (Paciente pc: listaPacientesSucursal)
             for (PacienteDTO pcDTO: listaPacienteDTO)
                 if (pc.getDNI() == pcDTO.DNI)
                     listaPacientesSucursalDTO.add(pcDTO);
@@ -125,14 +126,19 @@ public class ControllerSucursal {
     }
 
     //LISTAR PETICIONES X SUCURSAL
-    public ArrayList<Peticiones> listarPeticionesSucursales(SucursalDTO sucursalDTO) {
+    public ArrayList<PeticionesDTO> listarPeticionesSucursales(SucursalDTO sucursalDTO) {
         ArrayList<Peticiones> listaPeticionesSucursal = new ArrayList<Peticiones>();
         for (Sucursal sc:listaSucursal){
             if (sc.getNumero()==sucursalDTO.numero){
                 listaPeticionesSucursal = sc.getListaPeticiones();
             }
         }
-        return listaPeticionesSucursal;
+        ArrayList<PeticionesDTO> listaPeticionesSucursalDTO = new ArrayList<PeticionesDTO>();
+        for (Peticiones peticion: listaPeticionesSucursal)
+            for (PeticionesDTO peticionDTO: ControllerPeticiones.getInstancia().listaPeticionesDTO)
+                if (peticion.getNroPeticion() == peticionDTO.nroPeticion)
+                    listaPeticionesSucursalDTO.add(peticionDTO);
+        return listaPeticionesSucursalDTO;
     }
 
 
@@ -203,14 +209,14 @@ public class ControllerSucursal {
 
 
     //Listar Peticiones PACIENTE
-    public void peticionesPaciente(PacienteDTO pacienteDTO) {
+    public ArrayList<Peticiones> listarPeticionesPaciente(PacienteDTO pacienteDTO) {
+        ArrayList<Peticiones> listaPeticionesPaciente = new ArrayList<Peticiones>();
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
-                paciente.getListaPeticionesPaciente();
+                listaPeticionesPaciente = paciente.getListaPeticionesPaciente();
             }
         }
-
-
+    return listaPeticionesPaciente;
     }
 
     //DATOS PACIENTE
@@ -236,17 +242,33 @@ public class ControllerSucursal {
 
 
 
-      /*
+
         //AGREGAR PRACTICA EN SUCURSAL
 
-    public void AgregarPractica(Sucursal sucursal, Practicas prac){
+    public void AgregarPracticaSucursal(SucursalDTO sucursal, PracticasDTO prac){
         for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursal.getNumero()){
-                sc.agregarPractica(prac);
+            if (sc.getNumero()==sucursal.numero){
+                for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
+                    if (practica.getCodigo() == prac.codigo)
+                        sc.agregarPractica(practica);
             }
         }
     }
 
+    public ArrayList<PracticasDTO> listarPracticasSucursal(SucursalDTO sucursalDTO) {
+        ArrayList<Practicas> listaPracticasSucursal = new ArrayList<Practicas>();
+        for (Sucursal sucursal: listaSucursal)
+            if (sucursal.getNumero() == sucursalDTO.numero) {
+                listaPracticasSucursal = sucursal.getListaPracticas();
+            }
+        ArrayList<PracticasDTO> listaPracticasSucursalDTO = new ArrayList<PracticasDTO>();
+        for (Practicas practica: listaPracticasSucursal)
+            for (PracticasDTO practicasDTO: ControllerParametros.getInstancia().listaPracticasDTO)
+                if (practica.getCodigo() == practicasDTO.codigo)
+                    listaPracticasSucursalDTO.add(practicasDTO);
+        return listaPracticasSucursalDTO;
+    }
+/*
     //Agregar Paciente en SUCURSAL
     public void AgregarPaciente(SucursalDTO sucursalDTO, PacienteDTO pacienteDTO){
         Paciente paciente1 = null;

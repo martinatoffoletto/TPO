@@ -27,7 +27,7 @@ public class FrmPeticiones extends JInternalFrame{
         nuevaPeticionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmNuevaPeticion dialog = new FrmNuevaPeticion();
+                FrmElegirSucursalPeticion dialog = new FrmElegirSucursalPeticion();
                 dialog.setVisible(true);
                 asignarDatosCombo();
             }

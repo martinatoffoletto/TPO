@@ -4,19 +4,16 @@ import DTO.PacienteDTO;
 import DTO.PeticionesDTO;
 import DTO.PracticasDTO;
 import DTO.SucursalDTO;
+import controller.ControllerParametros;
 import controller.ControllerPeticiones;
 import controller.ControllerSucursal;
-import model.Paciente;
 import model.Practicas;
-import model.Sucursal;
 import model.enums.TipoEstado;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
@@ -32,18 +29,20 @@ public class FrmNuevaPeticion extends JDialog {
     private JPanel pnlPrincipal;
     private JComboBox comboBox3;
     private JComboBox comboBox4;
+    private JLabel SucursalNumero;
 
-    public FrmNuevaPeticion() {
+    public FrmNuevaPeticion(SucursalDTO sucursalDTO) {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
         asignarDatosComboPaciente();
-        asignarDatosComboSucursales();
+        asignarDatosComboPracticas(sucursalDTO);
+        SucursalNumero.setText(String.valueOf(sucursalDTO.numero));
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO((PacienteDTO) comboBox1.getSelectedItem(), (SucursalDTO) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (PracticasDTO) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(textField5.getText()));
+                PeticionesDTO peticionesDTO = new PeticionesDTO((PacienteDTO) comboBox1.getSelectedItem(), sucursalDTO, textField1.getText(), textField2.getText(), (PracticasDTO) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(textField5.getText()));
                 ControllerPeticiones.getInstancia().altaPeticion(peticionesDTO);
                 setVisible(false);
             }
@@ -60,15 +59,14 @@ public class FrmNuevaPeticion extends JDialog {
         modelo.addAll(listaPacientes);
         comboBox1.setModel(modelo);
     }
-    private void asignarDatosComboSucursales() {
-        ArrayList<SucursalDTO> listaSucursales = new ArrayList<SucursalDTO>();
-        for (SucursalDTO sucursalDTO: ControllerSucursal.getInstancia().getListaSucursalDTO())
-            listaSucursales.add(sucursalDTO);
+
+    private void asignarDatosComboPracticas(SucursalDTO sucursalDTO) {
+        ArrayList<PracticasDTO> listaPracticas = ControllerSucursal.getInstancia().listarPracticasSucursal(sucursalDTO);
+
+        DefaultComboBoxModel modeloPracticas = new DefaultComboBoxModel();
+        modeloPracticas.addAll(listaPracticas);
+        comboBox4.setModel(modeloPracticas);
 
 
-        DefaultComboBoxModel modeloSucursal = new DefaultComboBoxModel();
-        modeloSucursal.addAll(listaSucursales);
-        comboBox3.setModel(modeloSucursal);
     }
-
 }

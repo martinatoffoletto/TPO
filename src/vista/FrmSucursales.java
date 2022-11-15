@@ -18,6 +18,7 @@ public class FrmSucursales extends JInternalFrame {
     private JButton listarPeticionesButton;
     private JButton listarPracticasButton;
     private JComboBox comboBox1;
+    private JButton agregarPracticaButton;
 
 
     public FrmSucursales(){
@@ -74,6 +75,16 @@ public class FrmSucursales extends JInternalFrame {
                 FrmListaPeticionesSucursal dialog = new FrmListaPeticionesSucursal((SucursalDTO) comboBox1.getSelectedItem());
                 dialog.setVisible(true);
 
+            }
+        });
+        agregarPracticaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (comboBox1.getSelectedItem() != null) {
+                    FrmAgregarPracticaSucursal dialog = new FrmAgregarPracticaSucursal((SucursalDTO) comboBox1.getSelectedItem());
+                    dialog.setVisible(true);
+                    asignarDatosCombo();
+                }
             }
         });
     }

@@ -30,56 +30,36 @@ public class FrmModificarPeticion extends JDialog {
     private JTextField textField5;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
-    private JComboBox comboBox3;
-    private JComboBox comboBox4;
     private JLabel Numero;
+    private JLabel PacienteDNI;
+    private JLabel SucursalNumero;
+    private JLabel PracticaAsociada;
 
     public FrmModificarPeticion(PeticionesDTO peticionesDTO) {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        comboBox1.setSelectedItem(peticionesDTO.paciente);
-        comboBox3.setSelectedItem(peticionesDTO.sucursal);
+        PacienteDTO pacienteDTO = peticionesDTO.paciente;
+        SucursalDTO sucursalDTO = peticionesDTO.sucursal;
+        PracticasDTO practicasDTO = peticionesDTO.practicaAsociada;
+        PacienteDNI.setText(String.valueOf(pacienteDTO.DNI));
+        SucursalNumero.setText(String.valueOf(sucursalDTO.numero));
+        PracticaAsociada.setText(String.valueOf(practicasDTO.codigo));
         textField1.setText(peticionesDTO.ObraSocial);
         textField2.setText(peticionesDTO.fechaCarga);
-        comboBox4.setSelectedItem(peticionesDTO.practicaAsociada);
         textField4.setText(peticionesDTO.fechaEntrega);
         comboBox2.setSelectedItem(peticionesDTO.estado);
         Numero.setText(String.valueOf(peticionesDTO.nroPeticion));
         asignarDatosComboEstado();
-        asignarDatosComboPaciente();
-        asignarDatosComboSucursales();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO((PacienteDTO) comboBox1.getSelectedItem(), (SucursalDTO) comboBox2.getSelectedItem(), textField1.getText(), textField2.getText(), (PracticasDTO) comboBox4.getSelectedItem(), textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
+                PeticionesDTO peticionesDTO = new PeticionesDTO(pacienteDTO, sucursalDTO, textField1.getText(), textField2.getText(), practicasDTO, textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
                 ControllerPeticiones.getInstancia().modificacionPeticion(peticionesDTO);
                 setVisible(false);
             }
         });
-    }
-
-    private void asignarDatosComboPaciente() {
-        ArrayList<PacienteDTO> listaPacientes = new ArrayList<PacienteDTO>();
-        for (PacienteDTO pacienteDTO : ControllerSucursal.getInstancia().getListaPacienteDTO())
-            listaPacientes.add(pacienteDTO);
-
-
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        modelo.addAll(listaPacientes);
-        comboBox1.setModel(modelo);
-    }
-
-    private void asignarDatosComboSucursales() {
-        ArrayList<SucursalDTO> listaSucursales = new ArrayList<SucursalDTO>();
-        for (SucursalDTO sucursalDTO : ControllerSucursal.getInstancia().getListaSucursalDTO())
-            listaSucursales.add(sucursalDTO);
-
-
-        DefaultComboBoxModel modeloSucursal = new DefaultComboBoxModel();
-        modeloSucursal.addAll(listaSucursales);
-        comboBox3.setModel(modeloSucursal);
     }
 
     private void asignarDatosComboEstado() {

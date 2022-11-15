@@ -102,6 +102,11 @@ public class ControllerPeticiones {
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
             if (paciente.getDNI() == peticionesDTO.paciente.DNI)
                 paciente.AgregarPeticion(peticion);
+        for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
+            if (sucursal.getNumero() == peticionesDTO.sucursal.numero) {
+                sucursal.agregarPeticion(peticion);
+                sucursal.agregarPaciente(peticion.getPaciente());
+            }
         listaPeticiones.add(peticion);
         listaPeticionesDTO.add(peticionesDTO);
     }
