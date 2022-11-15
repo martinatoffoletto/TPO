@@ -22,7 +22,8 @@ public class PeticionesDTO {
     public String toString() {
         return "Paciente" + paciente +
                 "Sucursal=" + sucursal + "Nro" + nroPeticion
-                ;
+                + "Estado= " + estado;
+
     }
 
     public PeticionesDTO(PacienteDTO paciente, SucursalDTO sucursal, String obraSocial, String fechaCarga, PracticasDTO practicaAsociada, String fechaEntrega, TipoEstado estado, int nroPeticion) {

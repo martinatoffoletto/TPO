@@ -45,6 +45,10 @@ public class FrmPacientes extends JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 PacienteDTO pacienteDTO = (PacienteDTO) comboBox1.getSelectedItem();
                 ControllerSucursal.getInstancia().bajaPaciente(pacienteDTO);
+                if (ControllerSucursal.getInstancia().getListaPacienteDTO().indexOf(pacienteDTO) != -1) {
+                    FrmNoSeEliminoPaciente dialog = new FrmNoSeEliminoPaciente();
+                    dialog.setVisible(true);
+                }
                 asignarDatosCombo();
             }
         });

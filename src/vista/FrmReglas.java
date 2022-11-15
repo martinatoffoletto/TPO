@@ -13,7 +13,6 @@ public class FrmReglas extends JInternalFrame {
     private JPanel pnlPrincipal;
     private JComboBox comboBox1;
     private JButton nuevaReglaButton;
-    private JButton modificarReglaButton;
     private JButton eliminarReglaButton;
 
     public FrmReglas() {
@@ -30,14 +29,7 @@ public class FrmReglas extends JInternalFrame {
                 asignarDatosCombo();
             }
         });
-        modificarReglaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FrmModificarRegla dialog = new FrmModificarRegla((ReglaDTO) comboBox1.getSelectedItem());
-                dialog.setVisible(true);
-                asignarDatosCombo();
-            }
-        });
+
         eliminarReglaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

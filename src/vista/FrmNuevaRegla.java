@@ -1,14 +1,78 @@
 package vista;
 
+import DTO.ReglaDTO;
+import controller.ControllerParametros;
+import model.enums.TipoRango;
+import model.enums.TipoValor;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class FrmNuevaRegla extends JDialog {
     private JPanel pnlPrincipal;
+    private JTextField textField1;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JButton guardarButton;
+    private JTextField textField2;
+    private JComboBox comboBox3;
 
     public FrmNuevaRegla() {
         setSize(400, 400);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
+        asignarDatosComboRango();
+        asignarDatosComboBoolean();
+        asignarDatosComboValores();
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReglaDTO reglaDTO = new ReglaDTO(parseInt(textField1.getText()));
+                if (comboBox1.getSelectedItem() != null)
+                    reglaDTO.tipoRango = (TipoRango) comboBox1.getSelectedItem();
+                if (comboBox2.getSelectedItem() != null)
+                    reglaDTO.valorBooleano = (boolean) comboBox2.getSelectedItem();
+                if (textField2.getText() != "")
+                    reglaDTO.valor = Double.parseDouble(textField2.getText());
+                ControllerParametros.getInstancia().altaRegla(reglaDTO);
+                setVisible(false);
+            }
+        });
+    }
+
+    private void asignarDatosComboRango() {
+        ArrayList<TipoRango> listaRango = new ArrayList<TipoRango>();
+        for (TipoRango tipoRango : TipoRango.values()) {
+            listaRango.add(tipoRango);
+        }
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addAll(listaRango);
+        comboBox1.setModel(modelo);
+    }
+    private void asignarDatosComboBoolean() {
+        ArrayList<Boolean> listaBoolean = new ArrayList<Boolean>();
+        listaBoolean.add(true);
+        listaBoolean.add(false);
+        DefaultComboBoxModel modeloB = new DefaultComboBoxModel();
+        modeloB.addAll(listaBoolean);
+        comboBox2.setModel(modeloB);
+    }
+    private void asignarDatosComboValores() {
+        ArrayList<TipoValor> listaValores = new ArrayList<TipoValor>();
+        for (TipoValor tipoValor: TipoValor.values()) {
+            listaValores.add(tipoValor);
+        }
+
+
+
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addAll(listaValores);
+        comboBox3.setModel(modelo);
     }
 }

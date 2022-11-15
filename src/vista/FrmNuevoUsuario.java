@@ -33,7 +33,7 @@ public class FrmNuevoUsuario extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UsuarioSistemaDTO usuarioSistemaDTO = new UsuarioSistemaDTO(textField1.getText(), textField2.getText(), passwordField1.toString(), textField3.getText(), textField4.getText(), parseInt(textField5.getText()), textField6.getText(), (TipoRol) comboBox1.getSelectedItem());
+                UsuarioSistemaDTO usuarioSistemaDTO = new UsuarioSistemaDTO(parseInt(textField1.getText()), textField2.getText(), passwordField1.toString(), textField3.getText(), textField4.getText(), parseInt(textField5.getText()), textField6.getText(), (TipoRol) comboBox1.getSelectedItem());
                 ControllerParametros.getInstancia().altaUsuario(usuarioSistemaDTO);
                 setVisible(false);
             }

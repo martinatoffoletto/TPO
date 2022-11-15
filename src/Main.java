@@ -35,12 +35,10 @@ public class Main {
         ControllerSucursal.getInstancia().altaSucursal(suc2);
         PacienteDTO pac = new PacienteDTO(123, "Juan", "123", "mail", "F", 18);
         ControllerSucursal.getInstancia().altaPaciente(pac);
-        ReglaDTO reg = new ReglaDTO(1, TipoRango.igual, false, null, 12);
-        ControllerParametros.getInstancia().altaRegla(reg);
+        //ReglaDTO reg = new ReglaDTO(1);
+        //ControllerParametros.getInstancia().altaRegla(reg);
         //PracticasDTO prac = new PracticasDTO(123, "Practica", "2", TipoValor.BOOLEAN, TipoValor.BOOLEAN, 2, );
         //ControllerParametros.getInstancia().altaPractica(prac);
-        UsuarioSistemaDTO usu = new UsuarioSistemaDTO("1", "Mail", "Contraseña", "Nombre", "Domicilio", 123, "Nacimiento", TipoRol.ADMINISTRADOR);
-        ControllerParametros.getInstancia().altaUsuario(usu);
         ResultadoDTO resultadoDTO = new ResultadoDTO(1);
         ControllerPeticiones.getInstancia().altaResultados(resultadoDTO);
     }

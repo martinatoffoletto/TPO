@@ -15,7 +15,7 @@ public class FrmEliminarSucursal extends JDialog {
     private JButton guardarButton;
 
     public FrmEliminarSucursal(SucursalDTO sucuBaja) {
-        setSize(400, 400);
+        setSize(400, 200);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
@@ -25,6 +25,11 @@ public class FrmEliminarSucursal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 SucursalDTO sucuDerivacion = (SucursalDTO) comboBox1.getSelectedItem();
                 ControllerSucursal.getInstancia().bajaSucursal(sucuBaja, sucuDerivacion);
+                if (ControllerSucursal.getInstancia().getListaSucursalDTO().indexOf(sucuBaja) != -1) {
+                    FrmNoSeEliminoSucursal dialog = new FrmNoSeEliminoSucursal();
+                    dialog.setVisible(true);
+                }
+
                 setVisible(false);
             }
         });

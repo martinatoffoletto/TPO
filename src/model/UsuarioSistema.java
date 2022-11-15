@@ -5,7 +5,7 @@ import model.enums.TipoRol;
 import java.time.LocalDate;
 
 public class UsuarioSistema {
-    private String usuario;
+    private int NroUsuario;
     private String email ;
     private String password;
     private String nombre;
@@ -16,8 +16,8 @@ public class UsuarioSistema {
 
 
     //CONSTRUCTOR
-    public UsuarioSistema(String usuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
-        this.usuario = usuario;
+    public UsuarioSistema(int NroUsuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
+        this.NroUsuario = NroUsuario;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
@@ -28,12 +28,12 @@ public class UsuarioSistema {
     }
 
     //GETTER AND SETTERS
-    public String getUsuario() {
-        return usuario;
+    public int getNroUsuario() {
+        return NroUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNroUsuario(int NroUsuario) {
+        this.NroUsuario = NroUsuario;
     }
 
     public String getEmail() {

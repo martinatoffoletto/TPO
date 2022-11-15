@@ -72,15 +72,24 @@ public class ControllerSucursal {
                 sucuDerivacion = sucursal;
         }
 
-        for (Paciente p: sucuBaja.getListaPacientes())
-            for (Peticiones peticion: p.getListaPeticionesPaciente())
-                if (peticion.getEstado() == TipoEstado.Con_Resultados) {
-                    NoTieneFinalizada = false;
-                    break;
-        }
+        for (Peticiones peticion: sucuBaja.getListaPeticiones())
+            if (peticion.getEstado().equals(TipoEstado.Con_Resultados)) {
+                NoTieneFinalizada = false;
+                break;
+            }
+
         if (NoTieneFinalizada){ //2) REGLA NEGOCIO, DERIVA PETICIONES
             for (Peticiones pet: sucuBaja.getListaPeticiones()){
+                pet.setSucursal(sucuDerivacion);
                 sucuDerivacion.agregarPeticion(pet);
+                sucuDerivacion.agregarPaciente(pet.getPaciente());
+                for (Peticiones peticion: ControllerPeticiones.getInstancia().getListaPeticiones())
+                    if (peticion.getNroPeticion() == pet.getNroPeticion()) {
+                        peticion.setSucursal(sucuDerivacion);
+                    }
+                for (PeticionesDTO peticionDTO: ControllerPeticiones.getInstancia().listaPeticionesDTO)
+                    if (peticionDTO.nroPeticion == pet.getNroPeticion())
+                        peticionDTO.sucursal = sucursalDerivacion;
             }
             listaSucursal.remove(sucuBaja);
             listaSucursalDTO.remove(sucursalBaja);

@@ -29,7 +29,7 @@ public class FrmModificarUsuario extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        Usuario.setText(usuarioSistemaDTO.usuario);
+        Usuario.setText(String.valueOf(usuarioSistemaDTO.NroUsuario));
         textField2.setText(usuarioSistemaDTO.email);
         passwordField1.setText(usuarioSistemaDTO.password);
         textField4.setText(usuarioSistemaDTO.nombre);
@@ -40,7 +40,7 @@ public class FrmModificarUsuario extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UsuarioSistemaDTO usuarioSistemaDTO = new UsuarioSistemaDTO(Usuario.getText(), textField2.getText(), passwordField1.toString(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()), textField7.getText(), TipoRol.valueOf(Rol.getText()));
+                UsuarioSistemaDTO usuarioSistemaDTO = new UsuarioSistemaDTO(parseInt(Usuario.getText()), textField2.getText(), passwordField1.toString(), textField4.getText(), textField5.getText(), parseInt(textField6.getText()), textField7.getText(), TipoRol.valueOf(Rol.getText()));
                 ControllerParametros.getInstancia().modificacionUsuario(usuarioSistemaDTO);
                 setVisible(false);
             }

@@ -18,9 +18,9 @@ public class ControllerParametros {
     }
 
     private static ControllerParametros instancia;
-    private ArrayList<UsuarioSistema> listaUsuarios;
+    public ArrayList<UsuarioSistema> listaUsuarios;
     public   ArrayList<Practicas> listaPracticas;
-    private ArrayList<Regla> listaReglas;
+    public ArrayList<Regla> listaReglas;
     public ArrayList<PracticasDTO> listaPracticasDTO;
     public ArrayList<UsuarioSistemaDTO> listaUsuariosDTO;
     public ArrayList<ReglaDTO> listaReglaDTO;
@@ -39,6 +39,14 @@ public class ControllerParametros {
         return listaPracticas;
     }
 
+    public ArrayList<UsuarioSistema> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public ArrayList<Regla> getListaReglas() {
+        return listaReglas;
+    }
+
     //CONSTRUCTOR
     public ControllerParametros() {
         listaUsuarios= new ArrayList<UsuarioSistema>();
@@ -52,21 +60,22 @@ public class ControllerParametros {
     //METODOS:
 
     //ALTA USUARIOS
-    public void altaUsuario(UsuarioSistemaDTO usuario) {
-        UsuarioSistema usuarioSistema = new UsuarioSistema(usuario.usuario, usuario.email, usuario.password,
-                usuario.nombre, usuario.domicilio, usuario.DNI, usuario.nacimiento, usuario.rol);
+    public void altaUsuario(UsuarioSistemaDTO usuarioDTO) {
+        UsuarioSistema usuarioSistema = new UsuarioSistema(usuarioDTO.NroUsuario, usuarioDTO.email, usuarioDTO.password,
+                usuarioDTO.nombre, usuarioDTO.domicilio, usuarioDTO.DNI, usuarioDTO.nacimiento, usuarioDTO.rol);
         listaUsuarios.add(usuarioSistema);
-        listaUsuariosDTO.add(usuario);
+        listaUsuariosDTO.add(usuarioDTO);
 
     }
 
     //BAJA USUARIOS
     public void bajaUsuario(UsuarioSistemaDTO usuBaja) {
-        for (UsuarioSistema usuario: listaUsuarios) {
-            if (usuario.getUsuario() == usuBaja.usuario)
+        for (UsuarioSistema usuario: listaUsuarios)
+            if (usuario.getNroUsuario() == usuBaja.NroUsuario) {
                 listaUsuarios.remove(usuario);
-            listaUsuariosDTO.remove(usuBaja);
-        }
+            }
+        listaUsuariosDTO.remove(usuBaja);
+
     }
 
 
@@ -74,7 +83,6 @@ public class ControllerParametros {
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistemaDTO usuarioSistemaDTO: listaUsuariosDTO)
             if (usuarioSistemaDTO.DNI == usuMod.DNI) {
-                usuarioSistemaDTO.usuario=usuMod.usuario;
                 usuarioSistemaDTO.email=usuMod.email;
                 usuarioSistemaDTO.password=usuMod.password;
                 usuarioSistemaDTO.nombre=usuMod.nombre;
@@ -82,9 +90,8 @@ public class ControllerParametros {
                 usuarioSistemaDTO.nacimiento= usuMod.nacimiento;
                 usuarioSistemaDTO.rol=usuMod.rol;
             }
-        for (UsuarioSistema usuario: listaUsuarios ) {
-            if (usuario.getUsuario() == usuMod.usuario) {
-                usuario.setUsuario(usuMod.usuario);
+        for (UsuarioSistema usuario: getListaUsuarios() ) {
+            if (usuario.getNroUsuario() == usuMod.NroUsuario) {
                 usuario.setEmail(usuMod.email);
                 usuario.setPassword(usuMod.password);
                 usuario.setNombre(usuMod.nombre);
@@ -124,7 +131,7 @@ public class ControllerParametros {
     public void bajaPractica(PracticasDTO practicasDTO) { //REGLA DE NEGOCIO
         Practicas practBja= null;
         boolean usado= false;
-        for (Practicas practicas: listaPracticas) {
+        for (Practicas practicas: getListaPracticas()) {
             if (practicas.getCodigo() == practicasDTO.codigo)
                 practBja=practicas;
         }
@@ -137,6 +144,7 @@ public class ControllerParametros {
             practBja.EstadoFalso();
         }else {
             listaPracticas.remove(practBja);
+            listaPracticasDTO.remove(practicasDTO);
 
         }
     }
@@ -183,43 +191,33 @@ public class ControllerParametros {
     }
 
     public void altaRegla(ReglaDTO reglaDTO) {
-        Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoRango, reglaDTO.valorBooleano, reglaDTO.listaPalabras, reglaDTO.valor);
+        Regla regla = new Regla(reglaDTO.codigo);
+        if (regla.getTipoValor() == TipoValor.NUMERICO) {
+            regla.setTipoRango(reglaDTO.tipoRango);
+            regla.setValor(reglaDTO.valor);
+        }
+        if (regla.getTipoValor() == TipoValor.BOOLEAN)
+            regla.setValorBooleano(reglaDTO.valorBooleano);
         listaReglas.add(regla);
         listaReglaDTO.add(reglaDTO);
     }
 
-    public void modificarRegla(ReglaDTO reglaDTO) {
-        for (ReglaDTO reglaDTO1: listaReglaDTO)
-            if (reglaDTO1.codigo==reglaDTO.codigo) {
-                reglaDTO1.codigo=reglaDTO.codigo;
-                reglaDTO1.tipoRango=reglaDTO.tipoRango;
-                reglaDTO1.valorBooleano=reglaDTO.valorBooleano;
-                reglaDTO1.listaPalabras=reglaDTO.listaPalabras;
-                reglaDTO1.valor=reglaDTO.valor;
-            }
-        for (Regla regla: listaReglas)
-            if (regla.getCodigo() == reglaDTO.codigo){
-                regla.setCodigo(reglaDTO.codigo);
-                regla.setTipoRango(reglaDTO.tipoRango);
-                regla.setValorBooleano(reglaDTO.valorBooleano);
-                regla.setListaPalabras(reglaDTO.listaPalabras);
-                regla.setValor(reglaDTO.valor);
-            }
-    }
-
     public void bajaRegla(ReglaDTO reglaDTO) {
+        Regla reglaBaja = null;
         for (Regla regla: listaReglas)
             if (regla.getCodigo() == reglaDTO.codigo) {
-                listaReglas.remove(regla);
-                listaReglaDTO.remove(reglaDTO);
+                reglaBaja = regla;
+                //listaReglaDTO.remove(reglaDTO);
             }
+        listaReglas.remove(reglaBaja);
+        listaReglaDTO.remove(reglaDTO);
     }
     //METODOS:
 
     //EXISTE USUARIO (INICIO SECCION)
     public boolean InicioSeccion(UsuarioSistemaDTO userd){ //si es true muestra menu, sino NO (ver en vista)
         for (UsuarioSistema user:listaUsuarios){
-            if (user.getUsuario()==userd.usuario && user.getPassword()==userd.password){
+            if (user.getNroUsuario()==userd.NroUsuario && user.getPassword()==userd.password){
                 return true;
             }
         }

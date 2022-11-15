@@ -4,7 +4,7 @@ import model.enums.TipoRol;
 import java.time.LocalDate;
 
 public class UsuarioSistemaDTO {
-    public String usuario;
+    public int NroUsuario;
     public String email ;
     public String password;
     public String nombre;
@@ -15,11 +15,11 @@ public class UsuarioSistemaDTO {
 
     @Override
     public String toString() {
-        return "Usuario: " + usuario + " Nombre: " + nombre;
+        return "Usuario: " + NroUsuario + " Nombre: " + nombre;
     }
 
-    public UsuarioSistemaDTO(String usuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
-        this.usuario = usuario;
+    public UsuarioSistemaDTO(int NroUsuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {
+        this.NroUsuario = NroUsuario;
         this.email = email;
         this.password = password;
         this.nombre = nombre;

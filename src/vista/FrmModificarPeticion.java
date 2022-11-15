@@ -55,7 +55,7 @@ public class FrmModificarPeticion extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO(pacienteDTO, sucursalDTO, textField1.getText(), textField2.getText(), practicasDTO, textField4.getText(), TipoEstado.En_proceso, parseInt(Numero.getText()));
+                PeticionesDTO peticionesDTO = new PeticionesDTO(pacienteDTO, sucursalDTO, textField1.getText(), textField2.getText(), practicasDTO, textField4.getText(), (TipoEstado) comboBox2.getSelectedItem(), parseInt(Numero.getText()));
                 ControllerPeticiones.getInstancia().modificacionPeticion(peticionesDTO);
                 setVisible(false);
             }
