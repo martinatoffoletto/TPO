@@ -6,27 +6,15 @@ public class Practicas {
     private int codigo;
     private String nombrePractica;
     private String grupo;
-    private TipoValor valoresCriticos;
-    private TipoValor valoresReservados;
     private int horasResultado;
     private boolean estado;
     private Regla regla;
 
-
-    @Override
-    public String toString() {
-        return "Practica" +
-                "codigo = " + codigo +
-                ", Nombre Practica = '" + nombrePractica;
-    }
-
     //CONSTRUCTOR
-    public Practicas(int codigo, String nombrePractica, String grupo, TipoValor valoresCriticos, TipoValor valoresReservados, int horasResultado) {
+    public Practicas(int codigo, String nombrePractica, String grupo,  int horasResultado) {
         this.codigo = codigo;
         this.nombrePractica = nombrePractica;
         this.grupo = grupo;
-        this.valoresCriticos = valoresCriticos;
-        this.valoresReservados = valoresReservados;
         this.horasResultado = horasResultado;
         estado=true;
     }
@@ -60,28 +48,12 @@ public class Practicas {
         this.grupo = grupo;
     }
 
-    public TipoValor getValoresCriticos() {
-        return valoresCriticos;
-    }
-
-    public void setValoresCriticos(TipoValor valoresCriticos) {
-        this.valoresCriticos = valoresCriticos;
-    }
-
-    public TipoValor getValoresReservados() {
-        return valoresReservados;
-    }
-
     public Regla getRegla() {
         return regla;
     }
 
     public void setRegla(Regla regla) {
         this.regla = regla;
-    }
-
-    public void setValoresReservados(TipoValor valoresReservados) {
-        this.valoresReservados = valoresReservados;
     }
 
     public int getHorasResultado() {

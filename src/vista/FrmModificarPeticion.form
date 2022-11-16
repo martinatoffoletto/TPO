@@ -104,7 +104,7 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="a1993" class="javax.swing.JLabel" binding="PacienteDNI">
+      <component id="a1993" class="javax.swing.JLabel" binding="Paciente">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -112,7 +112,7 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="85c32" class="javax.swing.JLabel" binding="SucursalNumero">
+      <component id="85c32" class="javax.swing.JLabel" binding="Sucursal">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

@@ -17,8 +17,6 @@ public class FrmModificarPractica extends JDialog {
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
     private JTextField textField4;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
@@ -33,34 +31,17 @@ public class FrmModificarPractica extends JDialog {
         Codigo.setText(String.valueOf(practicasDTO.codigo));
         textField2.setText(practicasDTO.nombrePractica);
         textField3.setText(practicasDTO.grupo);
-        comboBox1.setSelectedItem(practicasDTO.valoresCriticos);
-        comboBox2.setSelectedItem(practicasDTO.valoresReservados);
         textField4.setText(String.valueOf(practicasDTO.horasResultado));
-        asignarDatosCombo();
         asignarDatosComboPracticas();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PracticasDTO practicasDTO = new PracticasDTO(parseInt(Codigo.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (ReglaDTO) comboBox3.getSelectedItem());
+                PracticasDTO practicasDTO = new PracticasDTO(parseInt(Codigo.getText()), textField2.getText(), textField3.getText(), parseInt(textField4.getText()), (ReglaDTO) comboBox3.getSelectedItem());
                 ControllerParametros.getInstancia().modificacionPractica(practicasDTO);
                 setVisible(false);
             }
         });
 
-    }
-    private void asignarDatosCombo() {
-        ArrayList<TipoValor> listaValores = new ArrayList<TipoValor>();
-        for (TipoValor tipoValor: TipoValor.values()) {
-            listaValores.add(tipoValor);
-        }
-
-
-
-
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        modelo.addAll(listaValores);
-        comboBox1.setModel(modelo);
-        comboBox2.setModel(modelo);
     }
 
     private void asignarDatosComboPracticas() {

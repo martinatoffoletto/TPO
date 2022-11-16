@@ -2,33 +2,38 @@ package model;
 
 import model.enums.TipoEstado;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Peticiones {
     private Paciente paciente;
-    private String ObraSocial;
+    private String obraSocial;
     private String fechaCarga;
     private Practicas practicaAsociada;
     private String fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
     private Sucursal sucursal;
+    private Resultado resultado;
 
 
     //CONSTRUCTOR
-    public Peticiones(String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
-        ObraSocial = obraSocial;
+    public Peticiones(Paciente paciente, Sucursal sucursal, Practicas practicaAsociada, String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
+        this.obraSocial = obraSocial;
+        this.practicaAsociada = practicaAsociada;
         this.fechaCarga = fechaCarga;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.nroPeticion = nroPeticion;
         this.sucursal=sucursal;
+        this.paciente=paciente;
     }
 
+    public Resultado getResultado() {
+        return resultado;
+    }
 
-    //SETTER Y GETTERS
+    public void setResultado(Resultado resultado) {
+        this.resultado = resultado;
+    }
+//SETTER Y GETTERS
 
     public Sucursal getSucursal() {
         return sucursal;
@@ -46,11 +51,11 @@ public class Peticiones {
     }
 
     public String getObraSocial() {
-        return ObraSocial;
+        return obraSocial;
     }
 
     public void setObraSocial(String obraSocial) {
-        ObraSocial = obraSocial;
+        this.obraSocial = obraSocial;
     }
 
     public String getFechaCarga() {

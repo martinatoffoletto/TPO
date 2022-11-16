@@ -54,12 +54,21 @@ public class ControllerPeticiones {
     //ABM RESULTADOS
     public void altaResultados(ResultadoDTO resultadoDTO) {
         Peticiones peticion = null;
+        PeticionesDTO peticionDTO = null;
         for (Peticiones peticiones: listaPeticiones)
             if (peticiones.getNroPeticion() == resultadoDTO.peticion.nroPeticion)
                 peticion = peticiones;
         Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, peticion);
         listaResultados.add(resultado);
         listaResultadosDTO.add(resultadoDTO);
+        peticion.setResultado(resultado);
+        for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
+            if (peticionesDTO.nroPeticion == peticion.getNroPeticion())
+                peticionDTO = peticionesDTO;
+        peticionDTO.resultadoDTO = resultadoDTO;
+
+        peticionDTO.estado = TipoEstado.Con_Resultados;
+        modificacionPeticion(peticionDTO);
     }
 
     public void bajaResultados(ResultadoDTO resultadoDTO) {
@@ -94,17 +103,19 @@ public class ControllerPeticiones {
 
     //ABM PETICIONES
     public void altaPeticion(PeticionesDTO peticionesDTO) {
-
-        Peticiones peticion = new Peticiones(peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion);
+        Paciente pacientePeticion = null;
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
             if (paciente.getDNI() == peticionesDTO.paciente.DNI)
-                peticion.setPaciente(paciente);
+                pacientePeticion = paciente;
+        Sucursal sucursalPeticion = null;
         for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
             if (sucursal.getNumero() == peticionesDTO.sucursal.numero)
-                peticion.setSucursal(sucursal);
+                sucursalPeticion = sucursal;
+        Practicas practicaAsociada = null;
         for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
             if (practica.getCodigo() == peticionesDTO.practicaAsociada.codigo)
-                peticion.setPracticaAsociada(practica);
+                practicaAsociada = practica;
+        Peticiones peticion = new Peticiones(pacientePeticion, sucursalPeticion,practicaAsociada, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion);
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
             if (paciente.getDNI() == peticionesDTO.paciente.DNI)
                 paciente.AgregarPeticion(peticion);
@@ -132,7 +143,6 @@ public class ControllerPeticiones {
     public void modificacionPeticion(PeticionesDTO peticionMod) {
         for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
             if (peticionesDTO.nroPeticion==peticionMod.nroPeticion) {
-                peticionesDTO.nroPeticion=peticionMod.nroPeticion;
                 peticionesDTO.paciente=peticionMod.paciente;
                 peticionesDTO.sucursal=peticionMod.sucursal;
                 peticionesDTO.estado=peticionMod.estado;

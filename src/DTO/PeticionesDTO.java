@@ -17,6 +17,7 @@ public class PeticionesDTO {
     public String fechaEntrega;
     public TipoEstado estado;
     public int nroPeticion;
+    public ResultadoDTO resultadoDTO;
 
     @Override
     public String toString() {
@@ -26,7 +27,7 @@ public class PeticionesDTO {
 
     }
 
-    public PeticionesDTO(PacienteDTO paciente, SucursalDTO sucursal, String obraSocial, String fechaCarga, PracticasDTO practicaAsociada, String fechaEntrega, TipoEstado estado, int nroPeticion) {
+    public PeticionesDTO(PacienteDTO paciente, SucursalDTO sucursal, PracticasDTO practicaAsociada,String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;
         this.ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;

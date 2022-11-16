@@ -122,8 +122,7 @@ public class ControllerParametros {
 
     //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
-        Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo,
-                practicaDTO.valoresCriticos, practicaDTO.valoresReservados, practicaDTO.horasResultado);
+        Practicas practica = new Practicas(practicaDTO.codigo, practicaDTO.nombrePractica, practicaDTO.grupo, practicaDTO.horasResultado);
         for (Regla regla: listaReglas)
             if (regla.getCodigo() == practicaDTO.regla.codigo)
                 practica.setRegla(regla);
@@ -159,15 +158,11 @@ public class ControllerParametros {
         for (PracticasDTO practicasDTO1: listaPracticasDTO)
             if (practicasDTO1.codigo==practicasDTO.codigo) {
                 practicasDTO1.codigo=practicasDTO.codigo;
-                practicasDTO1.valoresCriticos=practicasDTO.valoresCriticos;
-                practicasDTO1.valoresReservados=practicasDTO.valoresReservados;
                 practicasDTO1.grupo=practicasDTO.grupo;
             }
         for (Practicas practica: listaPracticas ) {
             if (practica.getCodigo() == practicasDTO.codigo) {
-                practica.setValoresReservados(practicasDTO.valoresReservados);
                 practica.setNombrePractica(practicasDTO.nombrePractica);
-                practica.setValoresCriticos(practicasDTO.valoresCriticos);
                 practica.setGrupo(practicasDTO.grupo);
             }
 
@@ -186,8 +181,6 @@ public class ControllerParametros {
                 int codigo=practica.getCodigo();
                 String nombrePractia=practica.getNombrePractica();
                 String grupo=practica.getGrupo();
-                TipoValor valoresCriticos= practica.getValoresCriticos();
-                TipoValor valoresReservados= practica.getValoresReservados();
                 int horasResult=practica.getHorasResultado();
                 boolean estado=practica.getEstado();
             }

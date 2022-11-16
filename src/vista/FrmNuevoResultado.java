@@ -39,9 +39,6 @@ public class FrmNuevoResultado extends JDialog {
                 if (textField3.getText() != "")
                     resultadoDTO.valorBooleano = parseBoolean(textField3.getText());
                 ControllerPeticiones.getInstancia().altaResultados(resultadoDTO);
-                PeticionesDTO peticionDTO = (PeticionesDTO) comboBox1.getSelectedItem();
-                peticionDTO.estado = TipoEstado.Con_Resultados;
-                ControllerPeticiones.getInstancia().modificacionPeticion(peticionDTO);
                 setVisible(false);
             }
         });

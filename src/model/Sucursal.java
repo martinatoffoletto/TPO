@@ -24,12 +24,6 @@ public class Sucursal {
     }
     //GETTER Y SETTER
 
-    @Override
-    public String toString() {
-        return "Sucursal{" +
-                "numero=" + numero +
-                '}';
-    }
 
     public ArrayList<Paciente> getListaPacientes() {
         return listaPacientes;

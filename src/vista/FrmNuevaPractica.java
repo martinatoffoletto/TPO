@@ -32,32 +32,16 @@ public class FrmNuevaPractica extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        asignarDatosCombo();
         asignarDatosComboPracticas();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PracticasDTO practicasDTO = new PracticasDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), (TipoValor) comboBox1.getSelectedItem(), (TipoValor) comboBox2.getSelectedItem(), parseInt(textField4.getText()), (ReglaDTO) comboBox3.getSelectedItem());
+                PracticasDTO practicasDTO = new PracticasDTO(parseInt(textField1.getText()), textField2.getText(), textField3.getText(), parseInt(textField4.getText()), (ReglaDTO) comboBox3.getSelectedItem());
                 ControllerParametros.getInstancia().altaPractica(practicasDTO);
                 setVisible(false);
             }
         });
     }
-    private void asignarDatosCombo() {
-        ArrayList<TipoValor> listaValores = new ArrayList<TipoValor>();
-        for (TipoValor tipoValor: TipoValor.values()) {
-            listaValores.add(tipoValor);
-        }
-
-
-
-
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        modelo.addAll(listaValores);
-        comboBox1.setModel(modelo);
-        comboBox2.setModel(modelo);
-    }
-
     private void asignarDatosComboPracticas() {
         ArrayList<ReglaDTO> listaReglas = new ArrayList<ReglaDTO>();
         for (ReglaDTO regla: ControllerParametros.getInstancia().listaReglaDTO) {
