@@ -1,10 +1,12 @@
 package DTO;
 
 import model.enums.TipoRango;
+import model.enums.TipoValor;
 
 public class ReglaDTO {
     public int codigo;
     public TipoRango tipoRango;
+    public TipoValor tipoValor;
 
     @Override
     public String toString() {

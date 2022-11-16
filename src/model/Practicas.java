@@ -64,9 +64,6 @@ public class Practicas {
         this.horasResultado = horasResultado;
     }
 
-    public void EstadoFalso() {
-        this.estado = false;
-    }
 
 
 }

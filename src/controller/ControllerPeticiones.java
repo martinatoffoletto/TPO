@@ -188,33 +188,12 @@ public class ControllerPeticiones {
             }
         }
     }
-
-
-
-    //METODOS:
-
-
-
-
-
-
-
-
-      ///
-    public void consultarResultados() {
+    public void tieneResultadoValorCritico(PeticionesDTO peticionesDTO) {
 
     }
-
-    public void procesarMuestras() { //laborista
+    public void tieneResultadoValorReservado(PeticionesDTO peticionesDTO) {
 
     }
-/*
-    BUSCAR PETICION
-    LISTAR PETICION
-    AGREGAR PETICION
-    ELIMINAR PETICION
-
- */
 
 
 }

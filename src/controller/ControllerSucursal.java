@@ -1,10 +1,8 @@
 package controller;
 
 import DTO.*;
-import model.Paciente;
-import model.Peticiones;
-import model.Practicas;
-import model.Sucursal;
+import model.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +50,11 @@ public class ControllerSucursal {
 
     //ALTA SUCURSAL
     public void altaSucursal(SucursalDTO sucursalDTO) {
-        Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,sucursalDTO.responsableTecnico);
+        UsuarioSistema responsableTecnico = null;
+        for (UsuarioSistema usuarioSistema: ControllerParametros.getInstancia().getListaUsuarios())
+            if (usuarioSistema.getDNI() == sucursalDTO.responsableTecnico.DNI)
+                responsableTecnico = usuarioSistema;
+        Sucursal sc= new Sucursal(sucursalDTO.numero,sucursalDTO.direccion,responsableTecnico);
         listaSucursal.add(sc);
         listaSucursalDTO.add(sucursalDTO);
     }
@@ -104,14 +106,15 @@ public class ControllerSucursal {
                 sucursalDTO1.direccion = sucursalDTO.direccion;
                 sucursalDTO1.responsableTecnico = sucursalDTO.responsableTecnico;
             }
+        UsuarioSistema responsableTecnico = null;
+        for (UsuarioSistema usuarioSistema: ControllerParametros.getInstancia().getListaUsuarios())
+            if (usuarioSistema.getDNI() == sucursalDTO.responsableTecnico.DNI)
+                responsableTecnico = usuarioSistema;
         for (Sucursal sucursal: listaSucursal){
             if(sucursal.getNumero()==sucursalDTO.numero){
-                if(sucursalDTO.direccion!=null){
-                    sucursal.setDireccion(sucursalDTO.direccion);
-                }
-
+                sucursal.setDireccion(sucursalDTO.direccion);
                 sucursal.setNumero(sucursalDTO.numero);
-                sucursal.setResponsableTecnico(sucursalDTO.responsableTecnico);
+                sucursal.setResponsableTecnico(responsableTecnico);
             }
         }
 
@@ -188,7 +191,7 @@ public class ControllerSucursal {
             if (sc.getNumero()==sucursalDTO.numero){
                 int numero= sc.getNumero();
                 String direccion= sc.getDireccion();
-                String responsableTecnico =sc.getResponsableTecnico();
+                UsuarioSistema responsableTecnico =sc.getResponsableTecnico();
             }
         }
 

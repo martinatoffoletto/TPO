@@ -44,4 +44,14 @@ public class Resultado {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+    public boolean esResultadoCritico() {
+        boolean esCritico = false;
+        return esCritico;
+    }
+
+    public boolean esResultadoReservado() {
+        boolean esReservado = false;
+        return esReservado;
+    }
 }

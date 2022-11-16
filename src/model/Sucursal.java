@@ -8,13 +8,13 @@ import java.util.List;
 public class Sucursal {
     private int numero ;
     private String direccion;
-    private String responsableTecnico;
+    private UsuarioSistema responsableTecnico;
     private  ArrayList<Peticiones> listaPeticiones;
     private ArrayList<Paciente> listaPacientes;
     private ArrayList<Practicas> listaPracticas;
 
     //CONSTRUCTOR
-    public Sucursal(int numero, String direccion, String responsableTecnico) {
+    public Sucursal(int numero, String direccion,UsuarioSistema responsableTecnico) {
         this.numero = numero;
         this.direccion = direccion;
         this.responsableTecnico = responsableTecnico;
@@ -57,11 +57,11 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public String getResponsableTecnico() {
+    public UsuarioSistema getResponsableTecnico() {
         return responsableTecnico;
     }
 
-    public void setResponsableTecnico(String responsableTecnico) {
+    public void setResponsableTecnico(UsuarioSistema responsableTecnico) {
         this.responsableTecnico = responsableTecnico;
     }
 

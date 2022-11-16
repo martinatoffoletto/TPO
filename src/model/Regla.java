@@ -28,8 +28,8 @@ public class Regla {
         this.valorReservado = valorReservado;
     }
 
-    public Regla(int codigo) {
-        this.codigo = codigo;
+    public Regla(int codigo, TipoValor tipoValor) {
+        this.codigo = codigo; this.tipoValor = tipoValor;
     }
     public void setCodigo(int codigo) {
         this.codigo = codigo;

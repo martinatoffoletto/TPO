@@ -144,7 +144,7 @@ public class ControllerParametros {
             }
         }
         if(usado){ //INHABILITAR
-            practBja.EstadoFalso();
+            listaPracticasDTO.remove(practicasDTO);
         }else {
             listaPracticas.remove(practBja);
             listaPracticasDTO.remove(practicasDTO);
@@ -188,7 +188,7 @@ public class ControllerParametros {
     }
 
     public void altaRegla(ReglaDTO reglaDTO) {
-        Regla regla = new Regla(reglaDTO.codigo);
+        Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoValor);
         if (regla.getTipoValor() == TipoValor.NUMERICO) {
             regla.setTipoRango(reglaDTO.tipoRango);
             regla.setValorCritico(reglaDTO.valorCritico);

@@ -29,10 +29,6 @@ public class Main {
         ControllerPeticiones.getInstancia();
         FrmMenuPrincipal win = new FrmMenuPrincipal();
         win.setVisible(true);
-        SucursalDTO suc = new SucursalDTO(1, "123", "Ejemplo");
-        ControllerSucursal.getInstancia().altaSucursal(suc);
-        SucursalDTO suc2 = new SucursalDTO(2, "1234", "Ejemplo2");
-        ControllerSucursal.getInstancia().altaSucursal(suc2);
         PacienteDTO pac = new PacienteDTO(123, "Juan", "123", "mail", "F", 18);
         ControllerSucursal.getInstancia().altaPaciente(pac);
         //ReglaDTO reg = new ReglaDTO(1);

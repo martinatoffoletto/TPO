@@ -1,6 +1,7 @@
 package vista;
 
 import DTO.SucursalDTO;
+import DTO.UsuarioSistemaDTO;
 import controller.ControllerSucursal;
 
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class FrmModificarSucursal extends JDialog {
     private JButton guardarButton;
     private JPanel pnlPrincipal;
     private JLabel Numero;
+    private JComboBox comboBox1;
 
     public FrmModificarSucursal(SucursalDTO sucursalDTO) {
         setSize(400, 400);
@@ -25,12 +27,12 @@ public class FrmModificarSucursal extends JDialog {
         setContentPane(pnlPrincipal);
         Numero.setText(String.valueOf(sucursalDTO.numero));
         textField2.setText(sucursalDTO.direccion);
-        textField3.setText(sucursalDTO.responsableTecnico);
+        comboBox1.setSelectedItem(sucursalDTO.responsableTecnico);
 
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SucursalDTO suc = new SucursalDTO(parseInt(Numero.getText()), textField2.getText(), textField3.getText());
+                SucursalDTO suc = new SucursalDTO(parseInt(Numero.getText()), textField2.getText(), (UsuarioSistemaDTO) comboBox1.getSelectedItem());
                 ControllerSucursal.getInstancia().modificacionSucursal(suc);
                 setVisible(false);
             }
