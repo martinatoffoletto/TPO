@@ -218,14 +218,20 @@ public class ControllerSucursal {
 
 
     //Listar Peticiones PACIENTE
-    public ArrayList<Peticiones> listarPeticionesPaciente(PacienteDTO pacienteDTO) {
+    public ArrayList<PeticionesDTO> listarPeticionesPaciente(PacienteDTO pacienteDTO) {
         ArrayList<Peticiones> listaPeticionesPaciente = new ArrayList<Peticiones>();
         for (Paciente paciente: listaPacientes){
             if (paciente.getDNI()==pacienteDTO.DNI){
                 listaPeticionesPaciente = paciente.getListaPeticionesPaciente();
             }
         }
-    return listaPeticionesPaciente;
+        ArrayList<PeticionesDTO> listaPeticionesPacienteDTO = new ArrayList<PeticionesDTO>();
+        for (PeticionesDTO peticionDTO: ControllerPeticiones.getInstancia().listaPeticionesDTO)
+            for (Peticiones peticion: listaPeticionesPaciente)
+                if (peticionDTO.nroPeticion == peticion.getNroPeticion())
+                    listaPeticionesPacienteDTO.add(peticionDTO);
+
+    return listaPeticionesPacienteDTO;
     }
 
     //DATOS PACIENTE

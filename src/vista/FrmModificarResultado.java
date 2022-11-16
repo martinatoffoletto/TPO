@@ -28,17 +28,15 @@ public class FrmModificarResultado extends JDialog {
         ID.setText(String.valueOf(resultadoDTO.ID));
         textField2.setText(String.valueOf(resultadoDTO.valorNumerico));
         textField3.setText(String.valueOf(resultadoDTO.valorBooleano));
-        textField4.setText(resultadoDTO.descripcion);
+        textField4.setText(String.valueOf(resultadoDTO.peticion.nroPeticion));
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ResultadoDTO resultado1 = new ResultadoDTO(parseInt(ID.getText()));
+                ResultadoDTO resultado1 = new ResultadoDTO(parseInt(ID.getText()), resultadoDTO.peticion);
                 if (textField2.getText() != "")
                     resultado1.valorNumerico = parseInt(textField2.getText());
                 if (textField3.getText() != "")
                     resultado1.valorBooleano = parseBoolean(textField3.getText());
-                if (textField4.getText() != "")
-                    resultado1.descripcion = textField4.getText();
                 ControllerPeticiones.getInstancia().modificacionResultado(resultado1);
                 setVisible(false);
             }

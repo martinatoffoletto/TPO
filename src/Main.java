@@ -39,7 +39,5 @@ public class Main {
         //ControllerParametros.getInstancia().altaRegla(reg);
         //PracticasDTO prac = new PracticasDTO(123, "Practica", "2", TipoValor.BOOLEAN, TipoValor.BOOLEAN, 2, );
         //ControllerParametros.getInstancia().altaPractica(prac);
-        ResultadoDTO resultadoDTO = new ResultadoDTO(1);
-        ControllerPeticiones.getInstancia().altaResultados(resultadoDTO);
     }
 }

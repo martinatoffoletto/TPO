@@ -26,8 +26,6 @@ public class FrmModificarPeticion extends JDialog {
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
-    private JComboBox comboBox2;
-    private JTextField textField5;
     private JButton guardarButton;
     private JPanel pnlPrincipal;
     private JLabel Numero;
@@ -49,26 +47,15 @@ public class FrmModificarPeticion extends JDialog {
         textField1.setText(peticionesDTO.ObraSocial);
         textField2.setText(peticionesDTO.fechaCarga);
         textField4.setText(peticionesDTO.fechaEntrega);
-        comboBox2.setSelectedItem(peticionesDTO.estado);
         Numero.setText(String.valueOf(peticionesDTO.nroPeticion));
-        asignarDatosComboEstado();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO(pacienteDTO, sucursalDTO, textField1.getText(), textField2.getText(), practicasDTO, textField4.getText(), (TipoEstado) comboBox2.getSelectedItem(), parseInt(Numero.getText()));
-                ControllerPeticiones.getInstancia().modificacionPeticion(peticionesDTO);
+                PeticionesDTO peticionDTO = new PeticionesDTO(pacienteDTO, sucursalDTO, textField1.getText(), textField2.getText(), practicasDTO, textField4.getText(), peticionesDTO.estado, parseInt(Numero.getText()));
+                ControllerPeticiones.getInstancia().modificacionPeticion(peticionDTO);
                 setVisible(false);
             }
         });
     }
 
-    private void asignarDatosComboEstado() {
-        ArrayList<TipoEstado> listaEstados = new ArrayList<TipoEstado>();
-        for (TipoEstado tipoEstado : TipoEstado.values()) {
-            listaEstados.add(tipoEstado);
-        }
-        DefaultComboBoxModel modeloEstado = new DefaultComboBoxModel();
-        modeloEstado.addAll(listaEstados);
-        comboBox2.setModel(modeloEstado);
-    }
 }

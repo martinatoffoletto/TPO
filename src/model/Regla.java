@@ -3,8 +3,6 @@ package model;
 import model.enums.TipoRango;
 import model.enums.TipoValor;
 
-import java.util.List;
-
 public class Regla {
     private int codigo;
     private TipoValor tipoValor;
@@ -19,7 +17,16 @@ public class Regla {
     }
 
     private boolean valorBooleano;
-    private double valor;
+    private double valorCritico;
+    private double valorReservado;
+
+    public double getValorReservado() {
+        return valorReservado;
+    }
+
+    public void setValorReservado(double valorReservado) {
+        this.valorReservado = valorReservado;
+    }
 
     public Regla(int codigo) {
         this.codigo = codigo;
@@ -46,12 +53,12 @@ public class Regla {
         this.valorBooleano = valorBooleano;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValorCritico() {
+        return valorCritico;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setValorCritico(double valorCritico) {
+        this.valorCritico = valorCritico;
     }
 
 }

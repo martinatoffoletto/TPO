@@ -4,13 +4,12 @@ public class Resultado {
     private int ID;
     private int valorNumerico;
     private boolean valorBooleano;
-    private String descripcion;
-
-    public Resultado(int ID, int valorNumerico, boolean valorBooleano, String descripcion) {
+    private Peticiones peticion;
+    public Resultado(int ID, int valorNumerico, boolean valorBooleano, Peticiones peticion) {
         this.ID = ID;
         this.valorNumerico = valorNumerico;
         this.valorBooleano = valorBooleano;
-        this.descripcion = descripcion;
+        this.peticion = peticion;
     }
 
     public int getValorNumerico() {
@@ -29,16 +28,17 @@ public class Resultado {
         this.valorBooleano = valorBooleano;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public int getID() {
         return ID;
+    }
+
+    public Peticiones getPeticion() {
+        return peticion;
+    }
+
+    public void setPeticion(Peticiones peticion) {
+        this.peticion = peticion;
     }
 
     public void setID(int ID) {

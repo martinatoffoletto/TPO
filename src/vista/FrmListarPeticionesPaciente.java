@@ -1,6 +1,7 @@
 package vista;
 
 import DTO.PacienteDTO;
+import DTO.PeticionesDTO;
 import DTO.SucursalDTO;
 import controller.ControllerSucursal;
 import model.Paciente;
@@ -23,7 +24,7 @@ public class FrmListarPeticionesPaciente extends JDialog {
     }
 
     public void asignarDatosLista(PacienteDTO pacienteDTO) {
-        ArrayList<Peticiones> listaPeticiones = ControllerSucursal.getInstancia().listarPeticionesPaciente(pacienteDTO);
+        ArrayList<PeticionesDTO> listaPeticiones = ControllerSucursal.getInstancia().listarPeticionesPaciente(pacienteDTO);
         DefaultListModel model = new DefaultListModel();
         model.addAll(listaPeticiones);
         list1.setModel(model);

@@ -11,7 +11,7 @@ public class PacienteDTO {
     public String mail;
     public String sexo;
     public int edad;
-    public ArrayList<Peticiones> listaPeticionesPaciente;
+    public ArrayList<PeticionesDTO> listaPeticionesPaciente;
 
 
 
@@ -23,7 +23,7 @@ public class PacienteDTO {
         this.mail = mail;
         this.sexo = sexo;
         this.edad = edad;
-        listaPeticionesPaciente= new ArrayList<Peticiones>();
+        listaPeticionesPaciente= new ArrayList<PeticionesDTO>();
 
     }
 

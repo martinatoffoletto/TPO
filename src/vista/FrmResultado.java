@@ -39,11 +39,19 @@ public class FrmResultado extends JInternalFrame {
                 asignarDatosCombo();
             }
         });
+        eliminarResultadoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ResultadoDTO resultadoDTO = (ResultadoDTO) comboBox1.getSelectedItem();
+                ControllerPeticiones.getInstancia().bajaResultados(resultadoDTO);
+                asignarDatosCombo();
+            }
+        });
     }
 
     private void asignarDatosCombo() {
         ArrayList<ResultadoDTO> listaResultados = new ArrayList<ResultadoDTO>();
-        for (ResultadoDTO resultadoDTO: ControllerPeticiones.getInstancia().listaResultadosDTO)
+        for (ResultadoDTO resultadoDTO: ControllerPeticiones.getInstancia().getListaResultadosDTO())
             listaResultados.add(resultadoDTO);
 
 

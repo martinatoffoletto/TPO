@@ -18,6 +18,9 @@ public class ControllerPeticiones {
     public ArrayList<PeticionesDTO> listaPeticionesDTO;
     public ArrayList<ResultadoDTO> listaResultadosDTO;
 
+    public ArrayList<ResultadoDTO> getListaResultadosDTO() {
+        return listaResultadosDTO;
+    }
 
     //SINGLETON
     public static ControllerPeticiones getInstancia() {
@@ -50,19 +53,24 @@ public class ControllerPeticiones {
 
     //ABM RESULTADOS
     public void altaResultados(ResultadoDTO resultadoDTO) {
-        Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, resultadoDTO.descripcion);
+        Peticiones peticion = null;
+        for (Peticiones peticiones: listaPeticiones)
+            if (peticiones.getNroPeticion() == resultadoDTO.peticion.nroPeticion)
+                peticion = peticiones;
+        Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, peticion);
         listaResultados.add(resultado);
         listaResultadosDTO.add(resultadoDTO);
     }
 
-    public void bajaResultados(ResultadoDTO resuBaja) {
-        for (Resultado resultado: listaResultados) {
-            if (resultado.getID() == resuBaja.ID) {
-                listaResultados.remove(resultado);
-                listaResultadosDTO.remove(resuBaja);
+    public void bajaResultados(ResultadoDTO resultadoDTO) {
+        Resultado resuBaja = null;
+        for (Resultado resultado: listaResultados)
+            if (resultado.getID() == resultadoDTO.ID) {
+                resuBaja = resultado;
             }
+        listaResultados.remove(resuBaja);
+        listaResultadosDTO.remove(resultadoDTO);
 
-        }
     }
 
     public void modificacionResultado(ResultadoDTO resuMod) {
@@ -71,7 +79,7 @@ public class ControllerPeticiones {
                 resultadoDTO.ID=resuMod.ID;
                 resultadoDTO.valorNumerico= resuMod.valorNumerico;
                 resultadoDTO.valorBooleano= resuMod.valorBooleano;
-                resultadoDTO.descripcion= resuMod.descripcion;
+                resultadoDTO.peticion= resuMod.peticion;
             }
         for (Resultado resultado: listaResultados) {
             if (resultado.getID() == resuMod.ID)
@@ -79,8 +87,6 @@ public class ControllerPeticiones {
                 resultado.setID(resuMod.ID);
                 resultado.setValorNumerico(resuMod.valorNumerico);
                 resultado.setValorBooleano(resuMod.valorBooleano);
-                resultado.setDescripcion(resuMod.descripcion);
-
             }
         }
     }

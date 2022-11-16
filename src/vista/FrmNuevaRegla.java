@@ -20,6 +20,7 @@ public class FrmNuevaRegla extends JDialog {
     private JButton guardarButton;
     private JTextField textField2;
     private JComboBox comboBox3;
+    private JTextField textField3;
 
     public FrmNuevaRegla() {
         setSize(400, 400);
@@ -38,7 +39,9 @@ public class FrmNuevaRegla extends JDialog {
                 if (comboBox2.getSelectedItem() != null)
                     reglaDTO.valorBooleano = (boolean) comboBox2.getSelectedItem();
                 if (textField2.getText() != "")
-                    reglaDTO.valor = Double.parseDouble(textField2.getText());
+                    reglaDTO.valorCritico = Double.parseDouble(textField2.getText());
+                if (textField3.getText() != "")
+                    reglaDTO.valorReservado = Double.parseDouble(textField3.getText());
                 ControllerParametros.getInstancia().altaRegla(reglaDTO);
                 setVisible(false);
             }

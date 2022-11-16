@@ -4,13 +4,9 @@ import DTO.PracticasDTO;
 import DTO.ReglaDTO;
 import DTO.UsuarioSistemaDTO;
 import model.*;
-import model.enums.TipoRol;
-import controller.*;
 import model.enums.TipoValor;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControllerParametros {
     public ArrayList<PracticasDTO> getListaPracticasDTO() {
@@ -33,6 +29,10 @@ public class ControllerParametros {
         if (instancia == null)
             instancia = new ControllerParametros();
         return instancia;
+    }
+
+    public void setListaUsuarios(ArrayList<UsuarioSistema> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
     public ArrayList<Practicas> getListaPracticas() {
@@ -69,12 +69,14 @@ public class ControllerParametros {
     }
 
     //BAJA USUARIOS
-    public void bajaUsuario(UsuarioSistemaDTO usuBaja) {
+    public void bajaUsuario(UsuarioSistemaDTO usuarioSistemaDTO) {
+        UsuarioSistema usuBaja = null;
         for (UsuarioSistema usuario: listaUsuarios)
-            if (usuario.getNroUsuario() == usuBaja.NroUsuario) {
-                listaUsuarios.remove(usuario);
+            if (usuario.getNroUsuario() == usuarioSistemaDTO.NroUsuario) {
+                usuBaja = usuario;
             }
-        listaUsuariosDTO.remove(usuBaja);
+        listaUsuarios.remove(usuBaja);
+        listaUsuariosDTO.remove(usuarioSistemaDTO);
 
     }
 
@@ -82,7 +84,8 @@ public class ControllerParametros {
     //MODIFICACION USUARIOS
     public void modificacionUsuario(UsuarioSistemaDTO usuMod) {
         for (UsuarioSistemaDTO usuarioSistemaDTO: listaUsuariosDTO)
-            if (usuarioSistemaDTO.DNI == usuMod.DNI) {
+            if (usuarioSistemaDTO.NroUsuario == usuMod.NroUsuario) {
+                usuarioSistemaDTO.DNI = usuMod.DNI;
                 usuarioSistemaDTO.email=usuMod.email;
                 usuarioSistemaDTO.password=usuMod.password;
                 usuarioSistemaDTO.nombre=usuMod.nombre;
@@ -92,6 +95,7 @@ public class ControllerParametros {
             }
         for (UsuarioSistema usuario: getListaUsuarios() ) {
             if (usuario.getNroUsuario() == usuMod.NroUsuario) {
+                usuario.setDNI(usuMod.DNI);
                 usuario.setEmail(usuMod.email);
                 usuario.setPassword(usuMod.password);
                 usuario.setNombre(usuMod.nombre);
@@ -123,7 +127,7 @@ public class ControllerParametros {
         for (Regla regla: listaReglas)
             if (regla.getCodigo() == practicaDTO.regla.codigo)
                 practica.setRegla(regla);
-                listaPracticas.add(practica);
+        listaPracticas.add(practica);
         listaPracticasDTO.add(practicaDTO);
     }
 
@@ -194,7 +198,8 @@ public class ControllerParametros {
         Regla regla = new Regla(reglaDTO.codigo);
         if (regla.getTipoValor() == TipoValor.NUMERICO) {
             regla.setTipoRango(reglaDTO.tipoRango);
-            regla.setValor(reglaDTO.valor);
+            regla.setValorCritico(reglaDTO.valorCritico);
+            regla.setValorReservado(reglaDTO.valorReservado);
         }
         if (regla.getTipoValor() == TipoValor.BOOLEAN)
             regla.setValorBooleano(reglaDTO.valorBooleano);
@@ -207,7 +212,6 @@ public class ControllerParametros {
         for (Regla regla: listaReglas)
             if (regla.getCodigo() == reglaDTO.codigo) {
                 reglaBaja = regla;
-                //listaReglaDTO.remove(reglaDTO);
             }
         listaReglas.remove(reglaBaja);
         listaReglaDTO.remove(reglaDTO);
