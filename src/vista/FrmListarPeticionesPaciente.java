@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class FrmListarPeticionesPaciente extends JDialog {
     private JPanel pnlPrincipal;
     private JList list1;
-    private JCheckBox listarEnValoresCriticosCheckBox;
 
     public FrmListarPeticionesPaciente(PacienteDTO pacienteDTO) {
         setSize(400, 400);

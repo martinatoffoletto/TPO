@@ -7,7 +7,8 @@ public class ResultadoDTO {
     public int valorNumerico;
     public boolean valorBooleano;
     public PeticionesDTO peticion;
-
+    public boolean esValorCritico;
+    public boolean esValorReservado;
     @Override
     public String toString() {
         return "ID=" + ID;

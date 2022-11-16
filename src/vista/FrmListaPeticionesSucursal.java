@@ -13,7 +13,6 @@ public class FrmListaPeticionesSucursal extends JDialog {
 
     private JPanel pnlPrincipal;
     private JList list1;
-    private JCheckBox listarEnValoresCriticosCheckBox;
 
     public FrmListaPeticionesSucursal(SucursalDTO sucursalDTO) {
         setSize(400, 400);
@@ -21,13 +20,6 @@ public class FrmListaPeticionesSucursal extends JDialog {
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
         asignarDatosLista(sucursalDTO);
-
-        listarEnValoresCriticosCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
     }
 
     public void asignarDatosLista(SucursalDTO sucursalDTO) {

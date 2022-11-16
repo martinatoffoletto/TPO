@@ -4,6 +4,8 @@ import DTO.*;
 
 import model.*;
 import model.enums.TipoEstado;
+import model.enums.TipoRango;
+import model.enums.TipoValor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,12 +61,43 @@ public class ControllerPeticiones {
             if (peticiones.getNroPeticion() == resultadoDTO.peticion.nroPeticion)
                 peticion = peticiones;
         Resultado resultado = new Resultado(resultadoDTO.ID, resultadoDTO.valorNumerico, resultadoDTO.valorBooleano, peticion);
-        listaResultados.add(resultado);
-        listaResultadosDTO.add(resultadoDTO);
-        peticion.setResultado(resultado);
         for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
             if (peticionesDTO.nroPeticion == peticion.getNroPeticion())
                 peticionDTO = peticionesDTO;
+
+        if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.mayorA) {
+            if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorCritico) {
+                resultado.setEsValorCritico(true);
+                resultadoDTO.esValorCritico = true;
+                System.out.println("Critico");
+            }
+            if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorReservado) {
+                resultado.setEsValorReservado(true);
+                resultadoDTO.esValorReservado = true;
+            }
+        } else if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
+            if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorCritico) {
+                resultado.setEsValorCritico(true);
+                resultadoDTO.esValorCritico = true;
+            }
+            if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorReservado) {
+                resultado.setEsValorReservado(true);
+                resultadoDTO.esValorReservado = true;
+            }
+        } else if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
+            if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorCritico) {
+                resultado.setEsValorCritico(true);
+                resultadoDTO.esValorCritico = true;
+            }
+            if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorReservado) {
+                resultado.setEsValorReservado(true);
+                resultadoDTO.esValorReservado = true;
+            }
+        }
+        listaResultados.add(resultado);
+        listaResultadosDTO.add(resultadoDTO);
+        peticion.setResultado(resultado);
+
         peticionDTO.resultadoDTO = resultadoDTO;
 
         peticionDTO.estado = TipoEstado.Con_Resultados;
@@ -129,15 +162,16 @@ public class ControllerPeticiones {
     }
 
     public void bajaPeticion(PeticionesDTO peticionBaja) {
-        for (Peticiones peticion: listaPeticiones) {
-            if (peticion.getNroPeticion() == peticionBaja.nroPeticion) {
-                listaPeticiones.remove(peticion);
-                listaPeticionesDTO.remove(peticionBaja);
-                for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-                    if (paciente.getDNI() == peticionBaja.paciente.DNI)
-                        paciente.listaPeticionesPaciente.remove(peticion);
-            }
-        }
+        Peticiones petBaja = null;
+        for (Peticiones peticion: listaPeticiones)
+            if (peticion.getNroPeticion() == peticionBaja.nroPeticion)
+                petBaja = peticion;
+
+        for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+            if (paciente.getDNI() == peticionBaja.paciente.DNI)
+                paciente.listaPeticionesPaciente.remove(petBaja);
+        listaPeticiones.remove(petBaja);
+        listaPeticionesDTO.remove(peticionBaja);
     }
 
     public void modificacionPeticion(PeticionesDTO peticionMod) {
@@ -188,12 +222,11 @@ public class ControllerPeticiones {
             }
         }
     }
-    public void tieneResultadoValorCritico(PeticionesDTO peticionesDTO) {
-
+    public boolean tieneResultadoValorCritico(PeticionesDTO peticionesDTO) {
+        return (peticionesDTO.resultadoDTO.esValorCritico);
     }
-    public void tieneResultadoValorReservado(PeticionesDTO peticionesDTO) {
-
+    public boolean tieneResultadoValorReservado(PeticionesDTO peticionesDTO) {
+        return (peticionesDTO.resultadoDTO.esValorReservado);
     }
-
 
 }

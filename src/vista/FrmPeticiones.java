@@ -16,6 +16,7 @@ public class FrmPeticiones extends JInternalFrame {
     private JPanel pnlPrincipal;
     private JComboBox comboBox1;
     private JButton verResultadosButton;
+    private JButton listarPeticionesEnValoresButton;
 
     public FrmPeticiones() {
         super("Peticiones");
@@ -52,7 +53,7 @@ public class FrmPeticiones extends JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PeticionesDTO peticionDTO = (PeticionesDTO) comboBox1.getSelectedItem();
-                if (peticionDTO.resultadoDTO != null) {
+                if (peticionDTO.resultadoDTO != null && !ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)) {
                     if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO) {
                         FrmMostrarResultadosNumerico dialog = new FrmMostrarResultadosNumerico(peticionDTO);
                         dialog.setVisible(true);
@@ -60,7 +61,17 @@ public class FrmPeticiones extends JInternalFrame {
                         FrmMostrarResultadoBooleano dialog = new FrmMostrarResultadoBooleano(peticionDTO);
                         dialog.setVisible(true);
                     }
+                } else if (peticionDTO.resultadoDTO != null && ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)){
+                    FrmRetirarPorSucursal dialog = new FrmRetirarPorSucursal();
+                    dialog.setVisible(true);
                 }
+            }
+        });
+        listarPeticionesEnValoresButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmListaPeticionesValoresCriticos dialog = new FrmListaPeticionesValoresCriticos();
+                dialog.setVisible(true);
             }
         });
     }

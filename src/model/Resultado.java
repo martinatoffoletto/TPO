@@ -5,6 +5,25 @@ public class Resultado {
     private int valorNumerico;
     private boolean valorBooleano;
     private Peticiones peticion;
+    private boolean esValorCritico;
+    private boolean esValorReservado;
+
+    public boolean isEsValorCritico() {
+        return esValorCritico;
+    }
+
+    public void setEsValorCritico(boolean esValorCritico) {
+        this.esValorCritico = esValorCritico;
+    }
+
+    public boolean isEsValorReservado() {
+        return esValorReservado;
+    }
+
+    public void setEsValorReservado(boolean esValorReservado) {
+        this.esValorReservado = esValorReservado;
+    }
+
     public Resultado(int ID, int valorNumerico, boolean valorBooleano, Peticiones peticion) {
         this.ID = ID;
         this.valorNumerico = valorNumerico;
@@ -45,13 +64,4 @@ public class Resultado {
         this.ID = ID;
     }
 
-    public boolean esResultadoCritico() {
-        boolean esCritico = false;
-        return esCritico;
-    }
-
-    public boolean esResultadoReservado() {
-        boolean esReservado = false;
-        return esReservado;
-    }
 }
