@@ -117,6 +117,21 @@ public class ControllerSucursal {
 
     }
 
+    public boolean NotienePeticionesFinalizadas(SucursalDTO sucursalDTO) {
+        boolean NoTieneFinalizada =true;
+        Sucursal sucuBaja = null, sucuDerivacion = null;
+
+        for (Sucursal sucursal: listaSucursal) {
+            if (sucursal.getNumero() == sucursalDTO.numero)
+                sucuBaja = sucursal;
+        }
+        for (Peticiones peticion: sucuBaja.getListaPeticiones())
+            if (peticion.getEstado().equals(TipoEstado.Con_Resultados)) {
+                NoTieneFinalizada = false;
+                break;
+            }
+        return NoTieneFinalizada;
+    }
     //LISTAR PACIENTE X SUCURSAL
     public ArrayList<PacienteDTO> listarPacientesSucursales(SucursalDTO sucursalDTO) {
         ArrayList <Paciente> listaPacientesSucursal = new ArrayList<Paciente>();

@@ -25,24 +25,20 @@ public class FrmEliminarSucursal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 SucursalDTO sucuDerivacion = (SucursalDTO) comboBox1.getSelectedItem();
                 ControllerSucursal.getInstancia().bajaSucursal(sucuBaja, sucuDerivacion);
-                if (ControllerSucursal.getInstancia().getListaSucursalDTO().indexOf(sucuBaja) != -1) {
-                    FrmNoSeEliminoSucursal dialog = new FrmNoSeEliminoSucursal();
-                    dialog.setVisible(true);
-                }
-
                 setVisible(false);
             }
         });
     }
 
     private void asignarDatosCombo(SucursalDTO sucuBaja) {
+        SucursalDTO sucursalBaja = null;
         ArrayList<SucursalDTO> listaSucursales = new ArrayList<SucursalDTO>();
         for (SucursalDTO sucursalDTO: ControllerSucursal.getInstancia().getListaSucursalDTO())
             listaSucursales.add(sucursalDTO);
         for (SucursalDTO sucursalDTO: listaSucursales)
             if (sucursalDTO.numero == sucuBaja.numero)
-                listaSucursales.remove(sucursalDTO);
-
+                sucursalBaja = sucursalDTO;
+        listaSucursales.remove(sucursalBaja);
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         modelo.addAll(listaSucursales);
         comboBox1.setModel(modelo);
