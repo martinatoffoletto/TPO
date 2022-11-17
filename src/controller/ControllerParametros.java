@@ -188,14 +188,11 @@ public class ControllerParametros {
     }
 
     public void altaRegla(ReglaDTO reglaDTO) {
-        Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoValor);
+        Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoValor, reglaDTO.valorReservado);
         if (regla.getTipoValor() == TipoValor.NUMERICO) {
             regla.setTipoRango(reglaDTO.tipoRango);
             regla.setValorCritico(reglaDTO.valorCritico);
-            regla.setValorReservado(reglaDTO.valorReservado);
         }
-        if (regla.getTipoValor().equals(TipoValor.BOOLEAN))
-            regla.setValorBooleano(reglaDTO.valorBooleano);
         listaReglas.add(regla);
         listaReglaDTO.add(reglaDTO);
     }

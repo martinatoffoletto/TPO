@@ -20,6 +20,7 @@ public class FrmNuevaRegla extends JDialog {
     private JButton guardarButton;
     private JTextField textField2;
     private JComboBox comboBox3;
+    private JComboBox comboBox4;
     private JTextField textField3;
 
     public FrmNuevaRegla() {
@@ -28,20 +29,16 @@ public class FrmNuevaRegla extends JDialog {
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
         asignarDatosComboRango();
-        asignarDatosComboBoolean();
         asignarDatosComboValores();
+        asignarDatosComboReservado();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReglaDTO reglaDTO = new ReglaDTO(parseInt(textField1.getText()), (TipoValor) comboBox3.getSelectedItem());
+                ReglaDTO reglaDTO = new ReglaDTO(parseInt(textField1.getText()), (TipoValor) comboBox3.getSelectedItem(), (Boolean) comboBox4.getSelectedItem());
                 if (comboBox1.getSelectedItem() != null)
                     reglaDTO.tipoRango = (TipoRango) comboBox1.getSelectedItem();
-                if (comboBox2.getSelectedItem() != null)
-                    reglaDTO.valorBooleano = (boolean) comboBox2.getSelectedItem();
-                if (textField2.getText() != "")
+                if (!textField2.getText().isEmpty())
                     reglaDTO.valorCritico = Double.parseDouble(textField2.getText());
-                if (textField3.getText() != "")
-                    reglaDTO.valorReservado = Double.parseDouble(textField3.getText());
                 ControllerParametros.getInstancia().altaRegla(reglaDTO);
                 setVisible(false);
             }
@@ -57,14 +54,6 @@ public class FrmNuevaRegla extends JDialog {
         modelo.addAll(listaRango);
         comboBox1.setModel(modelo);
     }
-    private void asignarDatosComboBoolean() {
-        ArrayList<Boolean> listaBoolean = new ArrayList<Boolean>();
-        listaBoolean.add(true);
-        listaBoolean.add(false);
-        DefaultComboBoxModel modeloB = new DefaultComboBoxModel();
-        modeloB.addAll(listaBoolean);
-        comboBox2.setModel(modeloB);
-    }
     private void asignarDatosComboValores() {
         ArrayList<TipoValor> listaValores = new ArrayList<TipoValor>();
         for (TipoValor tipoValor: TipoValor.values()) {
@@ -73,5 +62,13 @@ public class FrmNuevaRegla extends JDialog {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         modelo.addAll(listaValores);
         comboBox3.setModel(modelo);
+    }
+    private void asignarDatosComboReservado() {
+        ArrayList<Boolean> listaBoolean = new ArrayList<Boolean>();
+        listaBoolean.add(true);
+        listaBoolean.add(false);
+        DefaultComboBoxModel modeloR = new DefaultComboBoxModel();
+        modeloR.addAll(listaBoolean);
+        comboBox4.setModel(modeloR);
     }
 }

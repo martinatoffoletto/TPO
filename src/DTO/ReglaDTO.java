@@ -13,13 +13,13 @@ public class ReglaDTO {
         return "codigo=" + codigo;
     }
 
-    public boolean valorBooleano;
     public double valorCritico;
-    public double valorReservado;
+    public boolean valorReservado;
 
-    public ReglaDTO(int codigo, TipoValor tipoValor) {
+    public ReglaDTO(int codigo, TipoValor tipoValor, boolean valorReservado) {
         this.codigo = codigo;
         this.tipoValor = tipoValor;
+        this.valorReservado = valorReservado;
     }
 
 }

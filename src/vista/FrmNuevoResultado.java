@@ -23,6 +23,7 @@ public class FrmNuevoResultado extends JDialog {
     private JTextField textField4;
     private JButton guardarButton;
     private JComboBox comboBox1;
+    private JComboBox comboBox2;
 
     public FrmNuevoResultado() {
         setSize(400, 400);
@@ -30,14 +31,15 @@ public class FrmNuevoResultado extends JDialog {
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
         asignarDatosCombo();
+        asignarDatosComboBoolean();
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ResultadoDTO resultadoDTO = new ResultadoDTO(parseInt(textField1.getText()), (PeticionesDTO) comboBox1.getSelectedItem());
-                if (textField2.getText() != "")
+                if (!textField2.getText().isEmpty())
                     resultadoDTO.valorNumerico = parseInt(textField2.getText());
-                if (textField3.getText() != "")
-                    resultadoDTO.valorBooleano = parseBoolean(textField3.getText());
+                if (comboBox2.getSelectedItem() != null)
+                    resultadoDTO.valorBooleano = (boolean) comboBox2.getSelectedItem();
                 ControllerPeticiones.getInstancia().altaResultados(resultadoDTO);
                 setVisible(false);
             }
@@ -53,5 +55,15 @@ public class FrmNuevoResultado extends JDialog {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         modelo.addAll(listaPeticiones);
         comboBox1.setModel(modelo);
+    }
+
+    private void asignarDatosComboBoolean() {
+        ArrayList<Boolean> listaBoolean = new ArrayList<>();
+        listaBoolean.add(true);
+        listaBoolean.add(false);
+
+        DefaultComboBoxModel modeloB = new DefaultComboBoxModel();
+        modeloB.addAll(listaBoolean);
+        comboBox2.setModel(modeloB);
     }
 }

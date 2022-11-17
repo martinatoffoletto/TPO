@@ -16,21 +16,21 @@ public class Regla {
         this.tipoValor = tipoValor;
     }
 
-    private boolean valorBooleano;
     private double valorCritico;
-    private double valorReservado;
+    private boolean valorReservado;
 
-    public double getValorReservado() {
+    public boolean isValorReservado() {
         return valorReservado;
     }
 
-    public void setValorReservado(double valorReservado) {
+    public void setValorReservado(boolean valorReservado) {
         this.valorReservado = valorReservado;
     }
 
-    public Regla(int codigo, TipoValor tipoValor) {
+    public Regla(int codigo, TipoValor tipoValor, boolean valorReservado) {
         this.codigo = codigo;
         this.tipoValor = tipoValor;
+        this.valorReservado = valorReservado;
     }
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -44,14 +44,6 @@ public class Regla {
 
     public void setTipoRango(TipoRango tipoRango) {
         this.tipoRango = tipoRango;
-    }
-
-    public boolean isValorBooleano() {
-        return valorBooleano;
-    }
-
-    public void setValorBooleano(boolean valorBooleano) {
-        this.valorBooleano = valorBooleano;
     }
 
     public double getValorCritico() {

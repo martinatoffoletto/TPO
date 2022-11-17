@@ -70,28 +70,23 @@ public class ControllerPeticiones {
                 resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
             }
-            if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorReservado) {
-                resultado.setEsValorReservado(true);
-                resultadoDTO.esValorReservado = true;
-            }
         } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
             if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorCritico) {
                 resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
-            }
-            if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorReservado) {
-                resultado.setEsValorReservado(true);
-                resultadoDTO.esValorReservado = true;
             }
         } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
             if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorCritico) {
                 resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
             }
-            if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorReservado) {
-                resultado.setEsValorReservado(true);
-                resultadoDTO.esValorReservado = true;
-            }
+        } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.BOOLEAN) && resultadoDTO.valorBooleano==true) {
+                resultado.setEsValorCritico();
+                resultadoDTO.esValorCritico = true;
+        }
+        if (peticionDTO.practicaAsociada.regla.valorReservado) {
+            resultado.setEsValorReservado(true);
+            resultadoDTO.esValorReservado = true;
         }
         listaResultados.add(resultado);
         listaResultadosDTO.add(resultadoDTO);
@@ -129,30 +124,25 @@ public class ControllerPeticiones {
                     resultadoModificado.setEsValorCritico();
                     resuMod.esValorCritico = true;
                 }
-                if (resuMod.valorNumerico > peticionDTO.practicaAsociada.regla.valorReservado) {
-                    resultadoModificado.setEsValorReservado(true);
-                    resuMod.esValorReservado = true;
-                }
             } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
                 if (resuMod.valorNumerico == peticionDTO.practicaAsociada.regla.valorCritico) {
                     resultadoModificado.setEsValorCritico();
                     resuMod.esValorCritico = true;
-                }
-                if (resuMod.valorNumerico == peticionDTO.practicaAsociada.regla.valorReservado) {
-                    resultadoModificado.setEsValorReservado(true);
-                    resuMod.esValorReservado = true;
                 }
             } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
                 if (resuMod.valorNumerico < peticionDTO.practicaAsociada.regla.valorCritico) {
                     resultadoModificado.setEsValorCritico();
                     resuMod.esValorCritico = true;
                 }
-                if (resuMod.valorNumerico < peticionDTO.practicaAsociada.regla.valorReservado) {
-                    resultadoModificado.setEsValorReservado(true);
-                    resuMod.esValorReservado = true;
-                }
+            } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.BOOLEAN) && resuMod.valorBooleano==true) {
+                 resultadoModificado.setEsValorCritico();
+                 resuMod.esValorCritico = true;
+         }
 
-            }
+        if (peticionDTO.practicaAsociada.regla.valorReservado) {
+            resultadoModificado.setEsValorReservado(true);
+            resuMod.esValorReservado = true;
+        }
 
         for (ResultadoDTO resultadoDTO: listaResultadosDTO)
             if (resultadoDTO.ID==resuMod.ID) {
