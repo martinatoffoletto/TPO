@@ -17,8 +17,9 @@ public class ReglaDTO {
     public double valorCritico;
     public double valorReservado;
 
-    public ReglaDTO(int codigo) {
+    public ReglaDTO(int codigo, TipoValor tipoValor) {
         this.codigo = codigo;
+        this.tipoValor = tipoValor;
     }
 
 }

@@ -194,7 +194,7 @@ public class ControllerParametros {
             regla.setValorCritico(reglaDTO.valorCritico);
             regla.setValorReservado(reglaDTO.valorReservado);
         }
-        if (regla.getTipoValor() == TipoValor.BOOLEAN)
+        if (regla.getTipoValor().equals(TipoValor.BOOLEAN))
             regla.setValorBooleano(reglaDTO.valorBooleano);
         listaReglas.add(regla);
         listaReglaDTO.add(reglaDTO);

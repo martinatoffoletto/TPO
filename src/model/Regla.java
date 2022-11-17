@@ -29,7 +29,8 @@ public class Regla {
     }
 
     public Regla(int codigo, TipoValor tipoValor) {
-        this.codigo = codigo; this.tipoValor = tipoValor;
+        this.codigo = codigo;
+        this.tipoValor = tipoValor;
     }
     public void setCodigo(int codigo) {
         this.codigo = codigo;

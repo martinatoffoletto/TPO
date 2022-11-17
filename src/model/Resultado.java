@@ -12,8 +12,8 @@ public class Resultado {
         return esValorCritico;
     }
 
-    public void setEsValorCritico(boolean esValorCritico) {
-        this.esValorCritico = esValorCritico;
+    public void setEsValorCritico() {
+        this.esValorCritico = true;
     }
 
     public boolean isEsValorReservado() {

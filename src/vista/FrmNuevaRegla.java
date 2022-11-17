@@ -33,7 +33,7 @@ public class FrmNuevaRegla extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReglaDTO reglaDTO = new ReglaDTO(parseInt(textField1.getText()));
+                ReglaDTO reglaDTO = new ReglaDTO(parseInt(textField1.getText()), (TipoValor) comboBox3.getSelectedItem());
                 if (comboBox1.getSelectedItem() != null)
                     reglaDTO.tipoRango = (TipoRango) comboBox1.getSelectedItem();
                 if (comboBox2.getSelectedItem() != null)
@@ -70,10 +70,6 @@ public class FrmNuevaRegla extends JDialog {
         for (TipoValor tipoValor: TipoValor.values()) {
             listaValores.add(tipoValor);
         }
-
-
-
-
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         modelo.addAll(listaValores);
         comboBox3.setModel(modelo);

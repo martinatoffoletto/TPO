@@ -64,29 +64,28 @@ public class ControllerPeticiones {
         for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
             if (peticionesDTO.nroPeticion == peticion.getNroPeticion())
                 peticionDTO = peticionesDTO;
-
-        if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.mayorA) {
+        peticionDTO.resultadoDTO = resultadoDTO;
+        if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.mayorA) {
             if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorCritico) {
-                resultado.setEsValorCritico(true);
+                resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
-                System.out.println("Critico");
             }
             if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorReservado) {
                 resultado.setEsValorReservado(true);
                 resultadoDTO.esValorReservado = true;
             }
-        } else if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
+        } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
             if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorCritico) {
-                resultado.setEsValorCritico(true);
+                resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
             }
             if (resultadoDTO.valorNumerico == peticionDTO.practicaAsociada.regla.valorReservado) {
                 resultado.setEsValorReservado(true);
                 resultadoDTO.esValorReservado = true;
             }
-        } else if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
+        } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
             if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorCritico) {
-                resultado.setEsValorCritico(true);
+                resultado.setEsValorCritico();
                 resultadoDTO.esValorCritico = true;
             }
             if (resultadoDTO.valorNumerico < peticionDTO.practicaAsociada.regla.valorReservado) {
@@ -98,7 +97,6 @@ public class ControllerPeticiones {
         listaResultadosDTO.add(resultadoDTO);
         peticion.setResultado(resultado);
 
-        peticionDTO.resultadoDTO = resultadoDTO;
 
         peticionDTO.estado = TipoEstado.Con_Resultados;
         modificacionPeticion(peticionDTO);
@@ -116,21 +114,58 @@ public class ControllerPeticiones {
     }
 
     public void modificacionResultado(ResultadoDTO resuMod) {
+        Resultado resultadoModificado = null;
+        PeticionesDTO peticionDTO = resuMod.peticion;
+
+        for (Resultado resultado: listaResultados)
+            if (resultado.getID() == resuMod.ID)
+                resultadoModificado = resultado;
+        resultadoModificado.setValorNumerico(resuMod.valorNumerico);
+        resultadoModificado.setValorBooleano(resuMod.valorBooleano);
+
+
+         if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.mayorA) {
+                if (resuMod.valorNumerico > peticionDTO.practicaAsociada.regla.valorCritico) {
+                    resultadoModificado.setEsValorCritico();
+                    resuMod.esValorCritico = true;
+                }
+                if (resuMod.valorNumerico > peticionDTO.practicaAsociada.regla.valorReservado) {
+                    resultadoModificado.setEsValorReservado(true);
+                    resuMod.esValorReservado = true;
+                }
+            } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.igual) {
+                if (resuMod.valorNumerico == peticionDTO.practicaAsociada.regla.valorCritico) {
+                    resultadoModificado.setEsValorCritico();
+                    resuMod.esValorCritico = true;
+                }
+                if (resuMod.valorNumerico == peticionDTO.practicaAsociada.regla.valorReservado) {
+                    resultadoModificado.setEsValorReservado(true);
+                    resuMod.esValorReservado = true;
+                }
+            } else if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.menorA) {
+                if (resuMod.valorNumerico < peticionDTO.practicaAsociada.regla.valorCritico) {
+                    resultadoModificado.setEsValorCritico();
+                    resuMod.esValorCritico = true;
+                }
+                if (resuMod.valorNumerico < peticionDTO.practicaAsociada.regla.valorReservado) {
+                    resultadoModificado.setEsValorReservado(true);
+                    resuMod.esValorReservado = true;
+                }
+
+            }
+
         for (ResultadoDTO resultadoDTO: listaResultadosDTO)
             if (resultadoDTO.ID==resuMod.ID) {
-                resultadoDTO.ID=resuMod.ID;
-                resultadoDTO.valorNumerico= resuMod.valorNumerico;
-                resultadoDTO.valorBooleano= resuMod.valorBooleano;
-                resultadoDTO.peticion= resuMod.peticion;
+                resultadoDTO.valorNumerico = resuMod.valorNumerico;
+                resultadoDTO.valorBooleano = resuMod.valorBooleano;
+                resultadoDTO.esValorCritico = resuMod.esValorCritico;
+                resultadoDTO.esValorReservado = resuMod.esValorReservado;
             }
-        for (Resultado resultado: listaResultados) {
-            if (resultado.getID() == resuMod.ID)
-            {
-                resultado.setID(resuMod.ID);
-                resultado.setValorNumerico(resuMod.valorNumerico);
-                resultado.setValorBooleano(resuMod.valorBooleano);
+        for (PeticionesDTO peticion: listaPeticionesDTO)
+            if (peticion.nroPeticion == resuMod.peticion.nroPeticion) {
+                peticion.resultadoDTO = resuMod;
+                modificacionPeticion(peticion);
             }
-        }
     }
 
 
@@ -184,13 +219,20 @@ public class ControllerPeticiones {
                 peticionesDTO.fechaCarga=peticionMod.fechaCarga;
                 peticionesDTO.fechaEntrega=peticionMod.fechaEntrega;
                 peticionesDTO.practicaAsociada=peticionMod.practicaAsociada;
+                peticionesDTO.resultadoDTO = peticionMod.resultadoDTO;
             }
+        Resultado resultadoMod = null;
+        for (Resultado resultado: listaResultados)
+            if (resultado.getID() == peticionMod.resultadoDTO.ID)
+                resultadoMod = resultado;
+
         for (Peticiones peticion: listaPeticiones) {
             if (peticion.getNroPeticion() == peticionMod.nroPeticion) {
                 peticion.setObraSocial(peticionMod.ObraSocial);
                 peticion.setFechaEntrega(peticionMod.fechaEntrega);
                 peticion.setFechaCarga(peticionMod.fechaCarga);
                 peticion.setEstado(peticionMod.estado);
+                peticion.setResultado(resultadoMod);
                 for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
                     if (paciente.getDNI() == peticionMod.paciente.DNI)
                         peticion.setPaciente(paciente);
