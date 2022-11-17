@@ -2,8 +2,10 @@ package vista;
 
 import DTO.PacienteDTO;
 import DTO.SucursalDTO;
+import DTO.UsuarioSistemaDTO;
 import controller.ControllerSucursal;
 import model.Paciente;
+import model.enums.TipoRol;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,12 +20,16 @@ public class FrmPacientes extends JInternalFrame {
     private JButton listarPeticionesPorPacienteButton;
     private JComboBox comboBox1;
 
-    public FrmPacientes() {
+    public FrmPacientes(UsuarioSistemaDTO usuarioSistemaDTO) {
         super("Pacientes");
         setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         setContentPane(pnlPrincipal);
         asignarDatosCombo();
+        if (usuarioSistemaDTO.rol == TipoRol.RECEPCIONISTA) {
+            modificarPacienteButton.setVisible(false);
+            eliminarPacienteButton.setVisible(false);
+        }
         nuevoPacienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

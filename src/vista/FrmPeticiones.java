@@ -1,7 +1,9 @@
 package vista;
 
 import DTO.PeticionesDTO;
+import DTO.UsuarioSistemaDTO;
 import controller.ControllerPeticiones;
+import model.enums.TipoRol;
 import model.enums.TipoValor;
 
 import javax.swing.*;
@@ -18,13 +20,17 @@ public class FrmPeticiones extends JInternalFrame {
     private JButton verResultadosButton;
     private JButton listarPeticionesEnValoresButton;
 
-    public FrmPeticiones() {
+    public FrmPeticiones(UsuarioSistemaDTO usuarioSistemaDTO) {
         super("Peticiones");
         setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         setContentPane(pnlPrincipal);
         asignarDatosCombo();
-
+        if (usuarioSistemaDTO.rol == TipoRol.RECEPCIONISTA) {
+            modificarPeticionButton.setVisible(false);
+            eliminarPeticionButton.setVisible(false);
+            listarPeticionesEnValoresButton.setVisible(false);
+        }
         nuevaPeticionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

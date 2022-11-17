@@ -1,5 +1,8 @@
 package vista;
 
+import DTO.UsuarioSistemaDTO;
+import model.enums.TipoRol;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,13 +17,28 @@ public class FrmMenuPrincipal extends JFrame {
     private JDesktopPane desktopPaneEmbebido;
     private JButton reglasButton;
     private JButton resultadosButton;
+    private JButton cerrarSesionButton;
 
-    public FrmMenuPrincipal() {
+    public FrmMenuPrincipal(UsuarioSistemaDTO usuarioSistemaDTO) {
         super("Menu Principal");
         setSize(800, 800);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
+        if (usuarioSistemaDTO.rol == TipoRol.RECEPCIONISTA) {
+            sucursalesButton.setVisible(false);
+            practicasButton.setVisible(false);
+            usuariosButton.setVisible(false);
+            reglasButton.setVisible(false);
+            resultadosButton.setVisible(false);
+        } else if (usuarioSistemaDTO.rol == TipoRol.LABORATORISTA) {
+            sucursalesButton.setVisible(false);
+            pacientesButton.setVisible(false);
+            practicasButton.setVisible(false);
+            usuariosButton.setVisible(false);
+            peticionesButton.setVisible(false);
+            reglasButton.setVisible(false);
 
+        }
         sucursalesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,7 +50,7 @@ public class FrmMenuPrincipal extends JFrame {
         pacientesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPacientes pantalla = new FrmPacientes();
+                FrmPacientes pantalla = new FrmPacientes(usuarioSistemaDTO);
                 desktopPaneEmbebido.add(pantalla);
                 pantalla.setVisible(true);
             }
@@ -48,7 +66,7 @@ public class FrmMenuPrincipal extends JFrame {
         peticionesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPeticiones pantalla = new FrmPeticiones();
+                FrmPeticiones pantalla = new FrmPeticiones(usuarioSistemaDTO);
                 desktopPaneEmbebido.add(pantalla);
                 pantalla.setVisible(true);
             }
@@ -72,9 +90,17 @@ public class FrmMenuPrincipal extends JFrame {
         resultadosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmResultado pantalla = new FrmResultado();
+                FrmResultado pantalla = new FrmResultado(usuarioSistemaDTO);
                 desktopPaneEmbebido.add(pantalla);
                 pantalla.setVisible(true);
+            }
+        });
+        cerrarSesionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                FrmLogin login = new FrmLogin();
+                login.setVisible(true);
             }
         });
     }

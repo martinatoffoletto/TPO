@@ -2,8 +2,10 @@ package vista;
 
 import DTO.PacienteDTO;
 import DTO.ResultadoDTO;
+import DTO.UsuarioSistemaDTO;
 import controller.ControllerPeticiones;
 import controller.ControllerSucursal;
+import model.enums.TipoRol;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,12 +19,16 @@ public class FrmResultado extends JInternalFrame {
     private JButton modificarResultadoButton;
     private JButton eliminarResultadoButton;
 
-    public FrmResultado() {
+    public FrmResultado(UsuarioSistemaDTO usuarioSistemaDTO) {
         super("Resultado");
         setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         setContentPane(pnlPrincipal);
         asignarDatosCombo();
+        if (usuarioSistemaDTO.rol == TipoRol.LABORATORISTA) {
+            modificarResultadoButton.setVisible(false);
+            eliminarResultadoButton.setVisible(false);
+        }
         nuevoResultadoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
