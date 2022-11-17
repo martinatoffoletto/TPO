@@ -145,6 +145,8 @@ public class ControllerPeticiones {
 
         peticionDTO.estado = TipoEstado.Con_Resultados;
         modificacionPeticion(peticionDTO);
+
+
     }
 
     public void bajaResultados(ResultadoDTO resultadoDTO) {
@@ -277,13 +279,15 @@ public class ControllerPeticiones {
                 peticion.setFechaEntrega(peticionMod.fechaEntrega);
                 peticion.setFechaCarga(peticionMod.fechaCarga);
                 peticion.setEstado(peticionMod.estado);
-                peticion.setResultado(resultadoMod.getID());
+                if (resultadoMod != null)
+                    peticion.setResultado(resultadoMod.getID());
                 for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
                     if (paciente.getDNI() == peticionMod.paciente)
                         peticion.setPaciente(paciente.getDNI());
                 for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
-                    if (sucursal.getNumero() == peticionMod.sucursal)
+                    if (sucursal.getNumero() == peticionMod.sucursal) {
                         peticion.setSucursal(sucursal.getNumero());
+                    }
                 for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
                     if (practica.getCodigo() == peticionMod.practicaAsociada.codigo)
                         peticion.setPracticaAsociada(practica);

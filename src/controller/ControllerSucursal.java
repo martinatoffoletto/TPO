@@ -120,9 +120,9 @@ public class ControllerSucursal {
                 sucuBaja = sucursal;
         }
 
-        for (Sucursal sucursal: listaSucursal) {
-            if (sucursal.getNumero() == sucursalDerivacion.numero)
-                sucuDerivacion = sucursal;
+        for (Sucursal sucursal1: listaSucursal) {
+            if (sucursal1.getNumero() == sucursalDerivacion.numero)
+                sucuDerivacion = sucursal1;
         }
 
         for (Peticiones peticion: sucuBaja.getListaPeticiones())
@@ -177,7 +177,7 @@ public class ControllerSucursal {
 
     public boolean NotienePeticionesFinalizadas(SucursalDTO sucursalDTO) {
         boolean NoTieneFinalizada =true;
-        Sucursal sucuBaja = null, sucuDerivacion = null;
+        Sucursal sucuBaja = null;
 
         for (Sucursal sucursal: listaSucursal) {
             if (sucursal.getNumero() == sucursalDTO.numero)

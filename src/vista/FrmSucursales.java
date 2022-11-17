@@ -1,7 +1,10 @@
 package vista;
 
+import DTO.PeticionesDTO;
 import DTO.SucursalDTO;
 import controller.ControllerSucursal;
+import model.Peticiones;
+import model.Sucursal;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
