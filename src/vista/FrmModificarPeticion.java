@@ -30,8 +30,8 @@ public class FrmModificarPeticion extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        PacienteDTO pacienteDTO = peticionesDTO.paciente;
-        SucursalDTO sucursalDTO = peticionesDTO.sucursal;
+        int pacienteDTO = peticionesDTO.paciente;
+        int sucursalDTO = peticionesDTO.sucursal;
         PracticasDTO practicasDTO = peticionesDTO.practicaAsociada;
         Paciente.setText(String.valueOf(peticionesDTO.paciente));
         Sucursal.setText(String.valueOf(peticionesDTO.sucursal));

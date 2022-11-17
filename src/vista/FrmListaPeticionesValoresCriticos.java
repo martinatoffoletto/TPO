@@ -23,7 +23,7 @@ public class FrmListaPeticionesValoresCriticos extends JDialog {
     public void asignarDatosLista() {
         ArrayList<PeticionesDTO> listaPeticiones = new ArrayList<PeticionesDTO>();
         for (PeticionesDTO peticionDTO: ControllerPeticiones.getInstancia().getListaPeticionesDTO())
-            if (peticionDTO.resultadoDTO != null)
+            if (peticionDTO.resultadoDTO != 0)
                 if (ControllerPeticiones.getInstancia().tieneResultadoValorCritico(peticionDTO))
                     listaPeticiones.add(peticionDTO);
 

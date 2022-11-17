@@ -56,8 +56,7 @@ public class ControllerPeticiones {
         }
         try {
             peticionesDAO = new PeticionesDAO();
-            //listaPeticiones = (ArrayList<Peticiones>) peticionesDAO.getAll();
-            System.out.println("Carga datos");
+            listaPeticiones = (ArrayList<Peticiones>) peticionesDAO.getAll();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +70,6 @@ public class ControllerPeticiones {
     }
 
     public void cerrarController() {
-        System.out.println("Funciona metodo");
         ResultadoDAO resultadoDAO = null;
         ResultadoDTODAO resultadoDTODAO = null;
         PeticionesDAO peticionesDAO = null;
@@ -82,9 +80,7 @@ public class ControllerPeticiones {
             resultadoDTODAO = new ResultadoDTODAO();
             resultadoDTODAO.saveAll(listaResultadosDTO);
             peticionesDAO = new PeticionesDAO();
-            System.out.println("Guardar Peticiones");
-            //peticionesDAO.saveAll(listaPeticiones);
-            System.out.println("Guardo Peticiones");
+            peticionesDAO.saveAll(listaPeticiones);
             peticionesDTODAO = new PeticionesDTODAO();
             peticionesDTODAO.saveAll(listaPeticionesDTO);
         } catch (Exception e) {
@@ -118,7 +114,7 @@ public class ControllerPeticiones {
         for (PeticionesDTO peticionesDTO: listaPeticionesDTO)
             if (peticionesDTO.nroPeticion == peticion.getNroPeticion())
                 peticionDTO = peticionesDTO;
-        peticionDTO.resultadoDTO = resultadoDTO;
+        peticionDTO.resultadoDTO = resultadoDTO.ID;
         if (peticionDTO.practicaAsociada.regla.tipoValor.equals(TipoValor.NUMERICO) && peticionDTO.practicaAsociada.regla.tipoRango == TipoRango.mayorA) {
             if (resultadoDTO.valorNumerico > peticionDTO.practicaAsociada.regla.valorCritico) {
                 resultado.setEsValorCritico();
@@ -144,7 +140,7 @@ public class ControllerPeticiones {
         }
         listaResultados.add(resultado);
         listaResultadosDTO.add(resultadoDTO);
-        peticion.setResultado(resultado);
+        peticion.setResultado(resultado.getID());
 
 
         peticionDTO.estado = TipoEstado.Con_Resultados;
@@ -207,7 +203,7 @@ public class ControllerPeticiones {
             }
         for (PeticionesDTO peticion: listaPeticionesDTO)
             if (peticion.nroPeticion == resuMod.peticion.nroPeticion) {
-                peticion.resultadoDTO = resuMod;
+                peticion.resultadoDTO = resuMod.ID;
                 modificacionPeticion(peticion);
             }
     }
@@ -217,24 +213,29 @@ public class ControllerPeticiones {
     public void altaPeticion(PeticionesDTO peticionesDTO) {
         Paciente pacientePeticion = null;
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-            if (paciente.getDNI() == peticionesDTO.paciente.DNI)
+            if (paciente.getDNI() == peticionesDTO.paciente)
                 pacientePeticion = paciente;
         Sucursal sucursalPeticion = null;
         for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
-            if (sucursal.getNumero() == peticionesDTO.sucursal.numero)
+            if (sucursal.getNumero() == peticionesDTO.sucursal)
                 sucursalPeticion = sucursal;
         Practicas practicaAsociada = null;
         for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
             if (practica.getCodigo() == peticionesDTO.practicaAsociada.codigo)
                 practicaAsociada = practica;
-        Peticiones peticion = new Peticiones(pacientePeticion, sucursalPeticion,practicaAsociada, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion);
+        Peticiones peticion = new Peticiones(pacientePeticion.getDNI(), sucursalPeticion.getNumero(),practicaAsociada, peticionesDTO.ObraSocial, peticionesDTO.fechaCarga , peticionesDTO.fechaEntrega, peticionesDTO.estado, peticionesDTO.nroPeticion);
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-            if (paciente.getDNI() == peticionesDTO.paciente.DNI)
+            if (paciente.getDNI() == peticionesDTO.paciente)
                 paciente.AgregarPeticion(peticion);
+        Paciente pac = null;
+        for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
+            if (paciente.getDNI() == peticionesDTO.paciente)
+                pac = paciente;
+
         for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
-            if (sucursal.getNumero() == peticionesDTO.sucursal.numero) {
+            if (sucursal.getNumero() == peticionesDTO.sucursal) {
                 sucursal.agregarPeticion(peticion);
-                sucursal.agregarPaciente(peticion.getPaciente());
+                sucursal.agregarPaciente(pac);
             }
         listaPeticiones.add(peticion);
         listaPeticionesDTO.add(peticionesDTO);
@@ -247,7 +248,7 @@ public class ControllerPeticiones {
                 petBaja = peticion;
 
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-            if (paciente.getDNI() == peticionBaja.paciente.DNI)
+            if (paciente.getDNI() == peticionBaja.paciente)
                 paciente.getListaPeticionesPaciente().remove(petBaja);
         listaPeticiones.remove(petBaja);
         listaPeticionesDTO.remove(peticionBaja);
@@ -267,7 +268,7 @@ public class ControllerPeticiones {
             }
         Resultado resultadoMod = null;
         for (Resultado resultado: listaResultados)
-            if (resultado.getID() == peticionMod.resultadoDTO.ID)
+            if (resultado.getID() == peticionMod.resultadoDTO)
                 resultadoMod = resultado;
 
         for (Peticiones peticion: listaPeticiones) {
@@ -276,13 +277,13 @@ public class ControllerPeticiones {
                 peticion.setFechaEntrega(peticionMod.fechaEntrega);
                 peticion.setFechaCarga(peticionMod.fechaCarga);
                 peticion.setEstado(peticionMod.estado);
-                peticion.setResultado(resultadoMod);
+                peticion.setResultado(resultadoMod.getID());
                 for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
-                    if (paciente.getDNI() == peticionMod.paciente.DNI)
-                        peticion.setPaciente(paciente);
+                    if (paciente.getDNI() == peticionMod.paciente)
+                        peticion.setPaciente(paciente.getDNI());
                 for (Sucursal sucursal: ControllerSucursal.getInstancia().getListaSucursal())
-                    if (sucursal.getNumero() == peticionMod.sucursal.numero)
-                        peticion.setSucursal(sucursal);
+                    if (sucursal.getNumero() == peticionMod.sucursal)
+                        peticion.setSucursal(sucursal.getNumero());
                 for (Practicas practica: ControllerParametros.getInstancia().getListaPracticas())
                     if (practica.getCodigo() == peticionMod.practicaAsociada.codigo)
                         peticion.setPracticaAsociada(practica);
@@ -309,10 +310,18 @@ public class ControllerPeticiones {
         }
     }
     public boolean tieneResultadoValorCritico(PeticionesDTO peticionesDTO) {
-        return (peticionesDTO.resultadoDTO.esValorCritico);
+        ResultadoDTO resu = null;
+        for (ResultadoDTO resultadoDTO: listaResultadosDTO)
+            if (peticionesDTO.resultadoDTO == resultadoDTO.ID)
+                resu = resultadoDTO;
+        return (resu.esValorCritico);
     }
     public boolean tieneResultadoValorReservado(PeticionesDTO peticionesDTO) {
-        return (peticionesDTO.resultadoDTO.esValorReservado);
+        ResultadoDTO resu = null;
+        for (ResultadoDTO resultadoDTO: listaResultadosDTO)
+            if (peticionesDTO.resultadoDTO == resultadoDTO.ID)
+                resu = resultadoDTO;
+        return (resu.esValorReservado);
     }
 
 }

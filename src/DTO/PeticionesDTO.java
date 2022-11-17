@@ -10,15 +10,15 @@ import java.util.List;
 
 public class PeticionesDTO {
 
-    public PacienteDTO paciente;
-    public SucursalDTO sucursal;
+    public int paciente;
+    public int sucursal;
     public String ObraSocial;
     public String fechaCarga;
     public PracticasDTO practicaAsociada;
     public String fechaEntrega;
     public TipoEstado estado;
     public int nroPeticion;
-    public ResultadoDTO resultadoDTO;
+    public int resultadoDTO;
 
     @Override
     public String toString() {
@@ -27,7 +27,7 @@ public class PeticionesDTO {
 
     }
 
-    public PeticionesDTO(PacienteDTO paciente, SucursalDTO sucursal, PracticasDTO practicaAsociada,String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
+    public PeticionesDTO(int paciente, int sucursal, PracticasDTO practicaAsociada,String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.paciente = paciente;
         this.ObraSocial = obraSocial;
         this.fechaCarga = fechaCarga;

@@ -1,6 +1,8 @@
 package vista;
 
 import DTO.PeticionesDTO;
+import DTO.ResultadoDTO;
+import controller.ControllerPeticiones;
 
 import javax.swing.*;
 
@@ -14,7 +16,10 @@ public class FrmMostrarResultadoBooleano extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
-        ValorBooleano.setText(String.valueOf(peticionesDTO.resultadoDTO.valorNumerico));
-        ID.setText(String.valueOf(peticionesDTO.resultadoDTO.ID));
+        for (ResultadoDTO resultadoDTO: ControllerPeticiones.getInstancia().listaResultadosDTO)
+            if (resultadoDTO.ID == peticionesDTO.resultadoDTO) {
+                ValorBooleano.setText(String.valueOf(resultadoDTO.valorNumerico));
+                ID.setText(String.valueOf(resultadoDTO.ID));
+            }
     }
 }

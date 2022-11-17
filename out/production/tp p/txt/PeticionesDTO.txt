@@ -1,0 +1,1 @@
+{"paciente":1,"sucursal":1,"ObraSocial":"1","fechaCarga":"1","practicaAsociada":{"codigo":1,"nombrePractica":"p","grupo":"p","horasResultado":10,"regla":{"codigo":1,"tipoRango":"mayorA","tipoValor":"NUMERICO","valorCritico":15.0,"valorReservado":true}},"fechaEntrega":"1","estado":"Con_Resultados","nroPeticion":1,"resultadoDTO":1}

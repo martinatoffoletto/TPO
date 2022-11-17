@@ -42,7 +42,10 @@ public class FrmNuevaPeticion extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PeticionesDTO peticionesDTO = new PeticionesDTO((PacienteDTO) comboBox1.getSelectedItem(), sucursalDTO,(PracticasDTO) comboBox4.getSelectedItem(), textField1.getText(), textField2.getText(), textField4.getText(), TipoEstado.En_proceso, parseInt(textField5.getText()));
+                PacienteDTO pacienteDTO = (PacienteDTO) comboBox1.getSelectedItem();
+                int pacienteID = pacienteDTO.DNI;
+                int sucursalID = sucursalDTO.numero;
+                PeticionesDTO peticionesDTO = new PeticionesDTO(pacienteID, sucursalID,(PracticasDTO) comboBox4.getSelectedItem(), textField1.getText(), textField2.getText(), textField4.getText(), TipoEstado.En_proceso, parseInt(textField5.getText()));
                 ControllerPeticiones.getInstancia().altaPeticion(peticionesDTO);
                 setVisible(false);
             }

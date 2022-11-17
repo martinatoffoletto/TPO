@@ -3,19 +3,19 @@ package model;
 import model.enums.TipoEstado;
 
 public class Peticiones {
-    private Paciente paciente;
+    private int paciente;
     private String obraSocial;
     private String fechaCarga;
     private Practicas practicaAsociada;
     private String fechaEntrega;
     private TipoEstado estado;
     private int nroPeticion;
-    private Sucursal sucursal;
-    private Resultado resultado;
+    private int sucursal;
+    private int resultado;
 
 
     //CONSTRUCTOR
-    public Peticiones(Paciente paciente, Sucursal sucursal, Practicas practicaAsociada, String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
+    public Peticiones(int paciente, int sucursal, Practicas practicaAsociada, String obraSocial, String fechaCarga, String fechaEntrega, TipoEstado estado, int nroPeticion) {
         this.obraSocial = obraSocial;
         this.practicaAsociada = practicaAsociada;
         this.fechaCarga = fechaCarga;
@@ -26,28 +26,28 @@ public class Peticiones {
         this.paciente=paciente;
     }
 
-    public Resultado getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(Resultado resultado) {
-        this.resultado = resultado;
-    }
-//SETTER Y GETTERS
-
-    public Sucursal getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
-    }
-    public Paciente getPaciente() {
+    public int getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(int paciente) {
         this.paciente = paciente;
+    }
+
+    public int getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(int sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public int getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(int resultado) {
+        this.resultado = resultado;
     }
 
     public String getObraSocial() {

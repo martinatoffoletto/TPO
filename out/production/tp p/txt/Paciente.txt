@@ -1,1 +1,1 @@
-{"DNI":1,"nombre":"t","domicilio":"t","mail":"t","sexo":"t","edad":1,"listaPeticionesPaciente":[]}
+{"DNI":1,"nombre":"t","domicilio":"t","mail":"t","sexo":"t","edad":1,"listaPeticionesPaciente":[{"paciente":1,"obraSocial":"1","fechaCarga":"1","practicaAsociada":{"codigo":1,"nombrePractica":"p","grupo":"p","horasResultado":10,"estado":true,"regla":{"codigo":1,"tipoValor":"NUMERICO","tipoRango":"mayorA","valorCritico":15.0,"valorReservado":true}},"fechaEntrega":"1","estado":"En_proceso","nroPeticion":1,"sucursal":1,"resultado":0}]}

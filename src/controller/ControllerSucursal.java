@@ -133,16 +133,20 @@ public class ControllerSucursal {
 
         if (NoTieneFinalizada){ //2) REGLA NEGOCIO, DERIVA PETICIONES
             for (Peticiones pet: sucuBaja.getListaPeticiones()){
-                pet.setSucursal(sucuDerivacion);
+                pet.setSucursal(sucuDerivacion.getNumero());
                 sucuDerivacion.agregarPeticion(pet);
-                sucuDerivacion.agregarPaciente(pet.getPaciente());
+                Paciente paciente = null;
+                for (Paciente pac: listaPacientes)
+                    if (pac.getDNI() == pet.getPaciente())
+                        paciente = pac;
+                sucuDerivacion.agregarPaciente(paciente);
                 for (Peticiones peticion: ControllerPeticiones.getInstancia().getListaPeticiones())
                     if (peticion.getNroPeticion() == pet.getNroPeticion()) {
-                        peticion.setSucursal(sucuDerivacion);
+                        peticion.setSucursal(sucuDerivacion.getNumero());
                     }
                 for (PeticionesDTO peticionDTO: ControllerPeticiones.getInstancia().listaPeticionesDTO)
                     if (peticionDTO.nroPeticion == pet.getNroPeticion())
-                        peticionDTO.sucursal = sucursalDerivacion;
+                        peticionDTO.sucursal = sucursalDerivacion.numero;
             }
             listaSucursal.remove(sucuBaja);
             listaSucursalDTO.remove(sucursalBaja);

@@ -59,7 +59,7 @@ public class FrmPeticiones extends JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PeticionesDTO peticionDTO = (PeticionesDTO) comboBox1.getSelectedItem();
-                if (peticionDTO.resultadoDTO != null && !ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)) {
+                if (peticionDTO.resultadoDTO != 0 && !ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)) {
                     if (peticionDTO.practicaAsociada.regla.tipoValor == TipoValor.NUMERICO) {
                         FrmMostrarResultadosNumerico dialog = new FrmMostrarResultadosNumerico(peticionDTO);
                         dialog.setVisible(true);
@@ -67,7 +67,7 @@ public class FrmPeticiones extends JInternalFrame {
                         FrmMostrarResultadoBooleano dialog = new FrmMostrarResultadoBooleano(peticionDTO);
                         dialog.setVisible(true);
                     }
-                } else if (peticionDTO.resultadoDTO != null && ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)){
+                } else if (peticionDTO.resultadoDTO != 0 && ControllerPeticiones.getInstancia().tieneResultadoValorReservado(peticionDTO)){
                     FrmRetirarPorSucursal dialog = new FrmRetirarPorSucursal();
                     dialog.setVisible(true);
                 }
