@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.*;
 import DTO.PracticasDTO;
 import DTO.ReglaDTO;
 import DTO.UsuarioSistemaDTO;
@@ -14,9 +15,9 @@ public class ControllerParametros {
     }
 
     private static ControllerParametros instancia;
-    public ArrayList<UsuarioSistema> listaUsuarios;
-    public   ArrayList<Practicas> listaPracticas;
-    public ArrayList<Regla> listaReglas;
+    ArrayList<UsuarioSistema> listaUsuarios;
+    ArrayList<Practicas> listaPracticas;
+    ArrayList<Regla> listaReglas;
     public ArrayList<PracticasDTO> listaPracticasDTO;
     public ArrayList<UsuarioSistemaDTO> listaUsuariosDTO;
     public ArrayList<ReglaDTO> listaReglaDTO;
@@ -55,8 +56,70 @@ public class ControllerParametros {
         listaPracticasDTO = new ArrayList<PracticasDTO>();
         listaUsuariosDTO = new ArrayList<UsuarioSistemaDTO>();
         listaReglaDTO = new ArrayList<ReglaDTO>();
+        ReglaDAO reglaDAO = null;
+        ReglaDTODAO reglaDTODAO = null;
+        PracticasDAO practicasDAO = null;
+        PracticasDTODAO practicasDTODAO = null;
+        UsuarioSistemaDAO usuarioSistemaDAO = null;
+        UsuarioSistemaDTODAO usuarioSistemaDTODAO = null;
+        try {
+            reglaDAO = new ReglaDAO();
+            reglaDTODAO = new ReglaDTODAO();
+            listaReglas = (ArrayList<Regla>) reglaDAO.getAll();
+            listaReglaDTO = (ArrayList<ReglaDTO>) reglaDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            practicasDAO = new PracticasDAO();
+            listaPracticas = (ArrayList<Practicas>) practicasDAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            practicasDTODAO = new PracticasDTODAO();
+            listaPracticasDTO = (ArrayList<PracticasDTO>) practicasDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            usuarioSistemaDAO = new UsuarioSistemaDAO();
+            listaUsuarios = (ArrayList<UsuarioSistema>) usuarioSistemaDAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            usuarioSistemaDTODAO = new UsuarioSistemaDTODAO();
+            listaUsuariosDTO = (ArrayList<UsuarioSistemaDTO>) usuarioSistemaDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    public void cerrarController() {
+        ReglaDAO reglaDAO = null;
+        ReglaDTODAO reglaDTODAO = null;
+        PracticasDAO practicasDAO = null;
+        PracticasDTODAO practicasDTODAO = null;
+        UsuarioSistemaDAO usuarioSistemaDAO = null;
+        UsuarioSistemaDTODAO usuarioSistemaDTODAO = null;
+        try {
+            reglaDAO = new ReglaDAO();
+            reglaDAO.saveAll(listaReglas);
+            reglaDTODAO = new ReglaDTODAO();
+            reglaDTODAO.saveAll(listaReglaDTO);
+            practicasDAO = new PracticasDAO();
+            practicasDAO.saveAll(listaPracticas);
+            practicasDTODAO = new PracticasDTODAO();
+            practicasDTODAO.saveAll(listaPracticasDTO);
+            usuarioSistemaDAO = new UsuarioSistemaDAO();
+            usuarioSistemaDAO.saveAll(listaUsuarios);
+            usuarioSistemaDTODAO = new UsuarioSistemaDTODAO();
+            usuarioSistemaDTODAO.saveAll(listaUsuariosDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     //METODOS:
 
     //ALTA USUARIOS

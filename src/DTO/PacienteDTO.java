@@ -27,6 +27,6 @@ public class PacienteDTO {
     @Override
     public String toString() {
         return
-                "DNI=" + DNI + " nombre=" + nombre;
+                "DNI: " + DNI + " Nombre: " + nombre;
     }
 }

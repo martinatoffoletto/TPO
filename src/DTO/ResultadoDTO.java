@@ -11,7 +11,7 @@ public class ResultadoDTO {
     public boolean esValorReservado;
     @Override
     public String toString() {
-        return "ID=" + ID;
+        return "ID: " + ID;
     }
 
     public ResultadoDTO(int ID, PeticionesDTO peticion) {

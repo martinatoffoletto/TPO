@@ -1,12 +1,17 @@
 package controller;
 
+import DAO.PacienteDAO;
+import DAO.PacienteDTODAO;
+import DAO.SucursalDAO;
+import DAO.SucursalDTODAO;
 import DTO.*;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import model.enums.TipoEstado;
+
 
 public class ControllerSucursal {
 
@@ -22,8 +27,54 @@ public class ControllerSucursal {
         listaSucursal = new ArrayList<Sucursal>();
         listaSucursalDTO = new ArrayList<SucursalDTO>();
         listaPacienteDTO = new ArrayList<PacienteDTO>();
+        PacienteDAO pacienteDAO = null;
+        SucursalDAO sucursalDAO = null;
+        SucursalDTODAO sucursalDTODAO = null;
+        PacienteDTODAO pacienteDTODAO = null;
+        try {
+            pacienteDAO = new PacienteDAO();
+            listaPacientes = (ArrayList<Paciente>) pacienteDAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            sucursalDAO = new SucursalDAO();
+            listaSucursal = (ArrayList<Sucursal>) sucursalDAO.getAll();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            sucursalDTODAO = new SucursalDTODAO();
+            listaSucursalDTO = (ArrayList<SucursalDTO>) sucursalDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            pacienteDTODAO = new PacienteDTODAO();
+            listaPacienteDTO = (ArrayList<PacienteDTO>) pacienteDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    public void cerrarController() {
+        PacienteDAO pacienteDAO = null;
+        PacienteDTODAO pacienteDTODAO = null;
+        SucursalDAO sucursalDAO = null;
+        SucursalDTODAO sucursalDTODAO = null;
+        try {
+            pacienteDAO = new PacienteDAO();
+            pacienteDAO.saveAll(listaPacientes);
+            pacienteDTODAO = new PacienteDTODAO();
+            pacienteDTODAO.saveAll(listaPacienteDTO);
+            sucursalDAO = new SucursalDAO();
+            sucursalDAO.saveAll(listaSucursal);
+            sucursalDTODAO = new SucursalDTODAO();
+            sucursalDTODAO.saveAll(listaSucursalDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     //SINGLETON
     public static ControllerSucursal getInstancia() {
         if (instancia == null)

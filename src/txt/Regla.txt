@@ -1,0 +1,1 @@
+{"codigo":1,"tipoValor":"NUMERICO","tipoRango":"mayorA","valorCritico":15.0,"valorReservado":true}

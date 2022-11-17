@@ -12,7 +12,7 @@ public class PracticasDTO {
 
     @Override
     public String toString() {
-        return "Codigo = " + codigo + " Nombre Practica = " + nombrePractica + "Regla = " + regla;
+        return "Código: " + codigo + " Nombre Práctica: " + nombrePractica + " Regla: " + regla;
     }
 
     public PracticasDTO(int codigo, String nombrePractica, String grupo, int horasResultado, ReglaDTO regla) {

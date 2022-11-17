@@ -14,8 +14,7 @@ public class SucursalDTO {
 
     @Override
     public String toString() {
-        return "Numero= " + numero +
-                " Direccion= " + direccion;
+        return "Número: " + numero + " Dirección: " + direccion;
     }
 
     public SucursalDTO(int numero, String direccion, UsuarioSistemaDTO responsableTecnico) {

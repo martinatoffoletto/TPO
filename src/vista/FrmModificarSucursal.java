@@ -2,12 +2,15 @@ package vista;
 
 import DTO.SucursalDTO;
 import DTO.UsuarioSistemaDTO;
+import controller.ControllerParametros;
 import controller.ControllerSucursal;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import static java.lang.Integer.parseInt;
 
 
@@ -28,6 +31,8 @@ public class FrmModificarSucursal extends JDialog {
         Numero.setText(String.valueOf(sucursalDTO.numero));
         textField2.setText(sucursalDTO.direccion);
         comboBox1.setSelectedItem(sucursalDTO.responsableTecnico);
+        asignarDatosCombo();
+
 
         guardarButton.addActionListener(new ActionListener() {
             @Override
@@ -36,6 +41,17 @@ public class FrmModificarSucursal extends JDialog {
                 ControllerSucursal.getInstancia().modificacionSucursal(suc);
                 setVisible(false);
             }
+
         });
+    }
+    private void asignarDatosCombo() {
+        ArrayList<UsuarioSistemaDTO> listaUsuarios = new ArrayList<UsuarioSistemaDTO>();
+        for (UsuarioSistemaDTO usuarioSistemaDTO: ControllerParametros.getInstancia().getListaUsuariosDTO())
+            listaUsuarios.add(usuarioSistemaDTO);
+
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addAll(listaUsuarios);
+        comboBox1.setModel(modelo);
     }
 }

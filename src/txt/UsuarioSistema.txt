@@ -1,0 +1,1 @@
+{"NroUsuario":1,"email":"mailUsuario","password":"contraseña","nombre":"Administrador","domicilio":"Domicilio Usuario","DNI":1234,"nacimiento":"01/01/2000","rol":"ADMINISTRADOR"}

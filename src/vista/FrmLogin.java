@@ -2,6 +2,8 @@ package vista;
 
 import DTO.UsuarioSistemaDTO;
 import controller.ControllerParametros;
+import controller.ControllerPeticiones;
+import controller.ControllerSucursal;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +14,7 @@ public class FrmLogin extends JFrame{
     private JPanel pnlPrincipal;
     private JComboBox comboBox1;
     private JButton ingresarButton;
+    private JButton cerrarButton;
 
     public FrmLogin() {
         super("Login");
@@ -26,6 +29,15 @@ public class FrmLogin extends JFrame{
                 FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal((UsuarioSistemaDTO) comboBox1.getSelectedItem());
                 menuPrincipal.setVisible(true);
                 setVisible(false);
+            }
+        });
+        cerrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerSucursal.getInstancia().cerrarController();
+                ControllerParametros.getInstancia().cerrarController();
+                ControllerPeticiones.getInstancia().cerrarController();
+                System.exit(0);
             }
         });
     }

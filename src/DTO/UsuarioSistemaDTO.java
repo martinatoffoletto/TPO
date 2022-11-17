@@ -15,7 +15,7 @@ public class UsuarioSistemaDTO {
 
     @Override
     public String toString() {
-        return "Usuario: " + NroUsuario + " Nombre: " + nombre;
+        return "Usuario: " + NroUsuario + " Nombre: " + nombre + " Rol: " + rol;
     }
 
     public UsuarioSistemaDTO(int NroUsuario, String email, String password, String nombre, String domicilio, int DNI, String nacimiento, TipoRol rol) {

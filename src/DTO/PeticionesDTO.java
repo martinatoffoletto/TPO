@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class PeticionesDTO {
+
     public PacienteDTO paciente;
     public SucursalDTO sucursal;
     public String ObraSocial;
@@ -21,9 +22,8 @@ public class PeticionesDTO {
 
     @Override
     public String toString() {
-        return "Paciente" + paciente +
-                "Sucursal=" + sucursal + "Nro" + nroPeticion
-                + "Estado= " + estado;
+        return "Paciente: " + paciente + " Sucursal: " + sucursal + " Petición: " + nroPeticion
+                + " Estado: " + estado;
 
     }
 

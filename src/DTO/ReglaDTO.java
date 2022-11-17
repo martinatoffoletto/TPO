@@ -10,7 +10,7 @@ public class ReglaDTO {
 
     @Override
     public String toString() {
-        return "codigo=" + codigo;
+        return "Código: " + codigo;
     }
 
     public double valorCritico;

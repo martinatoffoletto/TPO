@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.*;
 import DTO.*;
 
 import model.*;
@@ -37,6 +38,59 @@ public class ControllerPeticiones {
         listaResultados = new ArrayList<Resultado>();
         listaPeticionesDTO = new ArrayList<PeticionesDTO>();
         listaResultadosDTO = new ArrayList<ResultadoDTO>();
+        ResultadoDAO resultadoDAO = null;
+        ResultadoDTODAO resultadoDTODAO = null;
+        PeticionesDAO peticionesDAO = null;
+        PeticionesDTODAO peticionesDTODAO = null;
+        try {
+            resultadoDAO = new ResultadoDAO();
+            listaResultados = (ArrayList<Resultado>) resultadoDAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            resultadoDTODAO = new ResultadoDTODAO();
+            listaResultadosDTO = (ArrayList<ResultadoDTO>) resultadoDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            peticionesDAO = new PeticionesDAO();
+            //listaPeticiones = (ArrayList<Peticiones>) peticionesDAO.getAll();
+            System.out.println("Carga datos");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            peticionesDTODAO = new PeticionesDTODAO();
+            listaPeticionesDTO = (ArrayList<PeticionesDTO>) peticionesDTODAO.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void cerrarController() {
+        System.out.println("Funciona metodo");
+        ResultadoDAO resultadoDAO = null;
+        ResultadoDTODAO resultadoDTODAO = null;
+        PeticionesDAO peticionesDAO = null;
+        PeticionesDTODAO peticionesDTODAO = null;
+        try {
+            resultadoDAO = new ResultadoDAO();
+            resultadoDAO.saveAll(listaResultados);
+            resultadoDTODAO = new ResultadoDTODAO();
+            resultadoDTODAO.saveAll(listaResultadosDTO);
+            peticionesDAO = new PeticionesDAO();
+            System.out.println("Guardar Peticiones");
+            //peticionesDAO.saveAll(listaPeticiones);
+            System.out.println("Guardo Peticiones");
+            peticionesDTODAO = new PeticionesDTODAO();
+            peticionesDTODAO.saveAll(listaPeticionesDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
      //GETTER Y SETTERS
@@ -194,7 +248,7 @@ public class ControllerPeticiones {
 
         for (Paciente paciente: ControllerSucursal.getInstancia().getListaPacientes())
             if (paciente.getDNI() == peticionBaja.paciente.DNI)
-                paciente.listaPeticionesPaciente.remove(petBaja);
+                paciente.getListaPeticionesPaciente().remove(petBaja);
         listaPeticiones.remove(petBaja);
         listaPeticionesDTO.remove(peticionBaja);
     }
