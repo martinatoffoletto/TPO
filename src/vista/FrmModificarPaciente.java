@@ -21,7 +21,7 @@ public class FrmModificarPaciente extends JDialog {
     private JLabel DNI;
 
     public FrmModificarPaciente(PacienteDTO pacienteDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         DNI.setText(String.valueOf(pacienteDTO.DNI));

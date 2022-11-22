@@ -15,7 +15,7 @@ public class FrmEliminarSucursal extends JDialog {
     private JButton guardarButton;
 
     public FrmEliminarSucursal(SucursalDTO sucuBaja) {
-        setSize(400, 200);
+        setSize(600, 300);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

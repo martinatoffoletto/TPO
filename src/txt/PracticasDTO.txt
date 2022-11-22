@@ -1,1 +1,2 @@
-{"codigo":1,"nombrePractica":"p","grupo":"p","horasResultado":10,"regla":{"codigo":1,"tipoRango":"mayorA","tipoValor":"NUMERICO","valorCritico":15.0,"valorReservado":true}}
+{"codigo":1,"nombrePractica":"Practica 1","grupo":"1","horasResultado":72,"regla":{"codigo":1,"tipoRango":"mayorA","tipoValor":"NUMERICO","valorCritico":10.0,"valorReservado":true}}
+{"codigo":2,"nombrePractica":"Practica 2","grupo":"2","horasResultado":48,"regla":{"codigo":2,"tipoRango":"igual","tipoValor":"NUMERICO","valorCritico":12.0,"valorReservado":false}}

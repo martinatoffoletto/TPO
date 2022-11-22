@@ -26,7 +26,7 @@ public class FrmModificarPeticion extends JDialog {
     private JLabel PracticaAsociada;
 
     public FrmModificarPeticion(PeticionesDTO peticionesDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

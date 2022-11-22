@@ -13,7 +13,7 @@ public class FrmListaPeticionesValoresCriticos extends JDialog {
     private JList list1;
 
     public FrmListaPeticionesValoresCriticos() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

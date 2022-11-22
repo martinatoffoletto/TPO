@@ -24,7 +24,7 @@ public class FrmNuevaRegla extends JDialog {
     private JTextField textField3;
 
     public FrmNuevaRegla() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

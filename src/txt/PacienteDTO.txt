@@ -1,1 +1,2 @@
-{"DNI":1,"nombre":"t","domicilio":"t","mail":"t","sexo":"t","edad":1}
+{"DNI":33016244,"nombre":"Lionel Andres Messi","domicilio":"Lavalleja 400","mail":"messi@gmail.com","sexo":"M","edad":35}
+{"DNI":17182,"nombre":"Cristiano Ronaldo","domicilio":"Rua Castilho 203","mail":"ronaldo@gmail.com","sexo":"M","edad":37}

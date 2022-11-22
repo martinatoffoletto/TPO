@@ -12,7 +12,7 @@ public class FrmListaPacientesSucursal extends JDialog{
     private JList list1;
     private JPanel pnlPrincipal;
     public FrmListaPacientesSucursal(SucursalDTO sucursalDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

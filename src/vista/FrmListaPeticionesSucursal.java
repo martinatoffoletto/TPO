@@ -15,7 +15,7 @@ public class FrmListaPeticionesSucursal extends JDialog {
     private JList list1;
 
     public FrmListaPeticionesSucursal(SucursalDTO sucursalDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

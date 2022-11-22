@@ -25,7 +25,7 @@ public class FrmModificarUsuario extends JDialog {
     private JLabel Rol;
 
     public FrmModificarUsuario(UsuarioSistemaDTO usuarioSistemaDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

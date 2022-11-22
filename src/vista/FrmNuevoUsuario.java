@@ -25,7 +25,7 @@ public class FrmNuevoUsuario extends JDialog {
     private JPanel pnlPrincipal;
 
     public FrmNuevoUsuario() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

@@ -6,7 +6,7 @@ public class FrmNoSeEliminoSucursal extends JDialog{
     private JPanel pnlPrincipal;
 
     public FrmNoSeEliminoSucursal() {
-        setSize(400, 400);
+        setSize(500, 200);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

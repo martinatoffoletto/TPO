@@ -28,7 +28,7 @@ public class FrmNuevaPractica extends JDialog {
     private JComboBox comboBox3;
 
     public FrmNuevaPractica() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

@@ -24,7 +24,7 @@ public class FrmModificarPractica extends JDialog {
     private JLabel Codigo;
 
     public FrmModificarPractica(PracticasDTO practicasDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

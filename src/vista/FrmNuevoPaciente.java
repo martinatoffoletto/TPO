@@ -21,7 +21,7 @@ public class FrmNuevoPaciente extends JDialog {
     private JTextField textField5;
 
     public FrmNuevoPaciente() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

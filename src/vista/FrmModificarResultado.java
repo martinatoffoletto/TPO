@@ -23,7 +23,7 @@ public class FrmModificarResultado extends JDialog {
     private JComboBox comboBox1;
 
     public FrmModificarResultado(ResultadoDTO resultadoDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

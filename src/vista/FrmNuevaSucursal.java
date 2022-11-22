@@ -21,7 +21,7 @@ public class FrmNuevaSucursal extends JDialog {
     private JComboBox comboBox1;
 
     public FrmNuevaSucursal() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

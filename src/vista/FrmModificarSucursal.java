@@ -24,7 +24,7 @@ public class FrmModificarSucursal extends JDialog {
     private JComboBox comboBox1;
 
     public FrmModificarSucursal(SucursalDTO sucursalDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

@@ -15,7 +15,7 @@ public class FrmListarPeticionesPaciente extends JDialog {
     private JList list1;
 
     public FrmListarPeticionesPaciente(PacienteDTO pacienteDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

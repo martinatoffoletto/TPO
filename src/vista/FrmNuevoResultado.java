@@ -26,7 +26,7 @@ public class FrmNuevoResultado extends JDialog {
     private JComboBox comboBox2;
 
     public FrmNuevoResultado() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

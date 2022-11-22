@@ -14,7 +14,7 @@ public class FrmElegirSucursalPeticion extends JDialog {
     private JButton guardarButton;
 
     public FrmElegirSucursalPeticion() {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

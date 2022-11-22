@@ -32,7 +32,7 @@ public class FrmNuevaPeticion extends JDialog {
     private JLabel SucursalNumero;
 
     public FrmNuevaPeticion(SucursalDTO sucursalDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

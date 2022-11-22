@@ -16,7 +16,7 @@ public class FrmAgregarPracticaSucursal extends JDialog {
     private JButton guardarButton;
 
     public FrmAgregarPracticaSucursal(SucursalDTO sucursalDTO) {
-        setSize(400, 400);
+        setSize(600, 600);
         setModal(true);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);

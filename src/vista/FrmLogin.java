@@ -18,7 +18,7 @@ public class FrmLogin extends JFrame{
 
     public FrmLogin() {
         super("Login");
-        setSize(400, 400);
+        setSize(400, 200);
         setLocationRelativeTo(null);
         setContentPane(pnlPrincipal);
         asignarDatosCombo();
