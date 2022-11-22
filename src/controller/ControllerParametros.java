@@ -169,19 +169,6 @@ public class ControllerParametros {
         }
     }
 
-    //DATOS USUARIO
-    /*public void datosUsuario(UsuarioSistemaDTO usuDatos) {
-        for (UsuarioSistema usuario: listaUsuarios) {
-            if (usuario.getUsuario() == usuDatos.usuario)
-                String email= usuario.getEmail();
-                String nombre= usuario.getNombre();
-                String domicilio= usuario.getDomicilio();
-                int dni =usuario.getDNI();
-                LocalDate nacimiento= usuario.getNacimiento();
-                TipoRol rol=usuario.getRol();
-        }
-    }
-*/
 
     //ALTA PRACTICA
     public void altaPractica(PracticasDTO practicaDTO) {
@@ -233,23 +220,6 @@ public class ControllerParametros {
     }
 
 
-
-
-
-    //DATOS PRACTICA
-    public void datosPractica(PracticasDTO practicasDTO) {
-
-        for (Practicas practica: listaPracticas ) {
-            if (practica.getCodigo() == practicasDTO.codigo) {
-                int codigo=practica.getCodigo();
-                String nombrePractia=practica.getNombrePractica();
-                String grupo=practica.getGrupo();
-                int horasResult=practica.getHorasResultado();
-                boolean estado=practica.getEstado();
-            }
-        }
-    }
-
     public void altaRegla(ReglaDTO reglaDTO) {
         Regla regla = new Regla(reglaDTO.codigo, reglaDTO.tipoValor, reglaDTO.valorReservado);
         if (regla.getTipoValor() == TipoValor.NUMERICO) {
@@ -269,25 +239,5 @@ public class ControllerParametros {
         listaReglas.remove(reglaBaja);
         listaReglaDTO.remove(reglaDTO);
     }
-    //METODOS:
-
-    //EXISTE USUARIO (INICIO SECCION)
-    public boolean InicioSeccion(UsuarioSistemaDTO userd){ //si es true muestra menu, sino NO (ver en vista)
-        for (UsuarioSistema user:listaUsuarios){
-            if (user.getNroUsuario()==userd.NroUsuario && user.getPassword()==userd.password){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-
-
-
-
-
-
 
 }

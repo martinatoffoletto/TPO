@@ -295,24 +295,6 @@ public class ControllerPeticiones {
             }
         }
 
-
-    //DATOS PETICION
-    public void datosPeticion(PeticionesDTO peticionMod) { //return o IMPRIMIR?
-        for (Peticiones peticion: listaPeticiones) {
-            if (peticion.getNroPeticion() == peticionMod.nroPeticion)
-            {
-                TipoEstado estado= peticion.getEstado();
-                String fechaCarga=peticion.getFechaCarga();
-                peticion.getFechaEntrega();
-                peticion.getNroPeticion();
-                peticion.getPracticaAsociada();
-                peticion.getSucursal();
-                peticion.getObraSocial();
-                peticion.getPaciente();
-
-            }
-        }
-    }
     public boolean tieneResultadoValorCritico(PeticionesDTO peticionesDTO) {
         ResultadoDTO resu = null;
         for (ResultadoDTO resultadoDTO: listaResultadosDTO)

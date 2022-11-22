@@ -240,19 +240,6 @@ public class ControllerSucursal {
         return listaPeticionesPacienteDTO;
     }
 
-    //DATOS SUCURSAL
-    public void DatosSucursal(SucursalDTO sucursalDTO) { //DEVUELVE O IMPRIME?
-        for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursalDTO.numero){
-                int numero= sc.getNumero();
-                String direccion= sc.getDireccion();
-                UsuarioSistema responsableTecnico =sc.getResponsableTecnico();
-            }
-        }
-
-    }
-
-
 
     //ALTA PACIENTES
     public void altaPaciente(PacienteDTO pacienteDTO) {
@@ -305,34 +292,7 @@ public class ControllerSucursal {
     }
 
 
-
-
-
-    //DATOS PACIENTE
-
-    public void DatosPaciente(PacienteDTO pacienteDTO){
-        for (Paciente paciente: listaPacientes){
-            if (paciente.getDNI()==pacienteDTO.DNI){
-                int dni=paciente.getDNI();
-                String nombre= paciente.getNombre();
-                String sexo  =paciente.getSexo();
-                String mail= paciente.getMail();
-                String domicilio=paciente.getDomicilio();
-
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-        //AGREGAR PRACTICA EN SUCURSAL
+    //AGREGAR PRACTICA EN SUCURSAL
 
     public void AgregarPracticaSucursal(SucursalDTO sucursal, PracticasDTO prac){
         for (Sucursal sc:listaSucursal){
@@ -357,25 +317,6 @@ public class ControllerSucursal {
                     listaPracticasSucursalDTO.add(practicasDTO);
         return listaPracticasSucursalDTO;
     }
-/*
-    //Agregar Paciente en SUCURSAL
-    public void AgregarPaciente(SucursalDTO sucursalDTO, PacienteDTO pacienteDTO){
-        Paciente paciente1 = null;
-        for (Paciente paciente: listaPacientes)
-            if (paciente.getDNI() == pacienteDTO.DNI)
-                paciente1 = paciente;
-        for (Sucursal sc:listaSucursal){
-            if (sc.getNumero()==sucursalDTO.numero){
-                sc.agregarPaciente(paciente1);
-            }
-        }
-    }
-
-       */
-
-
-
-
 
 
 }
